@@ -106,6 +106,50 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		412DA51B1D6374A900DBC8C7 /* Modal */ = {
+			isa = PBXGroup;
+			children = (
+				4105A9B01D62EFCB00FD37CD /* Cell.h */,
+				4105A9B11D62EFCB00FD37CD /* Cell.m */,
+				41D59F031D62D80B00D6371A /* Meal.h */,
+				41D59F041D62D80B00D6371A /* Meal.m */,
+			);
+			name = Modal;
+			sourceTree = "<group>";
+		};
+		412DA51C1D6374AF00DBC8C7 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				41D59ED01D62D79100D6371A /* AppDelegate.h */,
+				41D59ED11D62D79100D6371A /* AppDelegate.m */,
+				4105A9AA1D62E9E400FD37CD /* DataManager.h */,
+				4105A9AB1D62E9E400FD37CD /* DataManager.m */,
+			);
+			name = Manager;
+			sourceTree = "<group>";
+		};
+		412DA51D1D6374BC00DBC8C7 /* VC */ = {
+			isa = PBXGroup;
+			children = (
+				413853781D630C8200C1926A /* DetailVC.h */,
+				413853791D630C8200C1926A /* DetailVC.m */,
+				41D59ED31D62D79100D6371A /* ViewController.h */,
+				41D59ED41D62D79100D6371A /* ViewController.m */,
+				4105A9A71D62E4FD00FD37CD /* AddVC.h */,
+				4105A9A81D62E4FD00FD37CD /* AddVC.m */,
+			);
+			name = VC;
+			sourceTree = "<group>";
+		};
+		412DA51E1D6374C300DBC8C7 /* StoryBoard */ = {
+			isa = PBXGroup;
+			children = (
+				41D59ED61D62D79100D6371A /* Main.storyboard */,
+				41D59EDB1D62D79200D6371A /* LaunchScreen.storyboard */,
+			);
+			name = StoryBoard;
+			sourceTree = "<group>";
+		};
 		41D59EC11D62D79100D6371A = {
 			isa = PBXGroup;
 			children = (
@@ -131,23 +175,11 @@
 		41D59ECC1D62D79100D6371A /* projectA */ = {
 			isa = PBXGroup;
 			children = (
-				41D59ED01D62D79100D6371A /* AppDelegate.h */,
-				41D59ED11D62D79100D6371A /* AppDelegate.m */,
-				4105A9AA1D62E9E400FD37CD /* DataManager.h */,
-				4105A9AB1D62E9E400FD37CD /* DataManager.m */,
-				4105A9B01D62EFCB00FD37CD /* Cell.h */,
-				4105A9B11D62EFCB00FD37CD /* Cell.m */,
-				413853781D630C8200C1926A /* DetailVC.h */,
-				413853791D630C8200C1926A /* DetailVC.m */,
-				41D59F031D62D80B00D6371A /* Meal.h */,
-				41D59F041D62D80B00D6371A /* Meal.m */,
-				41D59ED31D62D79100D6371A /* ViewController.h */,
-				41D59ED41D62D79100D6371A /* ViewController.m */,
-				4105A9A71D62E4FD00FD37CD /* AddVC.h */,
-				4105A9A81D62E4FD00FD37CD /* AddVC.m */,
-				41D59ED61D62D79100D6371A /* Main.storyboard */,
+				412DA51E1D6374C300DBC8C7 /* StoryBoard */,
+				412DA51D1D6374BC00DBC8C7 /* VC */,
+				412DA51C1D6374AF00DBC8C7 /* Manager */,
+				412DA51B1D6374A900DBC8C7 /* Modal */,
 				41D59ED91D62D79100D6371A /* Assets.xcassets */,
-				41D59EDB1D62D79200D6371A /* LaunchScreen.storyboard */,
 				41D59EDE1D62D79200D6371A /* Info.plist */,
 				41D59ECD1D62D79100D6371A /* Supporting Files */,
 			);
