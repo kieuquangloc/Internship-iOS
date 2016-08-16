@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "RatingControl.h"
-
+NSString *const a = @"demo";
 @interface ViewController : UIViewController
 
 

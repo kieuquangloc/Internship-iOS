@@ -7,8 +7,11 @@
 //
 
 #import "ListFoodVC.h"
-
-@interface ListFoodVC () <UITableViewDataSource,UITableViewDelegate>
+//NSString *const a = @"demo";
+@interface ListFoodVC () <UITableViewDataSource,UITableViewDelegate, CellDelegate>{
+    NSMutableArray * _arrData;
+    NSString * _url;
+}
 
 
 @end
@@ -18,94 +21,126 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    //[SVProgressHUD show];
-    _url = @"http://food2fork.com/api/search?key=4d699174e2340160bb34e85865574bb3&q=shredded%20chicken";
     
-    _arr = [[ NSMutableArray alloc]init];
+    [self initUI];
+    [self initVar];
+    [self getDataFromServer];
+
+}
+
+#pragma mark - init.
+
+- (void)initUI{
+   // self.tbvContent.rowHeight = 100;
+   // self.tbvContent.estimatedRowHeight = UITableViewAutomaticDimension;
+    self.navigationItem.leftBarButtonItem = self.editButtonItem;
+    self.navigationItem.leftBarButtonItem.action = @selector(enableEdit);
+}
+
+- (void)initVar{
+    if (!_arrData) {
+        _arrData = [[NSMutableArray alloc]init];
+    }
+}
+
+- (void)enableEdit {
+    
+    if (_tbvContent.editing) {
+        _tbvContent.editing = NO;
+        self.navigationItem.leftBarButtonItem.title = @"Edit";
+    } else {
+        _tbvContent.editing = YES;
+        self.navigationItem.leftBarButtonItem.title = @"Done";
+    }
+}
+
+
+#pragma mark - GetDataFromServer.
+
+- (void)getDataFromServer{
+    
+    [SVProgressHUD show];
+    _url = @"http://food2fork.com/api/search?key=4d699174e2340160bb34e85865574bb3&q=shredded%20chicken";
     
     
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL
                                                           URLWithString:_url]];
     
     NSData *response = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+   
     
-    NSDictionary *arrData = [NSJSONSerialization JSONObjectWithData:response options:0 error:nil];
-    
-    _arr = arrData[@"recipes"];
-    
-    self.tbvContent.rowHeight = 100;
-    self.tbvContent.estimatedRowHeight = UITableViewAutomaticDimension;
-
-
+    if (response) {
+        [SVProgressHUD dismiss];
+        NSDictionary *arrData = [NSJSONSerialization JSONObjectWithData:response options:0 error:nil];
+        
+        _arrData = [arrData[@"recipes"] mutableCopy];
+        [_tbvContent reloadData];
+    }else{
+        NSLog(@"Error getData Server");
+    }
 }
 
+- (IBAction)btnEdit:(UIBarButtonItem *)sender {
+    _tbvContent.editing = YES;
+}
 
-#pragma mark - Table view data source
+#pragma mark - TableViewDelegate, TableviewDataSource.
 
-
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 1;
+}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-//#warning Incomplete implementation, return the number of rows
-    return _arr.count;
+    return _arrData.count;
+}
+
+// My code
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    return YES;
 }
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    
     Cell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
-    
-    [cell.ivPhoto  sd_setImageWithURL:[NSURL URLWithString:_arr[indexPath.row][@"image_url"]] placeholderImage:[UIImage imageNamed:@"apple"]];
-    cell.lblMealname.text = _arr[indexPath.row][@"title"];
-    
-    
+    cell.delegate = self;
+    [cell.ivPhoto  sd_setImageWithURL:[NSURL URLWithString:_arrData[indexPath.row][@"image_url"]] placeholderImage:[UIImage imageNamed:@"apple"]];
+    cell.lblMealname.text = _arrData[indexPath.row][@"title"];
+//Check Click button star.
+    [cell.viRatinh updateButtonSelectonStates];
     return cell;
     
 }
 
-
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
 }
-*/
 
-/*
-// Override to support editing the table view.
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return UITableViewCellEditingStyleDelete;
+}
+
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+        [_arrData removeObjectAtIndex:indexPath.row];
+        [_tbvContent deleteRowsAtIndexPaths:[NSMutableArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        [_tbvContent reloadData];
+    }
 }
-*/
 
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.section == 0) {
+        return 100.f;
+    }
+    return 0.0;
 }
-*/
 
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
+- (void)CellDelegate:(Cell *)cell withActionBtn:(UIButton *)btn{
+    NSLog(@"TEST");
+     
 }
-*/
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

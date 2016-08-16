@@ -9,12 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "Cell.h"
 #import <SDWebImage/UIImageView+WebCache.h>
-//#import <SVProgressHUD/SVProgressHUD.h>
+#import <SVProgressHUD/SVProgressHUD.h>
 
 @interface ListFoodVC: UIViewController
 
-@property(nonatomic,strong) NSString * url;
-@property(nonatomic,strong) NSMutableArray * arr;
+//@property(nonatomic,strong) NSString * url;
+//@property(nonatomic,strong) NSMutableArray * arrData;
 @property(nonatomic,weak)IBOutlet UITableView* tbvContent;
 
 @end

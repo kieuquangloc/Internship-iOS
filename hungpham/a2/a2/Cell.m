@@ -21,4 +21,11 @@
     // Configure the view for the selected state
 }
 
+- (void)btnAction:(UIButton *)btn{
+    if (_delegate&& [_delegate respondsToSelector:@selector(CellDelegate:withActionBtn:)]) {
+        [_delegate CellDelegate:self withActionBtn:btn];
+    }
+}
+
+
 @end

@@ -10,37 +10,6 @@
 
 @implementation RatingControl
 
-- (id)initWithCoder:(NSCoder *)aDecoder {
-    self = [super initWithCoder:aDecoder];
-    
-    _spacing = 5;
-    _starCount = 5;
-    
-    UIImage *emptyStarImage = [UIImage imageNamed:@"emptyStar"];
-    UIImage *filledStarImage = [UIImage imageNamed:@"filledStar"];
-    
-    if (self) {
-        _ratingButtons = [[NSMutableArray alloc]init];
-        
-        for (int i = 0; i < _starCount; i++) {
-            UIButton *button = [[UIButton alloc]init];
-            
-            [button setImage:emptyStarImage forState:UIControlStateNormal];
-            [button setImage:filledStarImage forState:UIControlStateSelected];
-            [button setImage:filledStarImage forState:UIControlStateSelected | UIControlStateHighlighted];
-            [button setAdjustsImageWhenDisabled:false];
-            
-            [button addTarget:self action:@selector(ratingButtonTapped:) forControlEvents:UIControlEventTouchDown];
-            
-            [_ratingButtons addObject:button];
-            [self addSubview:button];
-            
-        }
-        
-    }
-    return self;
-}
-
 - (void)awakeFromNib{
     [super awakeFromNib];
     _spacing = 5;
@@ -53,17 +22,20 @@
         _ratingButtons = [[NSMutableArray alloc]init];
         
         for (int i = 0; i < _starCount; i++) {
-            UIButton *button = [[UIButton alloc]init];
             
+            UIButton *button = [[UIButton alloc]init];
+
             [button setImage:emptyStarImage forState:UIControlStateNormal];
             [button setImage:filledStarImage forState:UIControlStateSelected];
-            [button setImage:filledStarImage forState:UIControlStateSelected | UIControlStateHighlighted];
+           
+            button.showsTouchWhenHighlighted = YES;
+           
             [button setAdjustsImageWhenDisabled:false];
             
             [button addTarget:self action:@selector(ratingButtonTapped:) forControlEvents:UIControlEventTouchDown];
             
             [_ratingButtons addObject:button];
-            //[self addSubview:button];
+
             
         }
         
@@ -95,8 +67,7 @@
     return size;
 }
 
-// MARK: Button Action
-
+#pragma mark - Action.
 
 - (void)ratingButtonTapped:(UIButton *)btn {
     _rating = (int)([_ratingButtons indexOfObject:btn] + 1);

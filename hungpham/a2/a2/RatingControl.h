@@ -16,6 +16,5 @@
 @property (strong) NSMutableArray *ratingButtons;
 
 - (void)updateButtonSelectonStates;
-- (id)initWithCoder:(NSCoder *)aDecoder;
 
 @end
