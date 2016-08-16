@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>Name</key>
+		<string>Hambuger</string>
+		<key>Image</key>
+		<string>img_hamberger</string>
+		<key>Rate</key>
+		<integer>5</integer>
+	</dict>
+	<dict>
+		<key>Name</key>
+		<string>Dau Hu</string>
+		<key>Image</key>
+		<string>img_daukhuon</string>
+		<key>Rate</key>
+		<integer>3</integer>
+	</dict>
+	<dict>
+		<key>Name</key>
+		<string>Hot Dog</string>
+		<key>Image</key>
+		<string>img_xucxich</string>
+		<key>Rate</key>
+		<integer>4</integer>
+	</dict>
+	<dict>
+		<key>Name</key>
+		<string>Fire Chicken</string>
+		<key>Image</key>
+		<string>http://1920x1080hdwallpapers.com/image/201505/food/1455/fire-chicken-water-reflection-650x366.jpg</string>
+		<key>Rate</key>
+		<integer>5</integer>
+	</dict>
+	<dict>
+		<key>Name</key>
+		<string>Sanwich</string>
+		<key>Image</key>
+		<string>https://myvacationhaven.com/wp-content/uploads/2015/07/fat-food-sandwiches-French-bread-ham-salmon-lettuce-cheese-tomatoes.jpg</string>
+		<key>Rate</key>
+		<integer>4</integer>
+	</dict>
+</array>
+</plist>
