@@ -17,21 +17,14 @@
     _halfSelectedImage = [UIImage imageNamed:@"filledStar"];
     _fullSelectedImage = [UIImage imageNamed:@"filledStar"];
     _rating = 0;
-    _editable = NO;    
     _imageViews = [[NSMutableArray alloc] init];
     _maxRating = 5;
-    _midMargin = 5;
-    _leftMargin = 0;
-    _minImageSize = CGSizeMake(5, 5);
     _delegate = nil;    
 }
 
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
-    if (self) {
-        [self InitLayout];
-    }
     return self;
 }
 
@@ -46,21 +39,15 @@
 
 - (void)layoutSubviews {
     [super layoutSubviews];
-    
-    if (self.notSelectedImage == nil) return;
-    
-    float desiredImageWidth = (self.frame.size.width - (self.leftMargin*2) - (self.midMargin*self.imageViews.count)) / self.imageViews.count;
-    float imageWidth = MAX(self.minImageSize.width, desiredImageWidth);
-    float imageHeight = MAX(self.minImageSize.height, self.frame.size.height);
-    
+    float imageWidthX =0;
+    float imageWidth = 40;
+    float imageHeight = 40;
     for (int i = 0; i < self.imageViews.count; ++i) {
-        
         UIImageView *imageView = [self.imageViews objectAtIndex:i];
-        CGRect imageFrame = CGRectMake(self.leftMargin + i*(self.midMargin+imageWidth), 0, imageWidth, imageHeight);
+        CGRect imageFrame = CGRectMake(imageWidthX, 0, imageWidth, imageHeight);
+        imageWidthX +=45;
         imageView.frame = imageFrame;
-        
-    }    
-    
+    }
 }
 
 - (void)setMaxRating:(int)maxRating {
@@ -94,12 +81,10 @@
 #pragma mark - refresh
 
 - (void)refresh {
-    for(int i = 0; i < self.imageViews.count; ++i) {
+    for(int i = 0; i < _maxRating; i++ ) {
         UIImageView *imageView = [self.imageViews objectAtIndex:i];
-        if (self.rating >= i+1) {
+        if (_rating >= i) {
             imageView.image = self.fullSelectedImage;
-        } else if (self.rating > i) {
-            imageView.image = self.halfSelectedImage;
         } else {
             imageView.image = self.notSelectedImage;
         }
@@ -109,17 +94,16 @@
 #pragma mark - Action
 
 - (void)handleTouchAtLocation:(CGPoint)touchLocation {
-    if (!self.editable) return;
-    
-    int newRating = 0;
-    for(int i = (int)self.imageViews.count - 1; i >= 0; i--) {
-        UIImageView *imageView = [self.imageViews objectAtIndex:i];        
-        if (touchLocation.x > imageView.frame.origin.x) {
-            newRating = i+1;
+    int newRating = _maxRating-1;
+    UIImageView *imageView = [self.imageViews objectAtIndex:newRating];
+    while (touchLocation.x < imageView.frame.origin.x) {
+        newRating --;
+        if (newRating >= 0) {
+           imageView = [self.imageViews objectAtIndex:newRating];
+        } else {
             break;
         }
     }
-    
     self.rating = newRating;
 }
 

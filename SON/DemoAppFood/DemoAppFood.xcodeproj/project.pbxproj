@@ -7,17 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CA1113B61D64A6D00047CC24 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA1113B51D64A6D00047CC24 /* Assets.xcassets */; };
 		CA64E12B1D61EE4700B464B0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CA64E12A1D61EE4700B464B0 /* main.m */; };
 		CA64E1341D61EE4700B464B0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA64E1321D61EE4700B464B0 /* Main.storyboard */; };
 		CA64E1371D61EE4700B464B0 /* DemoAppFood.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CA64E1351D61EE4700B464B0 /* DemoAppFood.xcdatamodeld */; };
-		CA64E1391D61EE4700B464B0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA64E1381D61EE4700B464B0 /* Assets.xcassets */; };
 		CA64E13C1D61EE4700B464B0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA64E13A1D61EE4700B464B0 /* LaunchScreen.storyboard */; };
 		CA64E1471D61EE4800B464B0 /* DemoAppFoodTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CA64E1461D61EE4800B464B0 /* DemoAppFoodTests.m */; };
 		CA64E1591D61EE9500B464B0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CA64E1541D61EE9500B464B0 /* AppDelegate.m */; };
-		CA64E15A1D61EE9500B464B0 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA64E1581D61EE9500B464B0 /* ViewController.m */; };
+		CA64E15A1D61EE9500B464B0 /* ListMainVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CA64E1581D61EE9500B464B0 /* ListMainVC.m */; };
 		CA64E15D1D61F09800B464B0 /* Meal.m in Sources */ = {isa = PBXBuildFile; fileRef = CA64E15C1D61F09800B464B0 /* Meal.m */; };
-		CA64E1601D61F27200B464B0 /* AddMealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA64E15F1D61F27200B464B0 /* AddMealViewController.m */; };
-		CA64E1651D61F2D300B464B0 /* ListMealTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CA64E1631D61F2D300B464B0 /* ListMealTableViewCell.m */; };
+		CA64E1601D61F27200B464B0 /* AddMealVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CA64E15F1D61F27200B464B0 /* AddMealVC.m */; };
+		CA64E1651D61F2D300B464B0 /* MealCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CA64E1631D61F2D300B464B0 /* MealCell.m */; };
 		CA7497D61D62C8B10028CC63 /* RateView.m in Sources */ = {isa = PBXBuildFile; fileRef = CA7497D51D62C8B10028CC63 /* RateView.m */; };
 /* End PBXBuildFile section */
 
@@ -32,11 +32,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CA1113B51D64A6D00047CC24 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = DemoAppFood/Assets.xcassets; sourceTree = SOURCE_ROOT; };
 		CA64E1261D61EE4700B464B0 /* DemoAppFood.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DemoAppFood.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA64E12A1D61EE4700B464B0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CA64E1331D61EE4700B464B0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CA64E1361D61EE4700B464B0 /* DemoAppFood.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DemoAppFood.xcdatamodel; sourceTree = "<group>"; };
-		CA64E1381D61EE4700B464B0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../Assets.xcassets; sourceTree = "<group>"; };
 		CA64E13B1D61EE4700B464B0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CA64E13D1D61EE4700B464B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CA64E1421D61EE4800B464B0 /* DemoAppFoodTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DemoAppFoodTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -44,14 +44,14 @@
 		CA64E1481D61EE4800B464B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CA64E1531D61EE9500B464B0 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		CA64E1541D61EE9500B464B0 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		CA64E1571D61EE9500B464B0 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		CA64E1581D61EE9500B464B0 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		CA64E1571D61EE9500B464B0 /* ListMainVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = ListMainVC.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		CA64E1581D61EE9500B464B0 /* ListMainVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListMainVC.m; sourceTree = "<group>"; };
 		CA64E15B1D61F09800B464B0 /* Meal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Meal.h; sourceTree = "<group>"; };
 		CA64E15C1D61F09800B464B0 /* Meal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Meal.m; sourceTree = "<group>"; };
-		CA64E15E1D61F27200B464B0 /* AddMealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddMealViewController.h; sourceTree = "<group>"; };
-		CA64E15F1D61F27200B464B0 /* AddMealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddMealViewController.m; sourceTree = "<group>"; };
-		CA64E1621D61F2D300B464B0 /* ListMealTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListMealTableViewCell.h; sourceTree = "<group>"; };
-		CA64E1631D61F2D300B464B0 /* ListMealTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListMealTableViewCell.m; sourceTree = "<group>"; };
+		CA64E15E1D61F27200B464B0 /* AddMealVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = AddMealVC.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		CA64E15F1D61F27200B464B0 /* AddMealVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddMealVC.m; sourceTree = "<group>"; };
+		CA64E1621D61F2D300B464B0 /* MealCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MealCell.h; sourceTree = "<group>"; };
+		CA64E1631D61F2D300B464B0 /* MealCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MealCell.m; sourceTree = "<group>"; };
 		CA7497D41D62C8B10028CC63 /* RateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RateView.h; sourceTree = "<group>"; };
 		CA7497D51D62C8B10028CC63 /* RateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RateView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -130,8 +130,8 @@
 			children = (
 				CA7497D41D62C8B10028CC63 /* RateView.h */,
 				CA7497D51D62C8B10028CC63 /* RateView.m */,
-				CA64E1621D61F2D300B464B0 /* ListMealTableViewCell.h */,
-				CA64E1631D61F2D300B464B0 /* ListMealTableViewCell.m */,
+				CA64E1621D61F2D300B464B0 /* MealCell.h */,
+				CA64E1631D61F2D300B464B0 /* MealCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -150,7 +150,7 @@
 		CA64E1551D61EE9500B464B0 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
-				CA64E1381D61EE4700B464B0 /* Assets.xcassets */,
+				CA1113B51D64A6D00047CC24 /* Assets.xcassets */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -158,10 +158,10 @@
 		CA64E1561D61EE9500B464B0 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				CA64E1571D61EE9500B464B0 /* ViewController.h */,
-				CA64E1581D61EE9500B464B0 /* ViewController.m */,
-				CA64E15E1D61F27200B464B0 /* AddMealViewController.h */,
-				CA64E15F1D61F27200B464B0 /* AddMealViewController.m */,
+				CA64E1571D61EE9500B464B0 /* ListMainVC.h */,
+				CA64E1581D61EE9500B464B0 /* ListMainVC.m */,
+				CA64E15E1D61F27200B464B0 /* AddMealVC.h */,
+				CA64E15F1D61F27200B464B0 /* AddMealVC.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -248,7 +248,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CA64E13C1D61EE4700B464B0 /* LaunchScreen.storyboard in Resources */,
-				CA64E1391D61EE4700B464B0 /* Assets.xcassets in Resources */,
+				CA1113B61D64A6D00047CC24 /* Assets.xcassets in Resources */,
 				CA64E1341D61EE4700B464B0 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -271,9 +271,9 @@
 				CA64E1371D61EE4700B464B0 /* DemoAppFood.xcdatamodeld in Sources */,
 				CA7497D61D62C8B10028CC63 /* RateView.m in Sources */,
 				CA64E12B1D61EE4700B464B0 /* main.m in Sources */,
-				CA64E1651D61F2D300B464B0 /* ListMealTableViewCell.m in Sources */,
-				CA64E1601D61F27200B464B0 /* AddMealViewController.m in Sources */,
-				CA64E15A1D61EE9500B464B0 /* ViewController.m in Sources */,
+				CA64E1651D61F2D300B464B0 /* MealCell.m in Sources */,
+				CA64E1601D61F27200B464B0 /* AddMealVC.m in Sources */,
+				CA64E15A1D61EE9500B464B0 /* ListMainVC.m in Sources */,
 				CA64E1591D61EE9500B464B0 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -320,6 +320,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "";
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -365,6 +366,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "";
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
