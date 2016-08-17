@@ -60,9 +60,11 @@
     
         cell.lblMeal.text = meal.name;
 
-      
+    if ([meal.imageName isKindOfClass:[NSData class]]) {
         cell.imvMeal.image = [UIImage imageWithData:meal.imageName];
-        
+
+    }
+    
         if (meal.rate == 5) {
             [cell.btnStar1 setImage:[UIImage imageNamed:@"mark-as-favorite-star-2"] forState:UIControlStateNormal];
             [cell.btnStar2 setImage:[UIImage imageNamed:@"mark-as-favorite-star-2"] forState:UIControlStateNormal];
@@ -113,7 +115,6 @@
     rotation.m34 = 1.0/ -600;
     
     
-    //2. Define the initial state (Before the animation)
     cell.layer.shadowColor = [[UIColor blackColor]CGColor];
     cell.layer.shadowOffset = CGSizeMake(10, 10);
     cell.alpha = 0;
@@ -121,12 +122,10 @@
     cell.layer.transform = rotation;
     cell.layer.anchorPoint = CGPointMake(0, 0.5);
     
-    //!!!FIX for issue #1 Cell position wrong------------
     if(cell.layer.position.x != 0){
         cell.layer.position = CGPointMake(0, cell.layer.position.y);
     }
     
-    //4. Define the final state (After the animation) and commit the animation
     [UIView beginAnimations:@"rotation" context:NULL];
     [UIView setAnimationDuration:0.3];
     cell.layer.transform = CATransform3DIdentity;
