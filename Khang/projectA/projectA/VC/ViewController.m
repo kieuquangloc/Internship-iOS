@@ -44,69 +44,111 @@
     [super didReceiveMemoryWarning];
     
 }
+#pragma mark - BUTTON NAVIGATION
 
+- (IBAction)didTapAddNewMeal:(id)sender {
+    AddVC *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil]instantiateViewControllerWithIdentifier:@"add"];
+    [self presentViewController:vc animated:YES completion:nil];
+    
+    
+}
+- (IBAction)didTapRefresh:(id)sender {
+    
+    
+    [[DataManager shareIntance]getDataWithCallback:^{
+        [SVProgressHUD showWithStatus:@" Chờ tí nha !  😘 " ];
+
+        [_tbvMain reloadData];
+        [SVProgressHUD dismissWithDelay:3];
+    }];
+    
+}
+- (BOOL)ifFirstLoad{
+    _thisIsFirstLoadApp = YES;
+    return _thisIsFirstLoadApp;
+}
+
+
+#pragma mark - TABLEVIEW
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    DetailVC *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil]instantiateViewControllerWithIdentifier:@"detail"];
+    NSArray *reversedArray = [[[DataManager shareIntance].foodList reverseObjectEnumerator] allObjects];
+    Meal *meal = reversedArray[indexPath.row];
+    vc.strName = meal.name;
+    vc.dataImage = meal.imageName;
+    
+    [self. navigationController pushViewController:vc animated:YES];
+}
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        [[DataManager shareIntance].foodList removeObjectAtIndex:indexPath.row];
+        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        [[DataManager shareIntance]saveBack];
+    }
+}
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-
+    
     return [DataManager shareIntance].foodList.count;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     Cell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
-        NSArray *reversedArray = [[[DataManager shareIntance].foodList reverseObjectEnumerator] allObjects];
-        Meal *meal = reversedArray[indexPath.row];
+    NSArray *reversedArray = [[[DataManager shareIntance].foodList reverseObjectEnumerator] allObjects];
+    Meal *meal = reversedArray[indexPath.row];
     
-        cell.lblMeal.text = meal.name;
-
+    cell.lblMeal.text = meal.name;
+    
     if ([meal.imageName isKindOfClass:[NSData class]]) {
         cell.imvMeal.image = [UIImage imageWithData:meal.imageName];
-
+        
     }
     
-        if (meal.rate == 5) {
-            [cell.btnStar1 setImage:[UIImage imageNamed:@"mark-as-favorite-star-2"] forState:UIControlStateNormal];
-            [cell.btnStar2 setImage:[UIImage imageNamed:@"mark-as-favorite-star-2"] forState:UIControlStateNormal];
-            [cell.btnStar3 setImage:[UIImage imageNamed:@"mark-as-favorite-star-2"] forState:UIControlStateNormal];
-            [cell.btnStar4 setImage:[UIImage imageNamed:@"mark-as-favorite-star-2"] forState:UIControlStateNormal];
-            [cell.btnStar5 setImage:[UIImage imageNamed:@"mark-as-favorite-star-2"] forState:UIControlStateNormal];
-            
-        }else if (meal.rate ==4 ){
-            [cell.btnStar1 setImage:[UIImage imageNamed:@"mark-as-favorite-star-2"] forState:UIControlStateNormal];
-            [cell.btnStar2 setImage:[UIImage imageNamed:@"mark-as-favorite-star-2"] forState:UIControlStateNormal];
-            [cell.btnStar3 setImage:[UIImage imageNamed:@"mark-as-favorite-star-2"] forState:UIControlStateNormal];
-            [cell.btnStar4 setImage:[UIImage imageNamed:@"mark-as-favorite-star-2"] forState:UIControlStateNormal];
-            [cell.btnStar5 setHidden:YES];
-            
-        }
-        else if (meal.rate == 3){
-            [cell.btnStar1 setImage:[UIImage imageNamed:@"mark-as-favorite-star-2"] forState:UIControlStateNormal];
-            [cell.btnStar2 setImage:[UIImage imageNamed:@"mark-as-favorite-star-2"] forState:UIControlStateNormal];
-            [cell.btnStar3 setImage:[UIImage imageNamed:@"mark-as-favorite-star-2"] forState:UIControlStateNormal];
-            [cell.btnStar4 setHidden:YES];
-            [cell.btnStar5 setHidden:YES];
-            
-        }
-        else if (meal.rate ==2 ){
-            [cell.btnStar1 setImage:[UIImage imageNamed:@"mark-as-favorite-star-2"] forState:UIControlStateNormal];
-            [cell.btnStar2 setImage:[UIImage imageNamed:@"mark-as-favorite-star-2"] forState:UIControlStateNormal];
-            [cell.btnStar3 setHidden:YES];
-            [cell.btnStar4 setHidden:YES];
-            [cell.btnStar5 setHidden:YES];
-            
-        }
-        else if (meal.rate == 1){
-            [cell.btnStar1 setImage:[UIImage imageNamed:@"mark-as-favorite-star-2"] forState:UIControlStateNormal];
-            [cell.btnStar2 setHidden:YES];
-            [cell.btnStar3 setHidden:YES];
-            [cell.btnStar4 setHidden:YES];
-            [cell.btnStar5 setHidden:YES];
-            
-        }
-
+    if (meal.rate == 5) {
+        [cell.btnStar1 setImage:[UIImage imageNamed:@"mark-as-favorite-star-2"] forState:UIControlStateNormal];
+        [cell.btnStar2 setImage:[UIImage imageNamed:@"mark-as-favorite-star-2"] forState:UIControlStateNormal];
+        [cell.btnStar3 setImage:[UIImage imageNamed:@"mark-as-favorite-star-2"] forState:UIControlStateNormal];
+        [cell.btnStar4 setImage:[UIImage imageNamed:@"mark-as-favorite-star-2"] forState:UIControlStateNormal];
+        [cell.btnStar5 setImage:[UIImage imageNamed:@"mark-as-favorite-star-2"] forState:UIControlStateNormal];
+        
+    }else if (meal.rate ==4 ){
+        [cell.btnStar1 setImage:[UIImage imageNamed:@"mark-as-favorite-star-2"] forState:UIControlStateNormal];
+        [cell.btnStar2 setImage:[UIImage imageNamed:@"mark-as-favorite-star-2"] forState:UIControlStateNormal];
+        [cell.btnStar3 setImage:[UIImage imageNamed:@"mark-as-favorite-star-2"] forState:UIControlStateNormal];
+        [cell.btnStar4 setImage:[UIImage imageNamed:@"mark-as-favorite-star-2"] forState:UIControlStateNormal];
+        [cell.btnStar5 setHidden:YES];
+        
+    }
+    else if (meal.rate == 3){
+        [cell.btnStar1 setImage:[UIImage imageNamed:@"mark-as-favorite-star-2"] forState:UIControlStateNormal];
+        [cell.btnStar2 setImage:[UIImage imageNamed:@"mark-as-favorite-star-2"] forState:UIControlStateNormal];
+        [cell.btnStar3 setImage:[UIImage imageNamed:@"mark-as-favorite-star-2"] forState:UIControlStateNormal];
+        [cell.btnStar4 setHidden:YES];
+        [cell.btnStar5 setHidden:YES];
+        
+    }
+    else if (meal.rate ==2 ){
+        [cell.btnStar1 setImage:[UIImage imageNamed:@"mark-as-favorite-star-2"] forState:UIControlStateNormal];
+        [cell.btnStar2 setImage:[UIImage imageNamed:@"mark-as-favorite-star-2"] forState:UIControlStateNormal];
+        [cell.btnStar3 setHidden:YES];
+        [cell.btnStar4 setHidden:YES];
+        [cell.btnStar5 setHidden:YES];
+        
+    }
+    else if (meal.rate == 1){
+        [cell.btnStar1 setImage:[UIImage imageNamed:@"mark-as-favorite-star-2"] forState:UIControlStateNormal];
+        [cell.btnStar2 setHidden:YES];
+        [cell.btnStar3 setHidden:YES];
+        [cell.btnStar4 setHidden:YES];
+        [cell.btnStar5 setHidden:YES];
+        
+    }
     
-        return cell;
+    
+    return cell;
 }
 -(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
     
@@ -132,43 +174,5 @@
     cell.alpha = 1;
     cell.layer.shadowOffset = CGSizeMake(0, 0);
     [UIView commitAnimations];
-}
-- (IBAction)didTapAddNewMeal:(id)sender {
-    AddVC *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil]instantiateViewControllerWithIdentifier:@"add"];
-    [self presentViewController:vc animated:YES completion:nil];
-    
-    
-}
-- (IBAction)didTapRefresh:(id)sender {
-    
-    
-    [[DataManager shareIntance]getDataWithCallback:^{
-        [SVProgressHUD showWithStatus:@" Chờ tí nha !  😘 " ];
-
-        [_tbvMain reloadData];
-        [SVProgressHUD dismissWithDelay:3];
-    }];
-    
-}
-- (BOOL)ifFirstLoad{
-    _thisIsFirstLoadApp = YES;
-    return _thisIsFirstLoadApp;
-}
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    DetailVC *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil]instantiateViewControllerWithIdentifier:@"detail"];
-    NSArray *reversedArray = [[[DataManager shareIntance].foodList reverseObjectEnumerator] allObjects];
-    Meal *meal = reversedArray[indexPath.row];
-    vc.strName = meal.name;
-    vc.dataImage = meal.imageName;
-    
-    [self. navigationController pushViewController:vc animated:YES];
-}
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        [[DataManager shareIntance].foodList removeObjectAtIndex:indexPath.row];
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-        [[DataManager shareIntance]saveBack];
-    }
 }
 @end
