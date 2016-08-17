@@ -14,12 +14,18 @@
 
 - (void)InitLayout {
     _notSelectedImage = [UIImage imageNamed:@"emptyStar"];;
-    _halfSelectedImage = [UIImage imageNamed:@"filledStar"];
     _fullSelectedImage = [UIImage imageNamed:@"filledStar"];
     _rating = 0;
     _imageViews = [[NSMutableArray alloc] init];
     _maxRating = 5;
-    _delegate = nil;    
+    _delegate = nil;
+    
+    for(int i = 0; i < _maxRating; i++) {
+        UIImageView *imageView = [[UIImageView alloc] init];
+        imageView.contentMode = UIViewContentModeScaleAspectFit;
+        [self.imageViews addObject:imageView];
+        [self addSubview:imageView];
+    }
 }
 
 - (id)initWithFrame:(CGRect)frame
@@ -42,35 +48,12 @@
     float imageWidthX =0;
     float imageWidth = 40;
     float imageHeight = 40;
-    for (int i = 0; i < self.imageViews.count; ++i) {
+    for (int i = 0; i < _maxRating; ++i) {
         UIImageView *imageView = [self.imageViews objectAtIndex:i];
         CGRect imageFrame = CGRectMake(imageWidthX, 0, imageWidth, imageHeight);
         imageWidthX +=45;
         imageView.frame = imageFrame;
     }
-}
-
-- (void)setMaxRating:(int)maxRating {
-    _maxRating = maxRating;
-    
-    // Remove old image views
-    for(int i = 0; i < self.imageViews.count; ++i) {
-        UIImageView *imageView = (UIImageView *) [self.imageViews objectAtIndex:i];
-        [imageView removeFromSuperview];
-    }
-    [self.imageViews removeAllObjects];
-    
-    // Add new image views
-    for(int i = 0; i < maxRating; ++i) {
-        UIImageView *imageView = [[UIImageView alloc] init];
-        imageView.contentMode = UIViewContentModeScaleAspectFit;
-        [self.imageViews addObject:imageView];
-        [self addSubview:imageView];
-    }
-    
-    // Relayout and refresh
-    [self setNeedsLayout];
-    [self refresh];
 }
 
 - (void)setRating:(NSInteger)rating {

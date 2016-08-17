@@ -18,7 +18,6 @@
 @interface RateView : UIView
 
 @property (strong, nonatomic) UIImage *notSelectedImage;
-@property (strong, nonatomic) UIImage *halfSelectedImage;
 @property (strong, nonatomic) UIImage *fullSelectedImage;
 
 @property (assign, nonatomic) NSInteger rating;
