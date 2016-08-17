@@ -26,17 +26,13 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
--(void)viewWillAppear:(BOOL)animated{
+- (void)viewWillAppear:(BOOL)animated{
     [self getData];
 }
 
-
-
-
-
 #pragma mark - UICoredata
 
--(void)getData{
+- (void)getData{
 
     NSManagedObjectContext *context = [self managedObjectContext];
 
@@ -49,7 +45,7 @@
     }
 }
 
--(NSManagedObjectContext *)managedObjectContext{
+- (NSManagedObjectContext *)managedObjectContext{
     NSManagedObjectContext *context;
     id delegate = [[UIApplication sharedApplication] delegate];
     
@@ -62,11 +58,11 @@
 
 
 #pragma mark - UITableViewDataSource
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return _listMeal.count;
 }
 
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *CellId = @"cellmeal";
 
     ListMealTableViewCell *cell = (ListMealTableViewCell *)[_tbvListMeal dequeueReusableCellWithIdentifier:CellId forIndexPath:indexPath];
@@ -85,7 +81,7 @@
 
 
 #pragma mark - UITableViewDelegate
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     AddMealViewController *detailView = [self.storyboard instantiateViewControllerWithIdentifier:@"detail"];
     Meal *currentMeal = _listMeal[indexPath.row];
     detailView.currentMeal = currentMeal;
@@ -93,7 +89,7 @@
     [self.navigationController pushViewController:detailView animated:YES];
     
 }
--(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
     NSManagedObjectContext *context = [self managedObjectContext];
     
     if (editingStyle == UITableViewCellEditingStyleDelete) {
@@ -113,13 +109,13 @@
 
 #pragma mark - ButtonEdit
 
--(void)createButtonEdit{
+- (void)createButtonEdit{
     isEdit =NO;
     [_btnEdit setTarget:self];
     [_btnEdit setAction:@selector(ChooseEditMeal)];
 }
 
--(void)ChooseEditMeal{
+- (void)ChooseEditMeal{
     if (isEdit) {
         [_tbvListMeal reloadData];
         _btnEdit.title =@"EDIT";
@@ -134,12 +130,12 @@
 
 
 
--(void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath{
+- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath{
     Meal *currentMeal = _listMeal[indexPath.row];
     [self editStudentWithAlert:currentMeal];
 }
 
--(void)editStudentWithAlert:(Meal *)meal{
+- (void)editStudentWithAlert:(Meal *)meal{
 
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Info" message:@"Detail Meal" preferredStyle:UIAlertControllerStyleAlert];
 
@@ -170,7 +166,7 @@
 
 #pragma InitRating
 
--(void)CreateStar:(RateView*)_viewRate :(NSInteger)rate{
+- (void)CreateStar:(RateView*)_viewRate :(NSInteger)rate{
     
     _viewRate.editable = YES;
     _viewRate.maxRating = 5;
