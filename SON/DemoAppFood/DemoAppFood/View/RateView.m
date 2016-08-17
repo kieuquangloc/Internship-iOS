@@ -10,6 +10,7 @@
 
 @implementation RateView
 
+#pragma mark - InitView
 
 - (void)InitLayout {
     _notSelectedImage = [UIImage imageNamed:@"emptyStar"];;
@@ -41,18 +42,7 @@
     return self;
 }
 
-- (void)refresh {
-    for(int i = 0; i < self.imageViews.count; ++i) {
-        UIImageView *imageView = [self.imageViews objectAtIndex:i];
-        if (self.rating >= i+1) {
-            imageView.image = self.fullSelectedImage;
-        } else if (self.rating > i) {
-            imageView.image = self.halfSelectedImage;
-        } else {
-            imageView.image = self.notSelectedImage;
-        }
-    }
-}
+
 
 - (void)layoutSubviews {
     [super layoutSubviews];
@@ -96,12 +86,27 @@
     [self refresh];
 }
 
-
-
 - (void)setRating:(NSInteger)rating {
     _rating = rating;
     [self refresh];
 }
+
+#pragma mark - refresh
+
+- (void)refresh {
+    for(int i = 0; i < self.imageViews.count; ++i) {
+        UIImageView *imageView = [self.imageViews objectAtIndex:i];
+        if (self.rating >= i+1) {
+            imageView.image = self.fullSelectedImage;
+        } else if (self.rating > i) {
+            imageView.image = self.halfSelectedImage;
+        } else {
+            imageView.image = self.notSelectedImage;
+        }
+    }
+}
+
+#pragma mark - Action
 
 - (void)handleTouchAtLocation:(CGPoint)touchLocation {
     if (!self.editable) return;

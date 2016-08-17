@@ -53,7 +53,7 @@
     [_btnSave setAction:@selector(ChooseSaveMeal:)];
 }
 
--(void)CreateStar{
+- (void)CreateStar{
     _viewRate.editable = YES;
     _viewRate.maxRating = 5;
     _viewRate.delegate = self;
@@ -72,7 +72,7 @@
 
 #pragma mark -Delegate UITextField
 
--(void)CreateTapdismissKeyboard{
+- (void)CreateTapdismissKeyboard{
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
                                    initWithTarget:self
                                    action:@selector(dismissKeyboard)];
@@ -80,14 +80,14 @@
     
 }
 
--(void)dismissKeyboard {
+- (void)dismissKeyboard {
     [self.view endEditing:YES];
 }
 
 
 #pragma mark -ActionButton
 
--(IBAction)ChooseSetDefaultLabelText:(id)sender{
+- (IBAction)ChooseSetDefaultLabelText:(id)sender{
     _txtNameMeal.text = @"ImageDefault";
 }
 
@@ -113,7 +113,7 @@
 
 }
 
--(void)CreateTapChooseImage{
+- (void)CreateTapChooseImage{
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
                                    initWithTarget:self
                                    action:@selector(selectImageFromPhotoLibrary)];
@@ -153,7 +153,7 @@
 }
 
 
--(void)showImagePickerController:(UIImagePickerControllerSourceType)sourceType{
+- (void)showImagePickerController:(UIImagePickerControllerSourceType)sourceType{
     
     UIImagePickerController *imagePicker = [[UIImagePickerController alloc]  init];
     imagePicker.delegate = self;

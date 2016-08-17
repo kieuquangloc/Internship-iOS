@@ -215,7 +215,7 @@
 				TargetAttributes = {
 					CA64E1251D61EE4700B464B0 = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = NGP3Y9XRN7;
+						DevelopmentTeam = 52BEENW56Y;
 					};
 					CA64E1411D61EE4800B464B0 = {
 						CreatedOnToolsVersion = 7.3.1;
