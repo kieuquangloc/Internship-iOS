@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ViewRate.h"
 
 @interface ViewController : UIViewController
+
+@property (nonatomic, weak) IBOutlet ViewRate *vDeDanh;
 
 @end
 

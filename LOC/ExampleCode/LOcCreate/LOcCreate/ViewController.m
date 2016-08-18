@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "VC2.h"
 
 @interface ViewController ()
 
@@ -22,6 +23,20 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)onBtnShow:(id)sender {
+    if (_vDeDanh) {
+        
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        VC2 *vc = [storyboard instantiateViewControllerWithIdentifier:@"VC2"];
+        vc.strTitle = @"VC 2";
+        
+        if (vc) {
+            [self presentViewController:vc animated:NO completion:nil];
+        }
+        
+    }
 }
 
 @end

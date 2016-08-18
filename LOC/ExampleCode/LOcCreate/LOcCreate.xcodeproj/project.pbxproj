@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		F11AB4AC1D659D9A0098DB31 /* ViewRate.m in Sources */ = {isa = PBXBuildFile; fileRef = F11AB4AB1D659D9A0098DB31 /* ViewRate.m */; };
+		F11AB4AF1D65A7640098DB31 /* VC2.m in Sources */ = {isa = PBXBuildFile; fileRef = F11AB4AE1D65A7640098DB31 /* VC2.m */; };
 		F194E9E81D6170CC00B0F090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F194E9E71D6170CC00B0F090 /* main.m */; };
 		F194E9EB1D6170CC00B0F090 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F194E9EA1D6170CC00B0F090 /* AppDelegate.m */; };
 		F194E9EE1D6170CC00B0F090 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F194E9ED1D6170CC00B0F090 /* ViewController.m */; };
@@ -19,6 +20,8 @@
 /* Begin PBXFileReference section */
 		F11AB4AA1D659D9A0098DB31 /* ViewRate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewRate.h; sourceTree = "<group>"; };
 		F11AB4AB1D659D9A0098DB31 /* ViewRate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewRate.m; sourceTree = "<group>"; };
+		F11AB4AD1D65A7640098DB31 /* VC2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VC2.h; sourceTree = "<group>"; };
+		F11AB4AE1D65A7640098DB31 /* VC2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VC2.m; sourceTree = "<group>"; };
 		F194E9E31D6170CC00B0F090 /* LOcCreate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LOcCreate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F194E9E71D6170CC00B0F090 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F194E9E91D6170CC00B0F090 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -75,6 +78,8 @@
 				F194E9EA1D6170CC00B0F090 /* AppDelegate.m */,
 				F194E9EC1D6170CC00B0F090 /* ViewController.h */,
 				F194E9ED1D6170CC00B0F090 /* ViewController.m */,
+				F11AB4AD1D65A7640098DB31 /* VC2.h */,
+				F11AB4AE1D65A7640098DB31 /* VC2.m */,
 				F194E9EF1D6170CC00B0F090 /* Main.storyboard */,
 				F194E9F21D6170CC00B0F090 /* Assets.xcassets */,
 				F194E9F41D6170CC00B0F090 /* LaunchScreen.storyboard */,
@@ -166,6 +171,7 @@
 				F194E9EE1D6170CC00B0F090 /* ViewController.m in Sources */,
 				F194E9EB1D6170CC00B0F090 /* AppDelegate.m in Sources */,
 				F194E9E81D6170CC00B0F090 /* main.m in Sources */,
+				F11AB4AF1D65A7640098DB31 /* VC2.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
