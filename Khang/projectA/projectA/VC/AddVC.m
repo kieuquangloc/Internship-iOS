@@ -71,6 +71,7 @@ UITextFieldDelegate>
     UIActionSheet *action = [[UIActionSheet alloc]initWithTitle:@"Chọn ảnh" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Thư viện ảnh",@"Camera", nil];
     [self.view addSubview:action];
     [action showInView:self.view];
+    [self textFieldShouldReturn:_tfName];
 }
 
 - (void) actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex

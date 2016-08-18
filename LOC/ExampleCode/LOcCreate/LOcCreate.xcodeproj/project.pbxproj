@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4111521A1D659DC200E9D0DE /* ViewRate.m in Sources */ = {isa = PBXBuildFile; fileRef = 411152191D659DC200E9D0DE /* ViewRate.m */; };
 		F194E9E81D6170CC00B0F090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F194E9E71D6170CC00B0F090 /* main.m */; };
 		F194E9EB1D6170CC00B0F090 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F194E9EA1D6170CC00B0F090 /* AppDelegate.m */; };
 		F194E9EE1D6170CC00B0F090 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F194E9ED1D6170CC00B0F090 /* ViewController.m */; };
@@ -16,6 +17,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		411152181D659DC200E9D0DE /* ViewRate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewRate.h; sourceTree = "<group>"; };
+		411152191D659DC200E9D0DE /* ViewRate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewRate.m; sourceTree = "<group>"; };
 		F194E9E31D6170CC00B0F090 /* LOcCreate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LOcCreate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F194E9E71D6170CC00B0F090 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F194E9E91D6170CC00B0F090 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -67,6 +70,8 @@
 				F194E9F41D6170CC00B0F090 /* LaunchScreen.storyboard */,
 				F194E9F71D6170CC00B0F090 /* Info.plist */,
 				F194E9E61D6170CC00B0F090 /* Supporting Files */,
+				411152181D659DC200E9D0DE /* ViewRate.h */,
+				411152191D659DC200E9D0DE /* ViewRate.m */,
 			);
 			path = LOcCreate;
 			sourceTree = "<group>";
@@ -149,6 +154,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4111521A1D659DC200E9D0DE /* ViewRate.m in Sources */,
 				F194E9EE1D6170CC00B0F090 /* ViewController.m in Sources */,
 				F194E9EB1D6170CC00B0F090 /* AppDelegate.m in Sources */,
 				F194E9E81D6170CC00B0F090 /* main.m in Sources */,
@@ -302,6 +308,7 @@
 				F194E9FC1D6170CC00B0F090 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
