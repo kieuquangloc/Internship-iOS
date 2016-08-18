@@ -11,8 +11,8 @@
 
 @interface Meal : NSManagedObject
 
-@property (nonatomic, retain) NSString * name;
-@property (nonatomic, retain) NSString * rating;
-@property (nonatomic, retain) NSData * image;
+@property (nonatomic, strong) NSString * name;
+@property (nonatomic, strong) NSString * rating;
+@property (nonatomic, strong) NSData * image;
 
 @end

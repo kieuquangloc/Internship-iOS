@@ -10,8 +10,6 @@
 
 @implementation Meal
 
-@dynamic name;
-@dynamic rating;
-@dynamic image;
+@synthesize name,rating,image;
 
 @end
