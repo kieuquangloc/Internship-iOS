@@ -10,7 +10,7 @@
 
 @implementation DataFoods
 
--(NSMutableArray*)getArrayData:(NSString *)url{
+- (NSMutableArray*)getArrayData:(NSString *)url{
 
     NSMutableArray *arr = [[ NSMutableArray alloc]init];
     

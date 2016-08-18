@@ -99,7 +99,7 @@
 }
 
 
-#pragma mask - btnActionBarItem
+#pragma mark - btnActionBarItem
 - (IBAction)onclickSave:(id)btnSave {
     
     Meal *meal = [[Meal alloc]init];

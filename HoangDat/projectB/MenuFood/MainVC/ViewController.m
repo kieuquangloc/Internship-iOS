@@ -13,7 +13,7 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "AddViewController.h"
 @interface ViewController () <UITableViewDelegate,UITableViewDataSource>
-@property (weak, nonatomic) IBOutlet UITableView *foodTBV;
+@property (weak, nonatomic) IBOutlet UITableView *tbvFood;
 
 @end
 
@@ -23,9 +23,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     //dang ky delegate
-    self.foodTBV.delegate = self;
+    self.tbvFood.delegate = self;
     // dang ky datasource
-    self.foodTBV.dataSource = self;
+    self.tbvFood.dataSource = self;
 }
 
 #pragma mark Tableview delegate
@@ -93,7 +93,7 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [self.foodTBV reloadData];
+    [self.tbvFood reloadData];
 }
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F11AB4AC1D659D9A0098DB31 /* ViewRate.m in Sources */ = {isa = PBXBuildFile; fileRef = F11AB4AB1D659D9A0098DB31 /* ViewRate.m */; };
 		F194E9E81D6170CC00B0F090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F194E9E71D6170CC00B0F090 /* main.m */; };
 		F194E9EB1D6170CC00B0F090 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F194E9EA1D6170CC00B0F090 /* AppDelegate.m */; };
 		F194E9EE1D6170CC00B0F090 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F194E9ED1D6170CC00B0F090 /* ViewController.m */; };
@@ -16,6 +17,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F11AB4AA1D659D9A0098DB31 /* ViewRate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewRate.h; sourceTree = "<group>"; };
+		F11AB4AB1D659D9A0098DB31 /* ViewRate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewRate.m; sourceTree = "<group>"; };
 		F194E9E31D6170CC00B0F090 /* LOcCreate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LOcCreate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F194E9E71D6170CC00B0F090 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F194E9E91D6170CC00B0F090 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -39,6 +42,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F11AB4A91D659D860098DB31 /* ViewRate */ = {
+			isa = PBXGroup;
+			children = (
+				F11AB4AA1D659D9A0098DB31 /* ViewRate.h */,
+				F11AB4AB1D659D9A0098DB31 /* ViewRate.m */,
+			);
+			path = ViewRate;
+			sourceTree = "<group>";
+		};
 		F194E9DA1D6170CC00B0F090 = {
 			isa = PBXGroup;
 			children = (
@@ -58,6 +70,7 @@
 		F194E9E51D6170CC00B0F090 /* LOcCreate */ = {
 			isa = PBXGroup;
 			children = (
+				F11AB4A91D659D860098DB31 /* ViewRate */,
 				F194E9E91D6170CC00B0F090 /* AppDelegate.h */,
 				F194E9EA1D6170CC00B0F090 /* AppDelegate.m */,
 				F194E9EC1D6170CC00B0F090 /* ViewController.h */,
@@ -149,6 +162,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F11AB4AC1D659D9A0098DB31 /* ViewRate.m in Sources */,
 				F194E9EE1D6170CC00B0F090 /* ViewController.m in Sources */,
 				F194E9EB1D6170CC00B0F090 /* AppDelegate.m in Sources */,
 				F194E9E81D6170CC00B0F090 /* main.m in Sources */,
@@ -266,6 +280,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = LOcCreate/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = QuangLoc.LOcCreate;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -277,6 +292,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = LOcCreate/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = QuangLoc.LOcCreate;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -302,6 +318,7 @@
 				F194E9FC1D6170CC00B0F090 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

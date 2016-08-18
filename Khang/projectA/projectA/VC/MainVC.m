@@ -29,12 +29,11 @@ UITableViewDataSource>
     [super viewDidLoad];
     
 }
--(void) viewWillAppear:(BOOL)animated
-{
+-(void) viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     
-    [[DataManager shareIntance]getDataWithCallback:^
-    {
+    
+    [[DataManager shareIntance]getDataWithCallback:^{
         [SVProgressHUD showWithStatus:@" Chờ tí nha !  😘 " ];
         
         [_tbvMain reloadData];

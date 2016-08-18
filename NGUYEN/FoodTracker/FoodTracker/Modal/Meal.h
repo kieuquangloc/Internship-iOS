@@ -10,9 +10,9 @@
 
 @interface Meal : NSObject
 
-@property(nonatomic,assign)NSInteger social_rank;
-@property(nonatomic,strong)NSString *title;
-@property(nonatomic,strong) NSData*  dataImage;
+@property(nonatomic,assign) NSInteger social_rank;
+@property(nonatomic,strong) NSString *title;
+@property(nonatomic,strong) NSData *dataImage;
 
 //-(void)initWithName;
 

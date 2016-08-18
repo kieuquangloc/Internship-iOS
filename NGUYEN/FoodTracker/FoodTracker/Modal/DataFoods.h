@@ -9,9 +9,10 @@
 #import <Foundation/Foundation.h>
 
 @interface DataFoods : NSObject
-@property(nonatomic,strong) NSMutableArray * arrFood;
 
--(NSMutableArray*) getArrayData: (NSString* )url ;
+@property(nonatomic,strong) NSMutableArray *arrFood;
+
+-(NSMutableArray*) getArrayData:(NSString* )url;
 
 
 
