@@ -10,22 +10,28 @@
 #import "Food.h"
 
 @implementation DataManager
-+(DataManager *)shareIntance{
+
++ (DataManager *)shareIntance{
     static DataManager *instance;
     if (instance == nil) {
         instance = [[DataManager alloc] init];
     }
     return instance;
 }
+
 -(void)getData{
     
     self.foodList = [[NSMutableArray alloc] init];
-    //lay duong dan cua thu muc document
-    NSString *documentPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask, YES) objectAtIndex:0];
+    
     //lay duong dan cua file listFood.plist
     NSString *filePath = [[NSBundle mainBundle] pathForResource:@"ListFood" ofType: @"plist"];
+    
+    
+    //lay duong dan cua thu muc document
+    NSString *documentPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask, YES) objectAtIndex:0];
     // tao duong dan cho file ListFood.plist trong thu muc document
     NSString *filePathDocument = [documentPath stringByAppendingPathComponent:@"ListFood.plist"];
+    
     //kiem tra file listFood.plist da ton tai trong thu muc document chua
     //neu chua copy no tu bundle sang thu muc document
     if (![[NSFileManager defaultManager] fileExistsAtPath:filePathDocument]) {
@@ -36,7 +42,7 @@
     NSArray *list = [NSArray arrayWithContentsOfFile:filePathDocument];
     for (NSDictionary *dic in list) {
         Food *item = [[Food alloc] initWithDictionary:dic];
-        [self.foodList addObject:item];
+        [_foodList addObject:item];
     }
 }
 -(void)saveBack{

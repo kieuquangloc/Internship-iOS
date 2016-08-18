@@ -7,7 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+<<<<<<< HEAD
 		4111521A1D659DC200E9D0DE /* ViewRate.m in Sources */ = {isa = PBXBuildFile; fileRef = 411152191D659DC200E9D0DE /* ViewRate.m */; };
+=======
+		F11AB4AC1D659D9A0098DB31 /* ViewRate.m in Sources */ = {isa = PBXBuildFile; fileRef = F11AB4AB1D659D9A0098DB31 /* ViewRate.m */; };
+		F11AB4AF1D65A7640098DB31 /* VC2.m in Sources */ = {isa = PBXBuildFile; fileRef = F11AB4AE1D65A7640098DB31 /* VC2.m */; };
+>>>>>>> 6143d96168e21c5fffbbceaeb8140ae19df05e4c
 		F194E9E81D6170CC00B0F090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F194E9E71D6170CC00B0F090 /* main.m */; };
 		F194E9EB1D6170CC00B0F090 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F194E9EA1D6170CC00B0F090 /* AppDelegate.m */; };
 		F194E9EE1D6170CC00B0F090 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F194E9ED1D6170CC00B0F090 /* ViewController.m */; };
@@ -17,8 +22,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+<<<<<<< HEAD
 		411152181D659DC200E9D0DE /* ViewRate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewRate.h; sourceTree = "<group>"; };
 		411152191D659DC200E9D0DE /* ViewRate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewRate.m; sourceTree = "<group>"; };
+=======
+		F11AB4AA1D659D9A0098DB31 /* ViewRate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewRate.h; sourceTree = "<group>"; };
+		F11AB4AB1D659D9A0098DB31 /* ViewRate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewRate.m; sourceTree = "<group>"; };
+		F11AB4AD1D65A7640098DB31 /* VC2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VC2.h; sourceTree = "<group>"; };
+		F11AB4AE1D65A7640098DB31 /* VC2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VC2.m; sourceTree = "<group>"; };
+>>>>>>> 6143d96168e21c5fffbbceaeb8140ae19df05e4c
 		F194E9E31D6170CC00B0F090 /* LOcCreate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LOcCreate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F194E9E71D6170CC00B0F090 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F194E9E91D6170CC00B0F090 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -42,6 +54,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F11AB4A91D659D860098DB31 /* ViewRate */ = {
+			isa = PBXGroup;
+			children = (
+				F11AB4AA1D659D9A0098DB31 /* ViewRate.h */,
+				F11AB4AB1D659D9A0098DB31 /* ViewRate.m */,
+			);
+			path = ViewRate;
+			sourceTree = "<group>";
+		};
 		F194E9DA1D6170CC00B0F090 = {
 			isa = PBXGroup;
 			children = (
@@ -61,10 +82,13 @@
 		F194E9E51D6170CC00B0F090 /* LOcCreate */ = {
 			isa = PBXGroup;
 			children = (
+				F11AB4A91D659D860098DB31 /* ViewRate */,
 				F194E9E91D6170CC00B0F090 /* AppDelegate.h */,
 				F194E9EA1D6170CC00B0F090 /* AppDelegate.m */,
 				F194E9EC1D6170CC00B0F090 /* ViewController.h */,
 				F194E9ED1D6170CC00B0F090 /* ViewController.m */,
+				F11AB4AD1D65A7640098DB31 /* VC2.h */,
+				F11AB4AE1D65A7640098DB31 /* VC2.m */,
 				F194E9EF1D6170CC00B0F090 /* Main.storyboard */,
 				F194E9F21D6170CC00B0F090 /* Assets.xcassets */,
 				F194E9F41D6170CC00B0F090 /* LaunchScreen.storyboard */,
@@ -154,10 +178,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+<<<<<<< HEAD
 				4111521A1D659DC200E9D0DE /* ViewRate.m in Sources */,
+=======
+				F11AB4AC1D659D9A0098DB31 /* ViewRate.m in Sources */,
+>>>>>>> 6143d96168e21c5fffbbceaeb8140ae19df05e4c
 				F194E9EE1D6170CC00B0F090 /* ViewController.m in Sources */,
 				F194E9EB1D6170CC00B0F090 /* AppDelegate.m in Sources */,
 				F194E9E81D6170CC00B0F090 /* main.m in Sources */,
+				F11AB4AF1D65A7640098DB31 /* VC2.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,6 +301,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = LOcCreate/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = QuangLoc.LOcCreate;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -283,6 +313,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = LOcCreate/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = QuangLoc.LOcCreate;
 				PRODUCT_NAME = "$(TARGET_NAME)";

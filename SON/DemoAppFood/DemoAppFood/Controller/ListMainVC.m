@@ -129,7 +129,9 @@
 
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel"
                                                            style:UIAlertActionStyleDefault
-                                                         handler:nil];
+                                                         handler:^(UIAlertAction * _Nonnull action) {
+                                                            //Delele
+                                                         }];
     
     UIAlertAction *saveAction = [UIAlertAction actionWithTitle:@"Save"
                                                          style:UIAlertActionStyleDefault

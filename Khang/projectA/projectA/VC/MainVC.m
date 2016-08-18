@@ -27,6 +27,8 @@ UISearchDisplayDelegate>
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 
 @property (strong,nonatomic) NSMutableArray *arrResults;
+
+
 @end
 
 @implementation MainVC
@@ -38,11 +40,14 @@ UISearchDisplayDelegate>
 
     
 }
--(void) viewWillAppear:(BOOL)animated {
+
+
+-(void) viewWillAppear:(BOOL)animated{
+
     [super viewWillAppear:animated];
     
-    [[DataManager shareIntance]getDataWithCallback:^
-    {
+    
+    [[DataManager shareIntance]getDataWithCallback:^{
         [SVProgressHUD showWithStatus:@" Chờ tí nha !  😘 " ];
         [_tbvMain reloadData];
         [SVProgressHUD dismissWithDelay:3];
@@ -113,6 +118,7 @@ UISearchDisplayDelegate>
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (tableView == _tbvMain) {
+        
         Cell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
         NSArray *reversedArray = [[[DataManager shareIntance].foodList reverseObjectEnumerator] allObjects];
         Meal *meal = reversedArray[indexPath.row];
@@ -170,12 +176,15 @@ UISearchDisplayDelegate>
         
         
         return cell;
-    }else if(tableView == _searchDislayController.searchResultsTableView|| YES)
-    {
+    }else if(tableView == _searchDislayController.searchResultsTableView|| YES){
+        
         UITableViewCell *cell = [UITableViewCell new];
-        NSArray *reversedArray = [[[DataManager shareIntance].foodList reverseObjectEnumerator] allObjects];
-        Meal *meal = reversedArray[indexPath.row];
+        
+        //NSArray *reversedArray = [[[DataManager shareIntance].foodList reverseObjectEnumerator] allObjects];
+        Meal *meal = _arrResults[indexPath.row];
+        
         cell.textLabel.text = meal.name;
+        
         if ([meal.dataImg isKindOfClass:[NSData class]]){
             cell.imageView.image = [UIImage imageWithData:meal.dataImg];
             
@@ -205,7 +214,7 @@ UISearchDisplayDelegate>
     }
     
     [UIView beginAnimations:@"rotation" context:NULL];
-    [UIView setAnimationDuration:0.3];
+    [UIView setAnimationDuration:0.7];
     cell.layer.transform = CATransform3DIdentity;
     cell.alpha = 1;
     cell.layer.shadowOffset = CGSizeMake(0, 0);
@@ -225,9 +234,9 @@ UISearchDisplayDelegate>
     [_arrResults removeAllObjects];
     for (Meal *meal in [DataManager shareIntance].foodList) {
         NSString *str = meal.name;
-        if ([[[self encodingStringWithVietnamese:str]lowercaseString] isEqualToString:[[self encodingStringWithVietnamese:searchText]lowercaseString]]) {
+        if ([[[self encodingStringWithVietnamese:str]lowercaseString] containsString:[[self encodingStringWithVietnamese:searchText]lowercaseString]]) {
             [_arrResults addObject:meal];
-        };
+        }
     }
     _searchBar.keyboardAppearance = UIKeyboardAppearanceDark;
     [_tbvMain reloadData];
@@ -236,7 +245,7 @@ UISearchDisplayDelegate>
 - (NSString *)encodingStringWithVietnamese:(NSString *)vietnam{
     NSString *str = [vietnam stringByFoldingWithOptions:NSDiacriticInsensitiveSearch locale:[NSLocale currentLocale]];
     str = [str lowercaseString];
-    str = [str stringByReplacingOccurrencesOfString:@"â" withString:@"a"];
+    str = [str stringByReplacingOccurrencesOfString:@"đ" withString:@"d"];
     return str;
 }
 
