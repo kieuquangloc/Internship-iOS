@@ -11,11 +11,13 @@
 @interface AddVC : UIViewController
 @property (weak, nonatomic) IBOutlet UITextField *tfName;
 @property (weak, nonatomic) IBOutlet UIImageView *imvMeal;
+@property(strong,nonatomic) NSData *dataImage;
+
 @property (weak, nonatomic) IBOutlet UIButton *btnStar1;
 @property (weak, nonatomic) IBOutlet UIButton *btnStar2;
 @property (weak, nonatomic) IBOutlet UIButton *btnStar3;
-@property(strong,nonatomic) NSData *dataImage;
 @property (weak, nonatomic) IBOutlet UIButton *btnStar4;
 @property (weak, nonatomic) IBOutlet UIButton *btnStar5;
+
 @property(assign,nonatomic) NSInteger rating;
 @end
