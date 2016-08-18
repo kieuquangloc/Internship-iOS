@@ -17,7 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    _imvBackgound.image = [UIImage imageWithData:_dataImage];
+    _imvBackgound.image = [UIImage imageWithData:_dataImg];
     self.navigationItem.title = _strName;
 
 }

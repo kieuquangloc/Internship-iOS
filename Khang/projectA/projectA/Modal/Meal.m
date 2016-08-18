@@ -13,7 +13,7 @@
     self = [super init];
     if (self) {
         self.name = dic[@"Name"];
-        self.imageName = dic[@"Image"];
+        self.dataImg = dic[@"Image"];
         self.rate = [dic[@"Rate"] integerValue];
     }
     return self;

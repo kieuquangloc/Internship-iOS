@@ -9,8 +9,10 @@
 #import <Foundation/Foundation.h>
 
 @interface DataManager : NSObject
+
 +(DataManager *)shareIntance;
+
 @property (strong) NSMutableArray *foodList;
--(void)getDataWithCallback:(void(^)(void))callback;
--(void)saveBack;
+- (void) getDataWithCallback:(void(^)(void))callback;
+- (void) saveBack;
 @end

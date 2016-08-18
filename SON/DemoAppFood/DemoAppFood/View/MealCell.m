@@ -1,21 +1,19 @@
 //
-//  ListMealTableViewCell.m
+//  MealCell.m
 //  DemoAppFood
 //
 //  Created by ThanhSon on 8/15/16.
 //  Copyright © 2016 ThanhSon. All rights reserved.
 //
 
-#import "ListMealTableViewCell.h"
+#import "MealCell.h"
 
-@implementation ListMealTableViewCell
+@implementation MealCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
-    
 }
-
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];

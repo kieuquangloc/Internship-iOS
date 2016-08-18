@@ -11,6 +11,6 @@
 @interface Meal : NSObject
 @property(strong,nonatomic) NSString *name;
 @property(assign) NSInteger rate;
-@property(strong) NSData *imageName;
+@property(strong) NSData *dataImg;
 -(instancetype)initWithDictionary:(NSDictionary *)dic;
 @end

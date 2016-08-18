@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  ListMainVC.h
 //  DemoAppFood
 //
 //  Created by ThanhSon on 8/15/16.
@@ -8,16 +8,17 @@
 
 #import <UIKit/UIKit.h>
 #import "Meal.h"
-#import "AddMealViewController.h"
-#import "ListMealTableViewCell.h"
+#import "AddMealVC.h"
+#import "MealCell.h"
 #import "RateView.h"
 
-@interface ViewController : UIViewController<UITableViewDelegate,UITableViewDataSource,RateViewDelegate>{
-    BOOL isEdit;
-}
-@property (strong, nonatomic)NSMutableArray *listMeal;
+@interface ListMainVC : UIViewController
+
 @property (weak, nonatomic) IBOutlet UITableView *tbvListMeal;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *btnEdit;
+@property (strong, nonatomic) NSMutableArray *listMeal;
+
+- (IBAction)btnAddMeal:(id)sender;
 
 @end
 
