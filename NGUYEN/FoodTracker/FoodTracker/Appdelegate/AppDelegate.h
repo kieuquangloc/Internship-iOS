@@ -7,10 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Meal.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+@property (strong, nonatomic) NSMutableArray *arrFood;
+@property (strong, nonatomic) Meal *meal;
 
 
 @end

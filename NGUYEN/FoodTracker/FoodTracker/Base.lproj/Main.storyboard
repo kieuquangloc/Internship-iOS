@@ -7,7 +7,7 @@
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
-        <!--MainVC-->
+        <!--FoodTracker-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController storyboardIdentifier="MainVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="MainVC" sceneMemberID="viewController">
@@ -35,15 +35,15 @@
                                                     <rect key="frame" x="8" y="8" width="107" height="95"/>
                                                     <animations/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4HZ-VE-aIj">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4HZ-VE-aIj">
                                                     <rect key="frame" x="123" y="8" width="185" height="21"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bm2-oS-WAZ">
-                                                    <rect key="frame" x="123" y="39" width="185" height="62"/>
+                                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bm2-oS-WAZ" customClass="RatingController">
+                                                    <rect key="frame" x="123" y="41" width="185" height="62"/>
                                                     <animations/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </view>
@@ -86,7 +86,7 @@
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
-                    <navigationItem key="navigationItem" id="6kR-UY-3c8">
+                    <navigationItem key="navigationItem" title="FoodTracker" id="6kR-UY-3c8">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="ikU-nM-6Qa">
                             <connections>
                                 <action selector="didseclectAddFood:" destination="BYZ-38-t0r" id="V2j-wW-pWc"/>
@@ -100,7 +100,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="549" y="70"/>
+            <point key="canvasLocation" x="566" y="38"/>
         </scene>
         <!--MealVC-->
         <scene sceneID="mSM-yT-mq2">
@@ -114,14 +114,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Meal Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2NM-Wu-Ovp">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Meal Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2NM-Wu-Ovp">
                                 <rect key="frame" x="20" y="40" width="280" height="21"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1OA-dQ-x2p">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1OA-dQ-x2p">
                                 <rect key="frame" x="20" y="117" width="280" height="40"/>
                                 <animations/>
                                 <constraints>
@@ -129,7 +129,7 @@
                                 </constraints>
                                 <state key="normal" title="Set Default lable text"/>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ohY-2M-2nl">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ohY-2M-2nl">
                                 <rect key="frame" x="20" y="67" width="280" height="40"/>
                                 <animations/>
                                 <constraints>
@@ -138,7 +138,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="9pc-mi-m29">
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="9pc-mi-m29">
                                 <rect key="frame" x="20" y="177" width="280" height="187"/>
                                 <animations/>
                                 <gestureRecognizers/>
@@ -149,20 +149,7 @@
                                     <outletCollection property="gestureRecognizers" destination="I0f-FI-lxL" appends="YES" id="pPj-NO-G91"/>
                                 </connections>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="diR-Hy-6G1">
-                                <rect key="frame" x="220" y="454" width="80" height="35"/>
-                                <animations/>
-                                <color key="backgroundColor" red="0.56229044829999997" green="0.3243119163" blue="0.95214342949999997" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="35" id="6t6-aH-uCT"/>
-                                    <constraint firstAttribute="width" constant="80" id="gFh-Zf-pOY"/>
-                                </constraints>
-                                <state key="normal" title="Sent"/>
-                                <connections>
-                                    <action selector="onClickSent:" destination="AAa-1D-lZG" eventType="touchUpInside" id="SAJ-O2-8wM"/>
-                                </connections>
-                            </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3JK-Yj-JdR" userLabel="Rating" customClass="RatingController">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3JK-Yj-JdR" userLabel="Rating" customClass="RatingController">
                                 <rect key="frame" x="20" y="384" width="280" height="50"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -183,16 +170,21 @@
                             <constraint firstItem="2NM-Wu-Ovp" firstAttribute="leading" secondItem="Oer-zL-AVE" secondAttribute="leading" constant="20" id="Xng-ri-upk"/>
                             <constraint firstItem="1OA-dQ-x2p" firstAttribute="leading" secondItem="ohY-2M-2nl" secondAttribute="leading" id="YvT-zd-AZf"/>
                             <constraint firstAttribute="trailing" secondItem="2NM-Wu-Ovp" secondAttribute="trailing" constant="20" id="atD-IH-tJo"/>
-                            <constraint firstAttribute="trailing" secondItem="diR-Hy-6G1" secondAttribute="trailing" constant="20" id="bTc-mm-xIv"/>
                             <constraint firstItem="ohY-2M-2nl" firstAttribute="width" secondItem="2NM-Wu-Ovp" secondAttribute="width" id="dY4-Ww-e8R"/>
                             <constraint firstAttribute="trailing" secondItem="3JK-Yj-JdR" secondAttribute="trailing" constant="20" id="eg8-iP-MNr"/>
                             <constraint firstAttribute="trailing" secondItem="9pc-mi-m29" secondAttribute="trailing" constant="20" id="ewF-nE-zXK"/>
                             <constraint firstItem="ohY-2M-2nl" firstAttribute="leading" secondItem="2NM-Wu-Ovp" secondAttribute="leading" id="lTa-ny-Bq4"/>
                             <constraint firstItem="3JK-Yj-JdR" firstAttribute="leading" secondItem="Oer-zL-AVE" secondAttribute="leading" constant="20" id="nU2-pX-92L"/>
                             <constraint firstItem="9pc-mi-m29" firstAttribute="leading" secondItem="Oer-zL-AVE" secondAttribute="leading" constant="20" id="rMk-yg-ahf"/>
-                            <constraint firstItem="diR-Hy-6G1" firstAttribute="top" secondItem="3JK-Yj-JdR" secondAttribute="bottom" constant="20" id="zox-4Y-tFx"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="bvd-cI-Mbb">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="dRY-to-4VW">
+                            <connections>
+                                <action selector="onclickSave:" destination="AAa-1D-lZG" id="AAg-as-yEb"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="imvFood" destination="9pc-mi-m29" id="5DW-gi-pAn"/>
@@ -207,7 +199,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="952" y="60"/>
+            <point key="canvasLocation" x="947" y="32"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="hA6-bI-4T4">

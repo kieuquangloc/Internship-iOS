@@ -7,7 +7,7 @@
 //
 
 #import "MealVC.h"
-#import "Meal.h"
+
 
 @interface MealVC ()<UITextFieldDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 
@@ -25,7 +25,18 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    AppDelegate* appDelegate = [[UIApplication sharedApplication] delegate];
+    _currentMeal = appDelegate.meal;
+    
+    if (_currentMeal) {
+        _tfContent.text = _currentMeal.title;
+        _imvFood.image = [UIImage imageWithData:_currentMeal.dataImage];
+        _ratingControl.rating = _currentMeal.social_rank;
+    }
     // Do any additional setup after loading the view.
+    
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -63,9 +74,7 @@
     
     //UIImage *cameraImage = [info valueForKey:UIImagePickerControllerOriginalImage];
     
-    
 
-    
     [picker dismissViewControllerAnimated:true completion:nil];
 }
 
@@ -84,28 +93,27 @@
     
     // Make sure ViewController is notified when the user picks an image.
     imagePickerController.delegate = self;
-    
 
     [self presentViewController:imagePickerController animated:true completion:nil];
     
-    
-    
 }
 
-- (IBAction)onClickSent:(UIButton *)sender {
+
+#pragma mask - btnActionBarItem
+- (IBAction)onclickSave:(id)btnSave {
     
     Meal *meal = [[Meal alloc]init];
-    
     meal.title = _tfContent.text;
     meal.social_rank = (NSInteger)_ratingControl.rating;
+    meal.dataImage = UIImageJPEGRepresentation(_imvFood.image, 100);
     
-    NSData *data = (NSData*)_imvFood.image;
+    //user global avrible (arrFood ) in appdelegate
+    AppDelegate* appDelegate = [[UIApplication sharedApplication] delegate];
+    [appDelegate.arrFood  addObject:meal];
     
-    meal.dataImage = UIImageJPEGRepresentation(data, 100);
+    //  [self dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController popViewControllerAnimated:true];
     
-     // NSLog(@"%@",meal.dataImage);
-    
-  
 
 }
 

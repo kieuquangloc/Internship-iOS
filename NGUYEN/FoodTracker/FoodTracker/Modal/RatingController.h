@@ -10,7 +10,7 @@
 
 @interface RatingController : UIView
 
-@property(nonatomic,assign) NSInteger* rating;
+@property(nonatomic,assign) NSInteger  rating;
 @property(nonatomic,strong) NSMutableArray *ratingbuttons;
 
 @property(nonatomic,assign)NSInteger spasing;

@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		2326BD312E6F25D4A8D6CD50 /* Pods_FoodTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5CB9B5EB08CD68B9F0D3F60 /* Pods_FoodTracker.framework */; };
 		540E6D331D63201D00B3C154 /* DataFoods.m in Sources */ = {isa = PBXBuildFile; fileRef = 540E6D2C1D63201D00B3C154 /* DataFoods.m */; };
-		540E6D341D63201D00B3C154 /* ImageHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 540E6D2E1D63201D00B3C154 /* ImageHelper.m */; };
 		540E6D351D63201D00B3C154 /* Meal.m in Sources */ = {isa = PBXBuildFile; fileRef = 540E6D301D63201D00B3C154 /* Meal.m */; };
 		540E6D361D63201D00B3C154 /* RatingController.m in Sources */ = {isa = PBXBuildFile; fileRef = 540E6D321D63201D00B3C154 /* RatingController.m */; };
 		540E6D391D63204900B3C154 /* BaseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 540E6D381D63204900B3C154 /* BaseVC.m */; };
@@ -27,8 +26,6 @@
 /* Begin PBXFileReference section */
 		540E6D2B1D63201D00B3C154 /* DataFoods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataFoods.h; sourceTree = "<group>"; };
 		540E6D2C1D63201D00B3C154 /* DataFoods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataFoods.m; sourceTree = "<group>"; };
-		540E6D2D1D63201D00B3C154 /* ImageHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageHelper.h; sourceTree = "<group>"; };
-		540E6D2E1D63201D00B3C154 /* ImageHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageHelper.m; sourceTree = "<group>"; };
 		540E6D2F1D63201D00B3C154 /* Meal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Meal.h; sourceTree = "<group>"; };
 		540E6D301D63201D00B3C154 /* Meal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Meal.m; sourceTree = "<group>"; };
 		540E6D311D63201D00B3C154 /* RatingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RatingController.h; sourceTree = "<group>"; };
@@ -83,8 +80,6 @@
 				540E6D2A1D63201D00B3C154 /* BaseData */,
 				540E6D2B1D63201D00B3C154 /* DataFoods.h */,
 				540E6D2C1D63201D00B3C154 /* DataFoods.m */,
-				540E6D2D1D63201D00B3C154 /* ImageHelper.h */,
-				540E6D2E1D63201D00B3C154 /* ImageHelper.m */,
 				540E6D2F1D63201D00B3C154 /* Meal.h */,
 				540E6D301D63201D00B3C154 /* Meal.m */,
 				540E6D311D63201D00B3C154 /* RatingController.h */,
@@ -346,7 +341,6 @@
 			files = (
 				540E6D351D63201D00B3C154 /* Meal.m in Sources */,
 				540F53781D617BEC0070385C /* FoodTrackercell.m in Sources */,
-				540E6D341D63201D00B3C154 /* ImageHelper.m in Sources */,
 				540E6D331D63201D00B3C154 /* DataFoods.m in Sources */,
 				540E6D361D63201D00B3C154 /* RatingController.m in Sources */,
 				540F53611D6152930070385C /* AppDelegate.m in Sources */,

@@ -9,14 +9,22 @@
 #import <UIKit/UIKit.h>
 #import "Meal.h"
 #import "FoodTrackercell.h"
-#import <SDWebImage/UIImageView+WebCache.h>
-#import <SVProgressHUD/SVProgressHUD.h>
 #import "DataFoods.h"
+#import <SDWebImage/UIImageView+WebCache.h>
+#import "AppDelegate.h"
 
 
-@interface MainVC : UIViewController<UITableViewDelegate,UITableViewDataSource>
 
-@property(nonatomic,weak)IBOutlet UITableView* tbv;
+
+@interface MainVC : UIViewController
+
+@property(nonatomic,weak)IBOutlet UITableView *tbv;
+
+@property(nonatomic,weak) NSMutableArray *arrFoodUser;
+
+
+
+
 
 
 

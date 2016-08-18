@@ -8,13 +8,17 @@
 
 #import <UIKit/UIKit.h>
 #import  "RatingController.h"
+#import "MainVC.h"
+#import "Meal.h"
 
 @interface MealVC : UIViewController
 
 @property (weak, nonatomic) IBOutlet UITextField *tfContent;
-
 @property (weak, nonatomic) IBOutlet UIImageView *imvFood;
-@property(weak,nonatomic)  IBOutlet RatingController * ratingControl;
+@property(weak, nonatomic)  IBOutlet RatingController * ratingControl;
 
+@property (strong , nonatomic) MainVC  *mainVC;
+@property (strong, nonatomic) Meal *currentMeal;
 
+@property (nonatomic,weak) NSMutableArray *arr;
 @end
