@@ -28,7 +28,10 @@ UISearchDisplayDelegate>
 
 @property (strong,nonatomic) NSMutableArray *arrResults;
 
-
+@property (strong,nonatomic) UISegmentedControl *segControl;
+@property (strong,nonatomic) NSArray *arrSortDesciptors;
+@property (strong,nonatomic) NSArray *arrSorted;
+@property (strong,nonatomic) NSSortDescriptor *sorter;
 @end
 
 @implementation MainVC
@@ -45,7 +48,9 @@ UISearchDisplayDelegate>
 -(void) viewWillAppear:(BOOL)animated{
 
     [super viewWillAppear:animated];
-    
+    self.navigationController.navigationBar.backgroundColor = [UIColor blackColor];
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    self.navigationController.navigationBar.barTintColor = [UIColor blackColor];
     
     [[DataManager shareIntance]getDataWithCallback:^{
         [SVProgressHUD showWithStatus:@" Chờ tí nha !  😘 " ];
@@ -69,13 +74,15 @@ UISearchDisplayDelegate>
 }
 - (IBAction)didTapRefresh:(id)sender {
     
-    
+    [SVProgressHUD showWithStatus:@" Chờ tí nha !  😘 " ];
     [[DataManager shareIntance]getDataWithCallback:^{
-        [SVProgressHUD showWithStatus:@" Chờ tí nha !  😘 " ];
+       
 
         [_tbvMain reloadData];
-        [SVProgressHUD dismissWithDelay:3];
+        [SVProgressHUD dismissWithDelay:10];
+        
     }];
+    
     
 }
 
@@ -118,6 +125,8 @@ UISearchDisplayDelegate>
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (tableView == _tbvMain) {
+        
+        [self addSegmentInNavigationBar];
         
         Cell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
         NSArray *reversedArray = [[[DataManager shareIntance].foodList reverseObjectEnumerator] allObjects];
@@ -178,6 +187,8 @@ UISearchDisplayDelegate>
         return cell;
     }else if(tableView == _searchDislayController.searchResultsTableView|| YES){
         
+      
+        
         UITableViewCell *cell = [UITableViewCell new];
         
         //NSArray *reversedArray = [[[DataManager shareIntance].foodList reverseObjectEnumerator] allObjects];
@@ -189,6 +200,13 @@ UISearchDisplayDelegate>
             cell.imageView.image = [UIImage imageWithData:meal.dataImg];
             
         }
+        _searchDislayController.searchResultsTableView.backgroundColor = [UIColor blackColor];
+        
+        cell.backgroundColor = [UIColor blackColor];
+        cell.textLabel.textColor = [UIColor whiteColor];
+        
+        
+        
         return cell;
     }
     
@@ -225,6 +243,7 @@ UISearchDisplayDelegate>
 
 
 - (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar{
+   
     _searchBar.keyboardAppearance = UIKeyboardAppearanceDark;
     return YES;
 }
@@ -239,7 +258,7 @@ UISearchDisplayDelegate>
         }
     }
     _searchBar.keyboardAppearance = UIKeyboardAppearanceDark;
-    [_tbvMain reloadData];
+    //[_tbvMain reloadData];
 }
 
 - (NSString *)encodingStringWithVietnamese:(NSString *)vietnam{
@@ -255,5 +274,56 @@ UISearchDisplayDelegate>
 
 -(void)searchBarTextDidEndEditing:(UISearchBar *)searchBar{
     [searchBar resignFirstResponder];
+}
+
+#pragma mark - UISegmentedControl
+
+- (void) addSegmentInNavigationBar{
+    
+    UISegmentedControl *statFilter = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"All", @"Name length", @"Rating", nil]];
+    [statFilter setSegmentedControlStyle:UISegmentedControlStyleBar];
+    
+    [statFilter sizeToFit];
+    
+    statFilter.tintColor = [UIColor whiteColor];
+    
+    statFilter.backgroundColor = [UIColor blackColor];
+    //[statFilter setSelectedSegmentIndex:0];
+    
+    [statFilter addTarget:self action:@selector(allData:) forControlEvents:UIControlEventValueChanged];
+    
+    self.navigationItem.titleView = statFilter;
+    
+    
+}
+
+- (void) allData:(UISegmentedControl *)sender{
+    NSInteger selectedIndex = [sender selectedSegmentIndex];
+
+    if (selectedIndex == 0) {
+        
+        
+        
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Lưu ý nà 😊" message:@"Bạn đang chọn  Index 0 😘" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *action = [UIAlertAction actionWithTitle:@"Vậy hả 😱" style:UIAlertActionStyleDefault handler:nil];
+        [alert addAction:action];
+        [self presentViewController:alert animated:YES completion:nil];
+        
+        
+    
+        
+    }else if (selectedIndex == 1){
+        
+                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Lưu ý nà 😊" message:@"Bạn đang chọn  Index 1 😘" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *action = [UIAlertAction actionWithTitle:@"Vậy hả 😱" style:UIAlertActionStyleDefault handler:nil];
+        [alert addAction:action];
+        [self presentViewController:alert animated:YES completion:nil];
+
+    }else if (selectedIndex == 2){
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Lưu ý nà 😊" message:@"Bạn đang chọn  Index 2 😘" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *action = [UIAlertAction actionWithTitle:@"Vậy hả 😱" style:UIAlertActionStyleDefault handler:nil];
+        [alert addAction:action];
+        [self presentViewController:alert animated:YES completion:nil];
+    }
 }
 @end

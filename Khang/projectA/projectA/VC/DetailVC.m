@@ -19,6 +19,7 @@
     
     _imvBackgound.image = [UIImage imageWithData:_dataImg];
     self.navigationItem.title = _strName;
+    _imvDetail.image = [UIImage imageWithData:_dataImg];
 
 }
 

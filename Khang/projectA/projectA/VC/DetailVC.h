@@ -13,4 +13,5 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblName;
 @property (strong, nonatomic) NSData *dataImg;
 @property (strong, nonatomic) NSString *strName;
+@property (weak, nonatomic) IBOutlet UIImageView *imvDetail;
 @end
