@@ -52,6 +52,8 @@
 		CA64E15F1D61F27200B464B0 /* AddMealVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddMealVC.m; sourceTree = "<group>"; };
 		CA64E1621D61F2D300B464B0 /* MealCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MealCell.h; sourceTree = "<group>"; };
 		CA64E1631D61F2D300B464B0 /* MealCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MealCell.m; sourceTree = "<group>"; };
+		CA71FEF81D6554B80071EAD9 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Main.strings; sourceTree = "<group>"; };
+		CA71FEF91D6554BF0071EAD9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		CA7497D41D62C8B10028CC63 /* RateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RateView.h; sourceTree = "<group>"; };
 		CA7497D51D62C8B10028CC63 /* RateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RateView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -228,7 +230,6 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				en,
 				Base,
 			);
 			mainGroup = CA64E11D1D61EE4700B464B0;
@@ -301,6 +302,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				CA64E1331D61EE4700B464B0 /* Base */,
+				CA71FEF81D6554B80071EAD9 /* vi */,
+				CA71FEF91D6554BF0071EAD9 /* en */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";

@@ -9,8 +9,9 @@
 #import "ListMainVC.h"
 
 
-@interface ListMainVC () <UITableViewDelegate,UITableViewDataSource,RateViewDelegate>{
+@interface ListMainVC () <UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate,UISearchResultsUpdating,RateViewDelegate>{
     BOOL isEdit;
+    BOOL isSearching;
 }
 
 @end
@@ -21,6 +22,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     [self createButtonEdit];
+    [self initSearchController];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -32,7 +34,7 @@
     [self getData];
 }
 
-#pragma mark - UICoredata
+#pragma mark - Coredata
 
 - (void)getData {
     NSManagedObjectContext *context = [self managedObjectContext];
@@ -57,16 +59,23 @@
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return _listMeal.count;
+    if (isSearching) {
+        return _listMealResults.count;
+    } else return _listMeal.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellId = @"cellmeal";
     MealCell *cell = (MealCell *)[_tbvListMeal dequeueReusableCellWithIdentifier:CellId forIndexPath:indexPath];
-    Meal *theMeal = _listMeal[indexPath.row];
+    Meal *theMeal ;
+    if(isSearching){
+        theMeal = _listMealResults[indexPath.row];
+    } else {
+        theMeal = _listMeal[indexPath.row];
+    }
     cell.lblNameMeal.text = theMeal.name;
     cell.imgMeal.image = [UIImage imageWithData:theMeal.image];
-    [self CreateStar:cell.viewRatting :[theMeal.rating integerValue]];
+    [self createStar:cell.viewRatting :[theMeal.rating integerValue]];
     isEdit? (cell.accessoryType = UITableViewCellAccessoryDetailButton) : (cell.accessoryType = UITableViewCellEditingStyleNone);
     return cell;
 }
@@ -75,6 +84,7 @@
 #pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [_searchController setActive:NO];
     AddMealVC *detailView = [self.storyboard instantiateViewControllerWithIdentifier:@"detail"];
     Meal *currentMeal = _listMeal[indexPath.row];
     detailView.currentMeal = currentMeal;
@@ -101,18 +111,43 @@
 - (void)createButtonEdit {
     isEdit =NO;
     [_btnEdit setTarget:self];
-    [_btnEdit setAction:@selector(ChooseEditMeal)];
+    [_btnEdit setAction:@selector(chooseEditMeal)];
 }
 
-- (void)ChooseEditMeal {
+- (void)chooseEditMeal {
     if (isEdit) {
-        [_tbvListMeal reloadData];
         _btnEdit.title =@"EDIT";
         isEdit=false;
-    } else {
         [_tbvListMeal reloadData];
-        isEdit=true;
-        _btnEdit.title =@"SAVE";
+    } else {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"ChooseType"
+                                                                       message:nil
+                                                                preferredStyle:UIAlertControllerStyleActionSheet];
+        UIAlertAction *btnSortName = [UIAlertAction actionWithTitle:@"Sort Name"
+                                                              style:UIAlertActionStyleDefault
+                                                            handler:^(UIAlertAction * _Nonnull action) {
+            NSArray *sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:NO]];
+            [_listMeal sortUsingDescriptors:sortDescriptors];
+            [_tbvListMeal reloadData];
+        }];
+        UIAlertAction *btnSortRate = [UIAlertAction actionWithTitle:@"Sort Rate"
+                                                              style:UIAlertActionStyleDefault
+                                                            handler:^(UIAlertAction * _Nonnull action) {
+            NSArray *sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"rating" ascending:NO]];
+            [_listMeal sortUsingDescriptors:sortDescriptors];
+            [_tbvListMeal reloadData];
+        }];
+        UIAlertAction *btnEditName = [UIAlertAction actionWithTitle:@"Edit Name"
+                                                              style:UIAlertActionStyleCancel
+                                                            handler:^(UIAlertAction * _Nonnull action) {
+            isEdit=true;
+            _btnEdit.title =@"SAVE";
+            [_tbvListMeal reloadData];
+        }];
+        [alert addAction:btnSortName];
+        [alert addAction:btnSortRate];
+        [alert addAction:btnEditName];
+        [self presentViewController:alert animated:YES completion:nil];
     }
 }
 
@@ -149,7 +184,7 @@
     [alert addTextFieldWithConfigurationHandler:^(UITextField *txtName) {
         txtName.text = meal.name;
     }];
-
+    
     [alert addAction:saveAction];
     [alert addAction:cancelAction];
     [self presentViewController:alert animated:YES completion:nil];
@@ -161,9 +196,9 @@
 
 }
 
-#pragma InitRating
+#pragma mark - InitRating
 
-- (void)CreateStar:(RateView*)_viewRate :(NSInteger)rate {
+- (void)createStar:(RateView*)_viewRate :(NSInteger)rate {
     _viewRate.maxRating = 5;
     _viewRate.delegate = self;
     [_viewRate setUserInteractionEnabled:NO];
@@ -174,5 +209,45 @@
     rateView.rating = rating;
 }
 
+#pragma mark - UISearchController
+
+- (void)initSearchController {
+    _searchController = [[UISearchController alloc]initWithSearchResultsController:nil];
+    _searchController.searchResultsUpdater = self;
+    _searchController.dimsBackgroundDuringPresentation = NO;
+    _searchController.searchBar.placeholder = @"Search Meal";
+    _searchController.searchBar.delegate = self;
+    [_searchController.searchBar sizeToFit];
+    _tbvListMeal.tableHeaderView = _searchController.searchBar;
+}
+
+- (void)updateSearchResultsForSearchController:(UISearchController *)searchController {
+    _listMealResults = [[NSMutableArray alloc] init];
+    NSString *strSearch = searchController.searchBar.text;
+    for ( Meal *meal in _listMeal) {
+        if([[meal.name lowercaseString] hasPrefix:[strSearch lowercaseString]]){
+            [_listMealResults addObject:meal];
+        }
+    }
+    [_tbvListMeal reloadData];
+    if(![strSearch isEqualToString:@""]){
+        searchController.dimsBackgroundDuringPresentation = NO;
+    }
+}
+
+- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
+    isSearching = true;
+    [_tbvListMeal reloadData];
+}
+
+- (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar {
+    isSearching = false;
+    [_tbvListMeal reloadData];
+}
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
+    isSearching = false;
+    [_tbvListMeal reloadData];
+}
 
 @end

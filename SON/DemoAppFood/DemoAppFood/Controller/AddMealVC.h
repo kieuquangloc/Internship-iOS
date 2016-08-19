@@ -22,5 +22,4 @@
 
 @property (strong, nonatomic) Meal *currentMeal;
 
-
 @end
