@@ -106,6 +106,13 @@
     }
 }
 
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    CATransition *textAnimation = [CATransition animation];
+    textAnimation.type = kCATransitionReveal;
+    textAnimation.duration = 1;
+    [cell.layer addAnimation:textAnimation forKey:@"AnimationCell"];
+}
+
 #pragma mark - ButtonEdit
 
 - (void)createButtonEdit {
@@ -144,9 +151,16 @@
             _btnEdit.title =@"SAVE";
             [_tbvListMeal reloadData];
         }];
+        UIAlertAction *btnSearch = [UIAlertAction actionWithTitle:@"Search"
+                                                              style:UIAlertActionStyleDestructive
+                                                            handler:^(UIAlertAction * _Nonnull action) {
+            [_searchController.searchBar becomeFirstResponder];
+        }];
+
         [alert addAction:btnSortName];
         [alert addAction:btnSortRate];
         [alert addAction:btnEditName];
+        [alert addAction:btnSearch];
         [self presentViewController:alert animated:YES completion:nil];
     }
 }
@@ -248,6 +262,10 @@
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
     isSearching = false;
     [_tbvListMeal reloadData];
+}
+
+- (void)searchBarBookmarkButtonClicked:(UISearchBar *)searchBar{
+    
 }
 
 @end
