@@ -10,4 +10,15 @@
 
 @implementation Meal
 
+- (instancetype)initWithName:(NSString *)title dataImage:(NSData *)dataImage rating:(NSInteger)social_rank{
+ 
+    self.title = title;
+    self.dataImage = dataImage;
+    self.social_rank = social_rank;
+    
+    return self;
+}
+
+
+
 @end

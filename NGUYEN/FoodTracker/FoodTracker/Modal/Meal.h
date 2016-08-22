@@ -14,6 +14,7 @@
 @property(nonatomic,strong) NSString *title;
 @property(nonatomic,strong) NSData *dataImage;
 
-//-(void)initWithName;
+
+- (instancetype)initWithName: (NSString*)title dataImage:(NSData*)dataImage rating:(NSInteger)social_rank;
 
 @end
