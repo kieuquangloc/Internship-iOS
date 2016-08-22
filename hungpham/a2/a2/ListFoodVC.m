@@ -7,10 +7,15 @@
 //
 
 #import "ListFoodVC.h"
+#import "getData.h"
+
 //NSString *const a = @"demo";
 @interface ListFoodVC () <UITableViewDataSource,UITableViewDelegate, CellDelegate>{
     NSMutableArray * _arrData;
     NSString * _url;
+    getData *_data;
+    NSMutableArray *_arrDataDisplay;
+    
 }
 
 
@@ -40,6 +45,9 @@
 - (void)initVar{
     if (!_arrData) {
         _arrData = [[NSMutableArray alloc]init];
+    }
+    if (!_arrDataDisplay) {
+        _arrDataDisplay = [NSMutableArray array];
     }
 }
 
@@ -74,15 +82,25 @@
         NSDictionary *arrData = [NSJSONSerialization JSONObjectWithData:response options:0 error:nil];
         
         _arrData = [arrData[@"recipes"] mutableCopy];
+        //NSDictionary *recipe1 = [_arrData objectAtIndex:1];
+        for (NSInteger i =0; i<_arrData.count;i++) {
+            NSDictionary *recipe = [_arrData objectAtIndex:i];
+            _data = [[getData alloc] init];
+            [_data mapData:recipe];
+            [_arrDataDisplay addObject:_data];
+        }
+        
+        
+        
         [_tbvContent reloadData];
     }else{
         NSLog(@"Error getData Server");
     }
 }
 
-- (IBAction)btnEdit:(UIBarButtonItem *)sender {
-    _tbvContent.editing = YES;
-}
+//- (IBAction)btnEdit:(UIBarButtonItem *)sender {
+//    _tbvContent.editing = YES;
+//}
 
 #pragma mark - TableViewDelegate, TableviewDataSource.
 

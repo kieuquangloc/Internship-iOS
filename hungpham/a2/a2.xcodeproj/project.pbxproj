@@ -17,6 +17,7 @@
 		680227201D62C12900803156 /* a2UITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6802271F1D62C12900803156 /* a2UITests.m */; };
 		6802272F1D62C45E00803156 /* Cell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6802272E1D62C45E00803156 /* Cell.m */; };
 		680227321D62C48500803156 /* ListFoodVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 680227311D62C48500803156 /* ListFoodVC.m */; };
+		68AC39F41D68405400A6A1D1 /* getData.m in Sources */ = {isa = PBXBuildFile; fileRef = 68AC39F31D68405400A6A1D1 /* getData.m */; };
 		68B2108F1D63144100793B2A /* RatingControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 68B2108E1D63144100793B2A /* RatingControl.m */; };
 		7EDB0740BF6E8B56ED89BF7B /* Pods_a2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E046C14ABE606098A33C29F /* Pods_a2.framework */; };
 /* End PBXBuildFile section */
@@ -61,6 +62,8 @@
 		6802272E1D62C45E00803156 /* Cell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Cell.m; sourceTree = "<group>"; };
 		680227301D62C48500803156 /* ListFoodVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListFoodVC.h; sourceTree = "<group>"; };
 		680227311D62C48500803156 /* ListFoodVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListFoodVC.m; sourceTree = "<group>"; };
+		68AC39F21D68405400A6A1D1 /* getData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = getData.h; sourceTree = "<group>"; };
+		68AC39F31D68405400A6A1D1 /* getData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = getData.m; sourceTree = "<group>"; };
 		68B2108D1D63144100793B2A /* RatingControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RatingControl.h; sourceTree = "<group>"; };
 		68B2108E1D63144100793B2A /* RatingControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RatingControl.m; sourceTree = "<group>"; };
 		C0B2F31CA87A74A744B01210 /* Pods-a2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-a2.release.xcconfig"; path = "Pods/Target Support Files/Pods-a2/Pods-a2.release.xcconfig"; sourceTree = "<group>"; };
@@ -140,6 +143,8 @@
 				6802272E1D62C45E00803156 /* Cell.m */,
 				680227301D62C48500803156 /* ListFoodVC.h */,
 				680227311D62C48500803156 /* ListFoodVC.m */,
+				68AC39F21D68405400A6A1D1 /* getData.h */,
+				68AC39F31D68405400A6A1D1 /* getData.m */,
 			);
 			path = a2;
 			sourceTree = "<group>";
@@ -364,6 +369,7 @@
 				6802272F1D62C45E00803156 /* Cell.m in Sources */,
 				68B2108F1D63144100793B2A /* RatingControl.m in Sources */,
 				680226FF1D62C12900803156 /* AppDelegate.m in Sources */,
+				68AC39F41D68405400A6A1D1 /* getData.m in Sources */,
 				680226FC1D62C12900803156 /* main.m in Sources */,
 				680227321D62C48500803156 /* ListFoodVC.m in Sources */,
 			);
