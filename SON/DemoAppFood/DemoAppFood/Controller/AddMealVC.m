@@ -16,9 +16,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    [self InitTitle];
-    [self CreateTapChooseImage];
-    [self CreateTapdismissKeyboard];
+    [self initTitle];
+    [self createTapChooseImage];
+    [self createTapdismissKeyboard];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -28,24 +28,24 @@
 
 #pragma mark - Init 
 
-- (void)InitTitle {
+- (void)initTitle {
     if (_currentMeal) {
         self.title = @"Edit Meal";
         _txtNameMeal.text = _currentMeal.name;
-        [self CreateStar];
+        [self createStar];
         _imvPhotoImage.image = [UIImage imageWithData:_currentMeal.image];
     } else {
         self.title = @"Add Meal";
         _txtNameMeal.placeholder = @"Name Meal";
-        [self CreateStar];
+        [self createStar];
         _imvPhotoImage.image = [UIImage imageNamed:@"defaultPhoto"];
     }
     _txtNameMeal.delegate = self;
     [_btnSave setTarget:self];
-    [_btnSave setAction:@selector(ChooseSaveMeal:)];
+    [_btnSave setAction:@selector(chooseSaveMeal:)];
 }
 
-- (void)CreateStar {
+- (void)createStar {
     _viewRate.maxRating = 5;
     _viewRate.delegate = self;
     if(_currentMeal){
@@ -57,12 +57,13 @@
 
 - (void)rateView:(RateView *)rateView ratingDidChange:(NSInteger)rating {
     _viewRate.rating = rating;
+
 }
 
 
 #pragma mark -Delegate UITextField
 
-- (void)CreateTapdismissKeyboard {
+- (void)createTapdismissKeyboard {
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
                                    initWithTarget:self
                                    action:@selector(dismissKeyboard)];
@@ -80,7 +81,7 @@
     _txtNameMeal.text = @"ImageDefault";
 }
 
-- (IBAction)ChooseSaveMeal:(id)sender {
+- (IBAction)chooseSaveMeal:(id)sender {
     NSManagedObjectContext *context = [self managedObjectContext];
     if([_txtNameMeal.text isEqualToString:@""]){
        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Warring"
@@ -100,7 +101,7 @@
     }
 }
 
-- (void)CreateTapChooseImage {
+- (void)createTapChooseImage {
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self
                                                                           action:@selector(selectImageFromPhotoLibrary)];
     _imvPhotoImage.userInteractionEnabled = true;
@@ -165,7 +166,7 @@
 }
 
 
-#pragma mark - UICoredata
+#pragma mark - Coredata
 
 - (NSManagedObjectContext *)managedObjectContext {
     NSManagedObjectContext *context;

@@ -18,6 +18,9 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *btnEdit;
 @property (strong, nonatomic) NSMutableArray *listMeal;
 
+@property (nonatomic, strong)UISearchController *searchController;
+@property (strong, nonatomic) NSMutableArray *listMealResults;
+
 - (IBAction)btnAddMeal:(id)sender;
 
 @end

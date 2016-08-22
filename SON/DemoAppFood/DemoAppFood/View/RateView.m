@@ -12,7 +12,7 @@
 
 #pragma mark - InitView
 
-- (void)InitLayout {
+- (void)initLayout {
     _notSelectedImage = [UIImage imageNamed:@"emptyStar"];;
     _fullSelectedImage = [UIImage imageNamed:@"filledStar"];
     _rating = 0;
@@ -35,7 +35,7 @@
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
     if ((self = [super initWithCoder:aDecoder])) {
-        [self InitLayout];
+        [self initLayout];
     }
     return self;
 }

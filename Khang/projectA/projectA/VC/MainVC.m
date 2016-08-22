@@ -13,12 +13,13 @@
 #import "Cell.h"
 #import "DetailVC.h"
 #import <SVProgressHUD.h>
-
+#import <RNFrostedSidebar.h>
 @interface MainVC ()
 <UITableViewDelegate,
 UITableViewDataSource,
 UISearchBarDelegate,
-UISearchDisplayDelegate>
+UISearchDisplayDelegate,
+RNFrostedSidebarDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tbvMain;
 @property (strong,nonatomic) NSMutableArray *arr;
@@ -27,8 +28,11 @@ UISearchDisplayDelegate>
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 
 @property (strong,nonatomic) NSMutableArray *arrResults;
-
-
+@property (nonatomic, strong) NSMutableIndexSet *optionIndices;
+@property (strong,nonatomic) UISegmentedControl *segControl;
+@property (strong,nonatomic) NSArray *arrSortDesciptors;
+@property (strong,nonatomic) NSArray *arrSorted;
+@property (strong,nonatomic) NSSortDescriptor *sorter;
 @end
 
 @implementation MainVC
@@ -37,29 +41,101 @@ UISearchDisplayDelegate>
     [super viewDidLoad];
     
     _arrResults = [[NSMutableArray alloc]init];
-
-    
+    [_searchBar setHidden:YES];
+    self.optionIndices = [NSMutableIndexSet indexSetWithIndex:0];
 }
 
 
 -(void) viewWillAppear:(BOOL)animated{
 
     [super viewWillAppear:animated];
-    
+    self.navigationController.navigationBar.backgroundColor = [UIColor blackColor];
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    self.navigationController.navigationBar.barTintColor = [UIColor blackColor];
+    [self.navigationController.navigationBar
+     setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
     
     [[DataManager shareIntance]getDataWithCallback:^{
         [SVProgressHUD showWithStatus:@" Chờ tí nha !  😘 " ];
+        [[DataManager shareIntance] saveBack];
         [_tbvMain reloadData];
         [SVProgressHUD dismissWithDelay:3];
     }];
-    
+   
     
 }
+
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     
 }
+- (IBAction)onBurger:(id)sender {
+    NSArray *images = @[
+                        [UIImage imageNamed:@"gear"],
+                        [UIImage imageNamed:@"globe"],
+                        [UIImage imageNamed:@"profile"],
+                        [UIImage imageNamed:@"star"],
+                        [UIImage imageNamed:@"gear"],
+                        [UIImage imageNamed:@"globe"],
+                        [UIImage imageNamed:@"profile"],
+                        [UIImage imageNamed:@"star"],
+                        [UIImage imageNamed:@"gear"],
+                        [UIImage imageNamed:@"globe"],
+                        [UIImage imageNamed:@"profile"],
+                        [UIImage imageNamed:@"star"],
+                        ];
+    NSArray *colors = @[
+                        [UIColor colorWithRed:240/255.f green:159/255.f blue:254/255.f alpha:1],
+                        [UIColor colorWithRed:255/255.f green:137/255.f blue:167/255.f alpha:1],
+                        [UIColor colorWithRed:126/255.f green:242/255.f blue:195/255.f alpha:1],
+                        [UIColor colorWithRed:119/255.f green:152/255.f blue:255/255.f alpha:1],
+                        [UIColor colorWithRed:240/255.f green:159/255.f blue:254/255.f alpha:1],
+                        [UIColor colorWithRed:255/255.f green:137/255.f blue:167/255.f alpha:1],
+                        [UIColor colorWithRed:126/255.f green:242/255.f blue:195/255.f alpha:1],
+                        [UIColor colorWithRed:119/255.f green:152/255.f blue:255/255.f alpha:1],
+                        [UIColor colorWithRed:240/255.f green:159/255.f blue:254/255.f alpha:1],
+                        [UIColor colorWithRed:255/255.f green:137/255.f blue:167/255.f alpha:1],
+                        [UIColor colorWithRed:126/255.f green:242/255.f blue:195/255.f alpha:1],
+                        [UIColor colorWithRed:119/255.f green:152/255.f blue:255/255.f alpha:1],
+                        ];
+    
+    RNFrostedSidebar *callout = [[RNFrostedSidebar alloc] initWithImages:images selectedIndices:self.optionIndices borderColors:colors];
+    //    RNFrostedSidebar *callout = [[RNFrostedSidebar alloc] initWithImages:images];
+    callout.delegate = self;
+    //    callout.showFromRight = YES;
+    [callout show];
+}
+
+#pragma mark - RNFrostedSidebarDelegate
+
+- (void)sidebar:(RNFrostedSidebar *)sidebar didTapItemAtIndex:(NSUInteger)index {
+    AddVC *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"add"];
+    [vc.navigationController.navigationBar setHidden:NO];
+    [self presentViewController:vc animated:YES completion:nil];
+}
+
+- (void)sidebar:(RNFrostedSidebar *)sidebar didEnable:(BOOL)itemEnabled itemAtIndex:(NSUInteger)index {
+    if (itemEnabled) {
+        [self.optionIndices addIndex:index];
+    }
+    else {
+        [self.optionIndices removeIndex:index];
+    }
+}
+
+
 #pragma mark - BUTTON NAVIGATION
+
+- (IBAction)didTapSearch:(id)sender {
+    
+    [_searchBar setHidden:NO];
+    [_searchBar becomeFirstResponder];
+    
+    
+    
+}
 
 - (IBAction)didTapAddNewMeal:(id)sender {
     AddVC *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil]instantiateViewControllerWithIdentifier:@"add"];
@@ -69,13 +145,16 @@ UISearchDisplayDelegate>
 }
 - (IBAction)didTapRefresh:(id)sender {
     
-    
+    [SVProgressHUD showWithStatus:@" Chờ tí nha !  😘 " ];
     [[DataManager shareIntance]getDataWithCallback:^{
-        [SVProgressHUD showWithStatus:@" Chờ tí nha !  😘 " ];
-
+       
+       [[DataManager shareIntance] saveBack];
         [_tbvMain reloadData];
-        [SVProgressHUD dismissWithDelay:3];
+
+        [SVProgressHUD dismissWithDelay:10];
+        
     }];
+    
     
 }
 
@@ -85,10 +164,17 @@ UISearchDisplayDelegate>
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     DetailVC *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil]instantiateViewControllerWithIdentifier:@"detail"];
-    NSArray *reversedArray = [[[DataManager shareIntance].foodList reverseObjectEnumerator] allObjects];
-    Meal *meal = reversedArray[indexPath.row];
-    vc.strName = meal.name;
-    vc.dataImg = meal.dataImg;
+    
+    if (tableView == _tbvMain) {
+        Meal *meal = [DataManager shareIntance].foodList[indexPath.row];
+        vc.strName = meal.name;
+        vc.dataImg = meal.dataImg;
+    }else if (tableView == _searchDislayController.searchResultsTableView || YES){
+        Meal *meal = _arrResults[indexPath.row];
+        vc.strName = meal.name;
+        vc.dataImg = meal.dataImg;
+    }
+    
     
     [self. navigationController pushViewController:vc animated:YES];
 }
@@ -97,6 +183,7 @@ UISearchDisplayDelegate>
     
     if (editingStyle == UITableViewCellEditingStyleDelete)
     {
+        
         [[DataManager shareIntance].foodList removeObjectAtIndex:indexPath.row];
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
         [[DataManager shareIntance]saveBack];
@@ -119,10 +206,12 @@ UISearchDisplayDelegate>
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (tableView == _tbvMain) {
         
+       
+        
         Cell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
-        NSArray *reversedArray = [[[DataManager shareIntance].foodList reverseObjectEnumerator] allObjects];
-        Meal *meal = reversedArray[indexPath.row];
+        Meal *meal = [DataManager shareIntance].foodList[indexPath.row];
         cell.lblMeal.text = meal.name;
+        
         if ([meal.dataImg isKindOfClass:[NSData class]]){
             cell.imvMeal.image = [UIImage imageWithData:meal.dataImg];
             
@@ -177,18 +266,19 @@ UISearchDisplayDelegate>
         
         return cell;
     }else if(tableView == _searchDislayController.searchResultsTableView|| YES){
-        
         UITableViewCell *cell = [UITableViewCell new];
-        
-        //NSArray *reversedArray = [[[DataManager shareIntance].foodList reverseObjectEnumerator] allObjects];
         Meal *meal = _arrResults[indexPath.row];
-        
         cell.textLabel.text = meal.name;
-        
         if ([meal.dataImg isKindOfClass:[NSData class]]){
             cell.imageView.image = [UIImage imageWithData:meal.dataImg];
             
         }
+        [tableView setAlpha:0.9];
+        [tableView setBackgroundColor:[UIColor blackColor]];
+        
+        cell.backgroundColor = [UIColor blackColor];
+        cell.textLabel.textColor = [UIColor redColor];
+      
         return cell;
     }
     
@@ -225,7 +315,9 @@ UISearchDisplayDelegate>
 
 
 - (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar{
+   
     _searchBar.keyboardAppearance = UIKeyboardAppearanceDark;
+     _searchBar = searchBar ;
     return YES;
 }
 
@@ -239,7 +331,7 @@ UISearchDisplayDelegate>
         }
     }
     _searchBar.keyboardAppearance = UIKeyboardAppearanceDark;
-    [_tbvMain reloadData];
+    //[_tbvMain reloadData];
 }
 
 - (NSString *)encodingStringWithVietnamese:(NSString *)vietnam{
@@ -251,9 +343,11 @@ UISearchDisplayDelegate>
 
 -(void)searchBarCancelButtonClicked:(UISearchBar *)searchBar{
     [searchBar resignFirstResponder];
+    [_searchBar setHidden:YES];
 }
 
 -(void)searchBarTextDidEndEditing:(UISearchBar *)searchBar{
     [searchBar resignFirstResponder];
 }
+
 @end

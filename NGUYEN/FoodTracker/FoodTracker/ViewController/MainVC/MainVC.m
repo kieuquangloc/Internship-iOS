@@ -11,11 +11,16 @@
 
 
 
-@interface MainVC ()<UITableViewDataSource,UITableViewDelegate>
+@interface MainVC ()<UITableViewDataSource,UITableViewDelegate,UISearchControllerDelegate,UISearchBarDelegate,UISearchResultsUpdating>{
 
-@property(nonatomic,strong)NSString * _url;
-@property(nonatomic,strong) NSMutableArray * _arrFood;
-@property(nonatomic,strong) AppDelegate * appDelegate;
+    NSString * _url;
+    NSMutableArray * _arrFood;
+    NSMutableArray *_searchResults;
+    AppDelegate * _appDelegate;
+    UISearchController *_searchController;
+    BOOL hasSearching;
+}
+
 
 @end
 
@@ -25,15 +30,25 @@
     [super viewDidLoad];
     
     //  [SVProgressHUD show];
-    __url = @"http://food2fork.com/api/search?key=4d699174e2340160bb34e85865574bb3&q=shredded%20chicken";
+    _url = @"http://food2fork.com/api/search?key=4d699174e2340160bb34e85865574bb3&q=shredded%20chicken";
     
     DataFoods *dataFoods = [[DataFoods alloc]init];
-    __arrFood = [dataFoods getArrayData:__url];
+    _arrFood = [dataFoods getArrayData:_url];
     _arrFoodUser = [[NSMutableArray alloc]init];
+
     
     _appDelegate = [[UIApplication sharedApplication] delegate];
     
+    _searchController = [[UISearchController alloc]initWithSearchResultsController:nil];
+    _searchController.searchResultsUpdater = self;
+    _searchController.delegate = self;
+    _searchController.searchBar.delegate = self;
+    _searchController.hidesNavigationBarDuringPresentation = false;
+    _searchController.dimsBackgroundDuringPresentation = NO;
+    self.navigationItem.titleView = _searchController.searchBar;
+    self.definesPresentationContext = true;
     
+
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -57,11 +72,17 @@
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
     if (section == 1) {
-        return __arrFood.count;
+        
+        if (hasSearching) {
+            return _searchResults.count;
+        }else{
+        return _arrFood.count;
+        }
     }else if (section == 0){
         
         return _arrFoodUser.count;
     }
+    
     
     return 0;
 }
@@ -82,10 +103,20 @@
     
     if (indexPath.section == 1) {
         
-        cell.lblName.text = __arrFood[indexPath.row][@"title"];
+        if (hasSearching) {
+            
+            
+            cell.lblName.text = ((Meal*)_searchResults[indexPath.row]).title;
+            cell.imvFood.image = [UIImage imageWithData:((Meal*)_searchResults[indexPath.row]).dataImage];
+         
+            
+        }else{
+        
+        cell.lblName.text = _arrFood[indexPath.row][@"title"];
         
         //load image use cocoapod
-        [cell.imvFood  sd_setImageWithURL:[NSURL URLWithString:__arrFood[indexPath.row][@"image_url"]] placeholderImage:[UIImage imageNamed:@"apple"]];
+        [cell.imvFood  sd_setImageWithURL:[NSURL URLWithString:_arrFood[indexPath.row][@"image_url"]] placeholderImage:[UIImage imageNamed:@"apple"]];
+        }
         
         return cell;
         
@@ -117,7 +148,7 @@
         FoodTrackercell *cellFood = [tableView dequeueReusableCellWithIdentifier:@"FoodTrackercell" forIndexPath:indexPath];
         
         Meal * meal = [[Meal alloc]init];
-        meal.title = __arrFood[indexPath.row][@"title"];
+        meal.title = _arrFood[indexPath.row][@"title"];
         meal.dataImage = UIImageJPEGRepresentation(cellFood.imvFood.image, 100);
         meal.social_rank = cellFood.ratingController.rating;
         
@@ -160,6 +191,70 @@
     
     
 }
+
+#pragma mark -seach Bar
+
+
+-(void)filterContenForSearchText:(NSString*)searchText{
+    
+    _searchResults = [[NSMutableArray alloc]init];
+    NSString *strSearchResult = [searchText lowercaseString];
+    for (NSInteger i = 0; i<_arrFood.count; i++) {
+        
+        NSString * strMeal = [_arrFood[i][@"title"] lowercaseString];
+        if([strMeal hasPrefix:strSearchResult]) {
+            
+            NSURL *url = [NSURL URLWithString:_arrFood[i][@"image_url"]];
+            NSData *data = [NSData dataWithContentsOfURL:url];
+            NSInteger  ratingStrar =[_arrFood[i][@"social_rank"] integerValue];
+            
+            Meal *meal = [[Meal alloc]initWithName: strMeal dataImage:data rating:ratingStrar];
+            
+            [_searchResults addObject:meal];
+        }
+    }
+    [_tbv reloadData];
+    
+}
+
+//c1:event search
+-(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
+
+   // NSLog(@"%@",searchText);
+    
+    [self filterContenForSearchText:searchText];
+    
+    if (![searchText isEqualToString:@""]) {
+       _searchController.dimsBackgroundDuringPresentation = NO;
+      
+    }
+    
+
+    
+}
+//c2:event search
+-(void)updateSearchResultsForSearchController:(UISearchController *)searchController{
+    
+    NSLog(@"%@",searchController.searchBar.text);
+
+}
+
+- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
+    hasSearching= true;
+  //  [_tbv reloadData];
+}
+
+- (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar {
+    hasSearching = false;
+    [_tbv reloadData];
+}
+//
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
+    hasSearching = false;
+    [_tbv reloadData];
+}
+//
+
 
 
 
