@@ -40,7 +40,8 @@ UISearchDisplayDelegate>
     [super viewDidLoad];
     
     _arrResults = [[NSMutableArray alloc]init];
-
+    [_searchBar setHidden:YES];
+    
     
 }
 
@@ -51,20 +52,37 @@ UISearchDisplayDelegate>
     self.navigationController.navigationBar.backgroundColor = [UIColor blackColor];
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     self.navigationController.navigationBar.barTintColor = [UIColor blackColor];
+    [self.navigationController.navigationBar
+     setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
     
     [[DataManager shareIntance]getDataWithCallback:^{
         [SVProgressHUD showWithStatus:@" Chờ tí nha !  😘 " ];
+        [[DataManager shareIntance] saveBack];
         [_tbvMain reloadData];
         [SVProgressHUD dismissWithDelay:3];
     }];
-    
+   
     
 }
+
+//-(void)viewDidDisappear:(BOOL)animated{
+//    [super viewDidDisappear:animated];
+//    [_searchBar setHidden:NO];
+//}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     
 }
 #pragma mark - BUTTON NAVIGATION
+
+- (IBAction)didTapSearch:(id)sender {
+    
+    [_searchBar setHidden:NO];
+    [_searchBar becomeFirstResponder];
+    
+    
+    
+}
 
 - (IBAction)didTapAddNewMeal:(id)sender {
     AddVC *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil]instantiateViewControllerWithIdentifier:@"add"];
@@ -77,8 +95,9 @@ UISearchDisplayDelegate>
     [SVProgressHUD showWithStatus:@" Chờ tí nha !  😘 " ];
     [[DataManager shareIntance]getDataWithCallback:^{
        
-
+       [[DataManager shareIntance] saveBack];
         [_tbvMain reloadData];
+
         [SVProgressHUD dismissWithDelay:10];
         
     }];
@@ -92,10 +111,17 @@ UISearchDisplayDelegate>
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     DetailVC *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil]instantiateViewControllerWithIdentifier:@"detail"];
-    NSArray *reversedArray = [[[DataManager shareIntance].foodList reverseObjectEnumerator] allObjects];
-    Meal *meal = reversedArray[indexPath.row];
-    vc.strName = meal.name;
-    vc.dataImg = meal.dataImg;
+    
+    if (tableView == _tbvMain) {
+        Meal *meal = [DataManager shareIntance].foodList[indexPath.row];
+        vc.strName = meal.name;
+        vc.dataImg = meal.dataImg;
+    }else if (tableView == _searchDislayController.searchResultsTableView || YES){
+        Meal *meal = _arrResults[indexPath.row];
+        vc.strName = meal.name;
+        vc.dataImg = meal.dataImg;
+    }
+    
     
     [self. navigationController pushViewController:vc animated:YES];
 }
@@ -104,6 +130,7 @@ UISearchDisplayDelegate>
     
     if (editingStyle == UITableViewCellEditingStyleDelete)
     {
+        
         [[DataManager shareIntance].foodList removeObjectAtIndex:indexPath.row];
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
         [[DataManager shareIntance]saveBack];
@@ -126,12 +153,12 @@ UISearchDisplayDelegate>
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (tableView == _tbvMain) {
         
-        [self addSegmentInNavigationBar];
+       
         
         Cell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
-        NSArray *reversedArray = [[[DataManager shareIntance].foodList reverseObjectEnumerator] allObjects];
-        Meal *meal = reversedArray[indexPath.row];
+        Meal *meal = [DataManager shareIntance].foodList[indexPath.row];
         cell.lblMeal.text = meal.name;
+        
         if ([meal.dataImg isKindOfClass:[NSData class]]){
             cell.imvMeal.image = [UIImage imageWithData:meal.dataImg];
             
@@ -186,27 +213,19 @@ UISearchDisplayDelegate>
         
         return cell;
     }else if(tableView == _searchDislayController.searchResultsTableView|| YES){
-        
-      
-        
         UITableViewCell *cell = [UITableViewCell new];
-        
-        //NSArray *reversedArray = [[[DataManager shareIntance].foodList reverseObjectEnumerator] allObjects];
         Meal *meal = _arrResults[indexPath.row];
-        
         cell.textLabel.text = meal.name;
-        
         if ([meal.dataImg isKindOfClass:[NSData class]]){
             cell.imageView.image = [UIImage imageWithData:meal.dataImg];
             
         }
-        _searchDislayController.searchResultsTableView.backgroundColor = [UIColor blackColor];
+        [tableView setAlpha:0.9];
+        [tableView setBackgroundColor:[UIColor blackColor]];
         
         cell.backgroundColor = [UIColor blackColor];
-        cell.textLabel.textColor = [UIColor whiteColor];
-        
-        
-        
+        cell.textLabel.textColor = [UIColor redColor];
+      
         return cell;
     }
     
@@ -245,6 +264,7 @@ UISearchDisplayDelegate>
 - (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar{
    
     _searchBar.keyboardAppearance = UIKeyboardAppearanceDark;
+     _searchBar = searchBar ;
     return YES;
 }
 
@@ -270,60 +290,11 @@ UISearchDisplayDelegate>
 
 -(void)searchBarCancelButtonClicked:(UISearchBar *)searchBar{
     [searchBar resignFirstResponder];
+    [_searchBar setHidden:YES];
 }
 
 -(void)searchBarTextDidEndEditing:(UISearchBar *)searchBar{
     [searchBar resignFirstResponder];
 }
 
-#pragma mark - UISegmentedControl
-
-- (void) addSegmentInNavigationBar{
-    
-    UISegmentedControl *statFilter = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"All", @"Name length", @"Rating", nil]];
-    [statFilter setSegmentedControlStyle:UISegmentedControlStyleBar];
-    
-    [statFilter sizeToFit];
-    
-    statFilter.tintColor = [UIColor whiteColor];
-    
-    statFilter.backgroundColor = [UIColor blackColor];
-    //[statFilter setSelectedSegmentIndex:0];
-    
-    [statFilter addTarget:self action:@selector(allData:) forControlEvents:UIControlEventValueChanged];
-    
-    self.navigationItem.titleView = statFilter;
-    
-    
-}
-
-- (void) allData:(UISegmentedControl *)sender{
-    NSInteger selectedIndex = [sender selectedSegmentIndex];
-
-    if (selectedIndex == 0) {
-        
-        
-        
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Lưu ý nà 😊" message:@"Bạn đang chọn  Index 0 😘" preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *action = [UIAlertAction actionWithTitle:@"Vậy hả 😱" style:UIAlertActionStyleDefault handler:nil];
-        [alert addAction:action];
-        [self presentViewController:alert animated:YES completion:nil];
-        
-        
-    
-        
-    }else if (selectedIndex == 1){
-        
-                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Lưu ý nà 😊" message:@"Bạn đang chọn  Index 1 😘" preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *action = [UIAlertAction actionWithTitle:@"Vậy hả 😱" style:UIAlertActionStyleDefault handler:nil];
-        [alert addAction:action];
-        [self presentViewController:alert animated:YES completion:nil];
-
-    }else if (selectedIndex == 2){
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Lưu ý nà 😊" message:@"Bạn đang chọn  Index 2 😘" preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *action = [UIAlertAction actionWithTitle:@"Vậy hả 😱" style:UIAlertActionStyleDefault handler:nil];
-        [alert addAction:action];
-        [self presentViewController:alert animated:YES completion:nil];
-    }
-}
 @end

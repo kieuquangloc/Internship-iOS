@@ -55,6 +55,7 @@ UITextFieldDelegate>
         [alert show];
     }else
     {
+        
         [[DataManager shareIntance].foodList addObject:meal];
         
         [[DataManager shareIntance] saveBack];
