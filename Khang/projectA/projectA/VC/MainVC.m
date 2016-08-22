@@ -13,12 +13,13 @@
 #import "Cell.h"
 #import "DetailVC.h"
 #import <SVProgressHUD.h>
-
+#import <RNFrostedSidebar.h>
 @interface MainVC ()
 <UITableViewDelegate,
 UITableViewDataSource,
 UISearchBarDelegate,
-UISearchDisplayDelegate>
+UISearchDisplayDelegate,
+RNFrostedSidebarDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tbvMain;
 @property (strong,nonatomic) NSMutableArray *arr;
@@ -27,7 +28,7 @@ UISearchDisplayDelegate>
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 
 @property (strong,nonatomic) NSMutableArray *arrResults;
-
+@property (nonatomic, strong) NSMutableIndexSet *optionIndices;
 @property (strong,nonatomic) UISegmentedControl *segControl;
 @property (strong,nonatomic) NSArray *arrSortDesciptors;
 @property (strong,nonatomic) NSArray *arrSorted;
@@ -41,8 +42,7 @@ UISearchDisplayDelegate>
     
     _arrResults = [[NSMutableArray alloc]init];
     [_searchBar setHidden:YES];
-    
-    
+    self.optionIndices = [NSMutableIndexSet indexSetWithIndex:0];
 }
 
 
@@ -65,14 +65,67 @@ UISearchDisplayDelegate>
     
 }
 
-//-(void)viewDidDisappear:(BOOL)animated{
-//    [super viewDidDisappear:animated];
-//    [_searchBar setHidden:NO];
-//}
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     
 }
+- (IBAction)onBurger:(id)sender {
+    NSArray *images = @[
+                        [UIImage imageNamed:@"gear"],
+                        [UIImage imageNamed:@"globe"],
+                        [UIImage imageNamed:@"profile"],
+                        [UIImage imageNamed:@"star"],
+                        [UIImage imageNamed:@"gear"],
+                        [UIImage imageNamed:@"globe"],
+                        [UIImage imageNamed:@"profile"],
+                        [UIImage imageNamed:@"star"],
+                        [UIImage imageNamed:@"gear"],
+                        [UIImage imageNamed:@"globe"],
+                        [UIImage imageNamed:@"profile"],
+                        [UIImage imageNamed:@"star"],
+                        ];
+    NSArray *colors = @[
+                        [UIColor colorWithRed:240/255.f green:159/255.f blue:254/255.f alpha:1],
+                        [UIColor colorWithRed:255/255.f green:137/255.f blue:167/255.f alpha:1],
+                        [UIColor colorWithRed:126/255.f green:242/255.f blue:195/255.f alpha:1],
+                        [UIColor colorWithRed:119/255.f green:152/255.f blue:255/255.f alpha:1],
+                        [UIColor colorWithRed:240/255.f green:159/255.f blue:254/255.f alpha:1],
+                        [UIColor colorWithRed:255/255.f green:137/255.f blue:167/255.f alpha:1],
+                        [UIColor colorWithRed:126/255.f green:242/255.f blue:195/255.f alpha:1],
+                        [UIColor colorWithRed:119/255.f green:152/255.f blue:255/255.f alpha:1],
+                        [UIColor colorWithRed:240/255.f green:159/255.f blue:254/255.f alpha:1],
+                        [UIColor colorWithRed:255/255.f green:137/255.f blue:167/255.f alpha:1],
+                        [UIColor colorWithRed:126/255.f green:242/255.f blue:195/255.f alpha:1],
+                        [UIColor colorWithRed:119/255.f green:152/255.f blue:255/255.f alpha:1],
+                        ];
+    
+    RNFrostedSidebar *callout = [[RNFrostedSidebar alloc] initWithImages:images selectedIndices:self.optionIndices borderColors:colors];
+    //    RNFrostedSidebar *callout = [[RNFrostedSidebar alloc] initWithImages:images];
+    callout.delegate = self;
+    //    callout.showFromRight = YES;
+    [callout show];
+}
+
+#pragma mark - RNFrostedSidebarDelegate
+
+- (void)sidebar:(RNFrostedSidebar *)sidebar didTapItemAtIndex:(NSUInteger)index {
+    AddVC *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"add"];
+    [vc.navigationController.navigationBar setHidden:NO];
+    [self presentViewController:vc animated:YES completion:nil];
+}
+
+- (void)sidebar:(RNFrostedSidebar *)sidebar didEnable:(BOOL)itemEnabled itemAtIndex:(NSUInteger)index {
+    if (itemEnabled) {
+        [self.optionIndices addIndex:index];
+    }
+    else {
+        [self.optionIndices removeIndex:index];
+    }
+}
+
+
 #pragma mark - BUTTON NAVIGATION
 
 - (IBAction)didTapSearch:(id)sender {

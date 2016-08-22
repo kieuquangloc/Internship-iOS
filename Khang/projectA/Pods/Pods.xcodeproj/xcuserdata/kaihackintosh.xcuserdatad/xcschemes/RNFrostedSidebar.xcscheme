@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'BD9E14818E5CA855DF1455260A1F4E29'
-               BlueprintName = 'Pods-projectA'
+               BlueprintIdentifier = '6252781540CA58C7F975F9CEC4418E10'
+               BlueprintName = 'RNFrostedSidebar'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'libPods-projectA.a'>
+               BuildableName = 'libRNFrostedSidebar.a'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

@@ -169,11 +169,18 @@
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" title="Horical" id="AbZ-RQ-TmV">
-                        <barButtonItem key="leftBarButtonItem" systemItem="refresh" id="T85-RE-HNf">
-                            <connections>
-                                <action selector="didTapRefresh:" destination="BYZ-38-t0r" id="QWu-PJ-7w3"/>
-                            </connections>
-                        </barButtonItem>
+                        <leftBarButtonItems>
+                            <barButtonItem systemItem="compose" id="kZx-Gx-7sW">
+                                <connections>
+                                    <action selector="onBurger:" destination="BYZ-38-t0r" id="kMi-Gd-As5"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="refresh" id="T85-RE-HNf">
+                                <connections>
+                                    <action selector="didTapRefresh:" destination="BYZ-38-t0r" id="QWu-PJ-7w3"/>
+                                </connections>
+                            </barButtonItem>
+                        </leftBarButtonItems>
                         <rightBarButtonItems>
                             <barButtonItem systemItem="add" id="rMM-jo-oPe">
                                 <connections>
