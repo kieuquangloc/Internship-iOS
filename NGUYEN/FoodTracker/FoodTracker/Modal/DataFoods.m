@@ -12,20 +12,14 @@
 
 - (NSMutableArray*)getArrayData:(NSString *)url{
 
-    NSMutableArray *arr = [[ NSMutableArray alloc]init];
-    
-    
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL
-                                                          URLWithString:url]];
-    
-    NSData *response = [NSURLConnection sendSynchronousRequest:request
-                                             returningResponse:nil error:nil];
-    
+    NSMutableArray *arrFood = [[ NSMutableArray alloc]init];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
+    NSData *response = [NSURLConnection sendSynchronousRequest:request    returningResponse:nil error:nil];
     NSDictionary *arrData = [NSJSONSerialization JSONObjectWithData:response options:0 error:nil];
  
-    arr = arrData[@"recipes"]  ;
+    arrFood = arrData[@"recipes"] ;
     
-    return arr;
+    return arrFood;
 }
 
 @end
