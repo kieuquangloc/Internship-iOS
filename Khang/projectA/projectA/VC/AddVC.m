@@ -28,15 +28,19 @@ UITextFieldDelegate>
 
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    _imvMeal.image = [UIImage imageNamed:@"bullbasaur"];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction) didTapCancel:(id)sender
-{
+- (IBAction) didTapCancel:(id)sender{
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
 - (IBAction) didTapDone:(id)sender
 {
     
@@ -57,7 +61,6 @@ UITextFieldDelegate>
     {
         
         [[DataManager shareIntance].foodList addObject:meal];
-        
         [[DataManager shareIntance] saveBack];
         [self dismissViewControllerAnimated:YES completion:nil];
     }
@@ -67,16 +70,15 @@ UITextFieldDelegate>
 
 #pragma mark - Action Choose Image
 
-- (IBAction) chooseImage:(UITapGestureRecognizer *)sender
-{
+- (IBAction) chooseImage:(UITapGestureRecognizer *)sender{
     UIActionSheet *action = [[UIActionSheet alloc]initWithTitle:@"Chọn ảnh" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Thư viện ảnh",@"Camera", nil];
+    
     [self.view addSubview:action];
     [action showInView:self.view];
     [self textFieldShouldReturn:_tfName];
 }
 
-- (void) actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
-{
+- (void) actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
     if (buttonIndex == 1)
     {
         if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
@@ -103,14 +105,12 @@ UITextFieldDelegate>
     }
 }
 
--(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
-{
+-(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker{
     [self dismissViewControllerAnimated:YES completion:nil];
     
 }
 
--(void) imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)image editingInfo:(NSDictionary<NSString *,id> *)editingInfo
-{
+-(void) imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)image editingInfo:(NSDictionary<NSString *,id> *)editingInfo{
     
     _imvMeal.image = image;
     
@@ -119,67 +119,115 @@ UITextFieldDelegate>
 }
 
 #pragma mark - Comment START
-- (IBAction)commentStarNumber:(id)sender
-{
-    if ([sender tag] == 5)
-    {
-        
-        self.rating = 5;
-        _lblcomment.text = @"Tuyệt vời ";
-        [self.btnStar1 setImage:[UIImage imageNamed:@"mark-as-favorite-star-2"] forState:UIControlStateNormal];
-        [self.btnStar2 setImage:[UIImage imageNamed:@"mark-as-favorite-star-2"] forState:UIControlStateNormal];
-        [self.btnStar3 setImage:[UIImage imageNamed:@"mark-as-favorite-star-2"] forState:UIControlStateNormal];
-        [self.btnStar4 setImage:[UIImage imageNamed:@"mark-as-favorite-star-2"] forState:UIControlStateNormal];
-        [self.btnStar5 setImage:[UIImage imageNamed:@"mark-as-favorite-star-2"] forState:UIControlStateNormal];
+
+- (IBAction)commentStarNumber:(id)sender{
+    switch ([sender tag]) {
+        case 0:
+            self.rating = 1;
+            _lblcomment.text = @"Quá tệ ! ";
+            [self.btnStar2 setImage:[UIImage imageNamed:@"mark-as-favorite-star"] forState:UIControlStateNormal];
+            [self.btnStar3 setImage:[UIImage imageNamed:@"mark-as-favorite-star"] forState:UIControlStateNormal];
+            [self.btnStar4 setImage:[UIImage imageNamed:@"mark-as-favorite-star"] forState:UIControlStateNormal];
+            [self.btnStar5 setImage:[UIImage imageNamed:@"mark-as-favorite-star"] forState:UIControlStateNormal];
+            [self.btnStar1 setImage:[UIImage imageNamed:@"mark-as-favorite-star-2"] forState:UIControlStateNormal];
+            break;
+        case 1:
+            self.rating = 2;
+            _lblcomment.text = @"Không ổn ";
+            [self.btnStar3 setImage:[UIImage imageNamed:@"mark-as-favorite-star"] forState:UIControlStateNormal];
+            [self.btnStar4 setImage:[UIImage imageNamed:@"mark-as-favorite-star"] forState:UIControlStateNormal];
+            [self.btnStar5 setImage:[UIImage imageNamed:@"mark-as-favorite-star"] forState:UIControlStateNormal];
+            [self.btnStar1 setImage:[UIImage imageNamed:@"mark-as-favorite-star-2"] forState:UIControlStateNormal];
+            [self.btnStar2 setImage:[UIImage imageNamed:@"mark-as-favorite-star-2"] forState:UIControlStateNormal];
+            break;
+        case 2:
+            self.rating = 3;
+            _lblcomment.text = @"Tàm tạm";
+            [self.btnStar4 setImage:[UIImage imageNamed:@"mark-as-favorite-star"] forState:UIControlStateNormal];
+            [self.btnStar5 setImage:[UIImage imageNamed:@"mark-as-favorite-star"] forState:UIControlStateNormal];
+            [self.btnStar1 setImage:[UIImage imageNamed:@"mark-as-favorite-star-2"] forState:UIControlStateNormal];
+            [self.btnStar2 setImage:[UIImage imageNamed:@"mark-as-favorite-star-2"] forState:UIControlStateNormal];
+            [self.btnStar3 setImage:[UIImage imageNamed:@"mark-as-favorite-star-2"] forState:UIControlStateNormal];
+
+            break;
+        case 3:
+            self.rating = 4;
+            _lblcomment.text = @"Hay đó ";
+            [self.btnStar1 setImage:[UIImage imageNamed:@"mark-as-favorite-star-2"] forState:UIControlStateNormal];
+            [self.btnStar2 setImage:[UIImage imageNamed:@"mark-as-favorite-star-2"] forState:UIControlStateNormal];
+            [self.btnStar3 setImage:[UIImage imageNamed:@"mark-as-favorite-star-2"] forState:UIControlStateNormal];
+            [self.btnStar4 setImage:[UIImage imageNamed:@"mark-as-favorite-star-2"] forState:UIControlStateNormal];
+            [self.btnStar5 setImage:[UIImage imageNamed:@"mark-as-favorite-star"] forState:UIControlStateNormal];
+            break;
+            
+            
+        default:
+            self.rating = 5;
+            _lblcomment.text = @"Tuyệt vời ";
+            [self.btnStar1 setImage:[UIImage imageNamed:@"mark-as-favorite-star-2"] forState:UIControlStateNormal];
+            [self.btnStar2 setImage:[UIImage imageNamed:@"mark-as-favorite-star-2"] forState:UIControlStateNormal];
+            [self.btnStar3 setImage:[UIImage imageNamed:@"mark-as-favorite-star-2"] forState:UIControlStateNormal];
+            [self.btnStar4 setImage:[UIImage imageNamed:@"mark-as-favorite-star-2"] forState:UIControlStateNormal];
+            [self.btnStar5 setImage:[UIImage imageNamed:@"mark-as-favorite-star-2"] forState:UIControlStateNormal];
+
+
+            break;
     }
-    else if ([sender tag] == 4)
-    {
-        
-        self.rating = 4;
-        _lblcomment.text = @"Hay đó ";
-        [self.btnStar1 setImage:[UIImage imageNamed:@"mark-as-favorite-star-2"] forState:UIControlStateNormal];
-        [self.btnStar2 setImage:[UIImage imageNamed:@"mark-as-favorite-star-2"] forState:UIControlStateNormal];
-        [self.btnStar3 setImage:[UIImage imageNamed:@"mark-as-favorite-star-2"] forState:UIControlStateNormal];
-        [self.btnStar4 setImage:[UIImage imageNamed:@"mark-as-favorite-star-2"] forState:UIControlStateNormal];
-        [self.btnStar5 setImage:[UIImage imageNamed:@"mark-as-favorite-star"] forState:UIControlStateNormal];
-        
-    }
-    else if ([sender tag] == 3)
-    {
-        self.rating = 3;
-        _lblcomment.text = @"Tàm tạm";
-        [self.btnStar4 setImage:[UIImage imageNamed:@"mark-as-favorite-star"] forState:UIControlStateNormal];
-        [self.btnStar5 setImage:[UIImage imageNamed:@"mark-as-favorite-star"] forState:UIControlStateNormal];
-        [self.btnStar1 setImage:[UIImage imageNamed:@"mark-as-favorite-star-2"] forState:UIControlStateNormal];
-        [self.btnStar2 setImage:[UIImage imageNamed:@"mark-as-favorite-star-2"] forState:UIControlStateNormal];
-        [self.btnStar3 setImage:[UIImage imageNamed:@"mark-as-favorite-star-2"] forState:UIControlStateNormal];
-    }
-    else if ([sender tag] == 2)
-    {
-        self.rating = 2;
-        _lblcomment.text = @"Không ổn ";
-        [self.btnStar3 setImage:[UIImage imageNamed:@"mark-as-favorite-star"] forState:UIControlStateNormal];
-        [self.btnStar4 setImage:[UIImage imageNamed:@"mark-as-favorite-star"] forState:UIControlStateNormal];
-        [self.btnStar5 setImage:[UIImage imageNamed:@"mark-as-favorite-star"] forState:UIControlStateNormal];
-        [self.btnStar1 setImage:[UIImage imageNamed:@"mark-as-favorite-star-2"] forState:UIControlStateNormal];
-        [self.btnStar2 setImage:[UIImage imageNamed:@"mark-as-favorite-star-2"] forState:UIControlStateNormal];
-    }
-    else if ([sender tag] == 1)
-    {
-        self.rating = 1;
-        _lblcomment.text = @"Quá tệ ! ";
-        [self.btnStar2 setImage:[UIImage imageNamed:@"mark-as-favorite-star"] forState:UIControlStateNormal];
-        [self.btnStar3 setImage:[UIImage imageNamed:@"mark-as-favorite-star"] forState:UIControlStateNormal];
-        [self.btnStar4 setImage:[UIImage imageNamed:@"mark-as-favorite-star"] forState:UIControlStateNormal];
-        [self.btnStar5 setImage:[UIImage imageNamed:@"mark-as-favorite-star"] forState:UIControlStateNormal];
-        [self.btnStar1 setImage:[UIImage imageNamed:@"mark-as-favorite-star-2"] forState:UIControlStateNormal];
-        
-    }
+    
+//    if ([sender tag] == 5){
+//        
+//        self.rating = 5;
+//        _lblcomment.text = @"Tuyệt vời ";
+//        [self.btnStar1 setImage:[UIImage imageNamed:@"mark-as-favorite-star-2"] forState:UIControlStateNormal];
+//        [self.btnStar2 setImage:[UIImage imageNamed:@"mark-as-favorite-star-2"] forState:UIControlStateNormal];
+//        [self.btnStar3 setImage:[UIImage imageNamed:@"mark-as-favorite-star-2"] forState:UIControlStateNormal];
+//        [self.btnStar4 setImage:[UIImage imageNamed:@"mark-as-favorite-star-2"] forState:UIControlStateNormal];
+//        [self.btnStar5 setImage:[UIImage imageNamed:@"mark-as-favorite-star-2"] forState:UIControlStateNormal];
+//    }
+//    else if ([sender tag] == 4){
+//        
+//        self.rating = 4;
+//        _lblcomment.text = @"Hay đó ";
+//        [self.btnStar1 setImage:[UIImage imageNamed:@"mark-as-favorite-star-2"] forState:UIControlStateNormal];
+//        [self.btnStar2 setImage:[UIImage imageNamed:@"mark-as-favorite-star-2"] forState:UIControlStateNormal];
+//        [self.btnStar3 setImage:[UIImage imageNamed:@"mark-as-favorite-star-2"] forState:UIControlStateNormal];
+//        [self.btnStar4 setImage:[UIImage imageNamed:@"mark-as-favorite-star-2"] forState:UIControlStateNormal];
+//        [self.btnStar5 setImage:[UIImage imageNamed:@"mark-as-favorite-star"] forState:UIControlStateNormal];
+//        
+//    }
+//    else if ([sender tag] == 3){
+//        self.rating = 3;
+//        _lblcomment.text = @"Tàm tạm";
+//        [self.btnStar4 setImage:[UIImage imageNamed:@"mark-as-favorite-star"] forState:UIControlStateNormal];
+//        [self.btnStar5 setImage:[UIImage imageNamed:@"mark-as-favorite-star"] forState:UIControlStateNormal];
+//        [self.btnStar1 setImage:[UIImage imageNamed:@"mark-as-favorite-star-2"] forState:UIControlStateNormal];
+//        [self.btnStar2 setImage:[UIImage imageNamed:@"mark-as-favorite-star-2"] forState:UIControlStateNormal];
+//        [self.btnStar3 setImage:[UIImage imageNamed:@"mark-as-favorite-star-2"] forState:UIControlStateNormal];
+//    }
+//    else if ([sender tag] == 2){
+//        self.rating = 2;
+//        _lblcomment.text = @"Không ổn ";
+//        [self.btnStar3 setImage:[UIImage imageNamed:@"mark-as-favorite-star"] forState:UIControlStateNormal];
+//        [self.btnStar4 setImage:[UIImage imageNamed:@"mark-as-favorite-star"] forState:UIControlStateNormal];
+//        [self.btnStar5 setImage:[UIImage imageNamed:@"mark-as-favorite-star"] forState:UIControlStateNormal];
+//        [self.btnStar1 setImage:[UIImage imageNamed:@"mark-as-favorite-star-2"] forState:UIControlStateNormal];
+//        [self.btnStar2 setImage:[UIImage imageNamed:@"mark-as-favorite-star-2"] forState:UIControlStateNormal];
+//    }
+//    else if ([sender tag] == 1){
+//        self.rating = 1;
+//        _lblcomment.text = @"Quá tệ ! ";
+//        [self.btnStar2 setImage:[UIImage imageNamed:@"mark-as-favorite-star"] forState:UIControlStateNormal];
+//        [self.btnStar3 setImage:[UIImage imageNamed:@"mark-as-favorite-star"] forState:UIControlStateNormal];
+//        [self.btnStar4 setImage:[UIImage imageNamed:@"mark-as-favorite-star"] forState:UIControlStateNormal];
+//        [self.btnStar5 setImage:[UIImage imageNamed:@"mark-as-favorite-star"] forState:UIControlStateNormal];
+//        [self.btnStar1 setImage:[UIImage imageNamed:@"mark-as-favorite-star-2"] forState:UIControlStateNormal];
+//        
+//    }
 }
 
 #pragma mark - DELEGATE TF
-- (BOOL)textFieldShouldReturn:(UITextField *)textField
-{
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
     [textField endEditing:YES];
     return YES;
 }

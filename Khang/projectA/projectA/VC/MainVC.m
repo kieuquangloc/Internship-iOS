@@ -14,6 +14,7 @@
 #import "DetailVC.h"
 #import <SVProgressHUD.h>
 #import <RNFrostedSidebar.h>
+
 @interface MainVC ()
 <UITableViewDelegate,
 UITableViewDataSource,
@@ -22,17 +23,17 @@ UISearchDisplayDelegate,
 RNFrostedSidebarDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tbvMain;
-@property (strong,nonatomic) NSMutableArray *arr;
-
-@property (strong,nonatomic) UISearchDisplayController *searchDislayController;
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 
+@property (strong,nonatomic) NSMutableArray *arr;
+@property (strong,nonatomic) UISearchDisplayController *searchDislayController;
 @property (strong,nonatomic) NSMutableArray *arrResults;
 @property (nonatomic, strong) NSMutableIndexSet *optionIndices;
 @property (strong,nonatomic) UISegmentedControl *segControl;
 @property (strong,nonatomic) NSArray *arrSortDesciptors;
 @property (strong,nonatomic) NSArray *arrSorted;
 @property (strong,nonatomic) NSSortDescriptor *sorter;
+
 @end
 
 @implementation MainVC
@@ -49,6 +50,7 @@ RNFrostedSidebarDelegate>
 -(void) viewWillAppear:(BOOL)animated{
 
     [super viewWillAppear:animated];
+    
     self.navigationController.navigationBar.backgroundColor = [UIColor blackColor];
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     self.navigationController.navigationBar.barTintColor = [UIColor blackColor];
@@ -73,18 +75,18 @@ RNFrostedSidebarDelegate>
 }
 - (IBAction)onBurger:(id)sender {
     NSArray *images = @[
-                        [UIImage imageNamed:@"gear"],
-                        [UIImage imageNamed:@"globe"],
-                        [UIImage imageNamed:@"profile"],
-                        [UIImage imageNamed:@"star"],
-                        [UIImage imageNamed:@"gear"],
-                        [UIImage imageNamed:@"globe"],
-                        [UIImage imageNamed:@"profile"],
-                        [UIImage imageNamed:@"star"],
-                        [UIImage imageNamed:@"gear"],
-                        [UIImage imageNamed:@"globe"],
-                        [UIImage imageNamed:@"profile"],
-                        [UIImage imageNamed:@"star"],
+                        [UIImage imageNamed:@"pokeball"],
+                        [UIImage imageNamed:@"pikachu-2"],
+                        [UIImage imageNamed:@"snorlax"],
+                        [UIImage imageNamed:@"pidgey"],
+                        [UIImage imageNamed:@"meowth"],
+                        [UIImage imageNamed:@"eevee"],
+                        [UIImage imageNamed:@"dratini"],
+                        [UIImage imageNamed:@"charmander"],
+                        [UIImage imageNamed:@"caterpie"],
+                        [UIImage imageNamed:@"bullbasaur"],
+                        [UIImage imageNamed:@"abra"],
+                        [UIImage imageNamed:@"eevee"],
                         ];
     NSArray *colors = @[
                         [UIColor colorWithRed:240/255.f green:159/255.f blue:254/255.f alpha:1],
@@ -113,6 +115,7 @@ RNFrostedSidebarDelegate>
 - (void)sidebar:(RNFrostedSidebar *)sidebar didTapItemAtIndex:(NSUInteger)index {
     AddVC *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"add"];
     [vc.navigationController.navigationBar setHidden:NO];
+    
     [self presentViewController:vc animated:YES completion:nil];
 }
 
@@ -211,7 +214,14 @@ RNFrostedSidebarDelegate>
         Cell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
         Meal *meal = [DataManager shareIntance].foodList[indexPath.row];
         cell.lblMeal.text = meal.name;
-        
+        [cell.layer setBorderWidth: 4.0];
+        [cell.layer setCornerRadius:25.0f];
+        [cell.layer setMasksToBounds:YES];
+        [cell.layer setBorderColor:[[UIColor whiteColor] CGColor]];
+        [cell.imvMeal.layer setBorderWidth: 4.0];
+        [cell.imvMeal.layer setCornerRadius:25.0f];
+        [cell.imvMeal.layer setMasksToBounds:YES];
+        [cell.imvMeal.layer setBorderColor:[[UIColor yellowColor] CGColor]];
         if ([meal.dataImg isKindOfClass:[NSData class]]){
             cell.imvMeal.image = [UIImage imageWithData:meal.dataImg];
             
@@ -305,6 +315,7 @@ RNFrostedSidebarDelegate>
     
     [UIView beginAnimations:@"rotation" context:NULL];
     [UIView setAnimationDuration:0.7];
+    [UIView setAnimationDelay:indexPath.row/40.0];
     cell.layer.transform = CATransform3DIdentity;
     cell.alpha = 1;
     cell.layer.shadowOffset = CGSizeMake(0, 0);

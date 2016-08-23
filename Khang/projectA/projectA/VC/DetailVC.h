@@ -11,7 +11,9 @@
 @interface DetailVC : UIViewController
 @property (weak, nonatomic) IBOutlet UIImageView *imvBackgound;
 @property (weak, nonatomic) IBOutlet UILabel *lblName;
+@property (weak, nonatomic) IBOutlet UIImageView *imvDetail;
+
 @property (strong, nonatomic) NSData *dataImg;
 @property (strong, nonatomic) NSString *strName;
-@property (weak, nonatomic) IBOutlet UIImageView *imvDetail;
+
 @end
