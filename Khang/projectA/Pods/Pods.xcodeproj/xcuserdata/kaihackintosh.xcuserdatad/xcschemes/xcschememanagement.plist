@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>RNFrostedSidebar.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>SVProgressHUD.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -17,12 +22,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>387FF234A705B9B8BE7F0C6C949ABF0B</key>
+		<key>1F762D94A28885C43B1AB01BA6606E4D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E324FBE20640B38671212AF356328694</key>
+		<key>6252781540CA58C7F975F9CEC4418E10</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>BD9E14818E5CA855DF1455260A1F4E29</key>
 		<dict>
 			<key>primary</key>
 			<true/>

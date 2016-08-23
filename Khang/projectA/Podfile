@@ -3,5 +3,5 @@
 
 target 'projectA' do
   pod 'SVProgressHUD'
-
+pod 'RNFrostedSidebar'
 end
