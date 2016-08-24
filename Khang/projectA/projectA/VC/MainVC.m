@@ -115,6 +115,25 @@ RNFrostedSidebarDelegate>
 - (void)sidebar:(RNFrostedSidebar *)sidebar didTapItemAtIndex:(NSUInteger)index {
     AddVC *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"add"];
     [vc.navigationController.navigationBar setHidden:NO];
+    NSArray *arrStr = @[@"pokeball",
+                        @"pikachu-2",
+                        @"snorlax",
+                        @"charmander",
+                        @"abra",
+                        @"eevee",
+                        @"pokeball",
+                        @"pikachu-2",
+                        @"snorlax",
+                        @"charmander",
+                        @"abra",
+                        @"eevee",
+
+                        ];
+    for (NSInteger i = 0; i < 12; i++) {
+        if (index == i) {
+            vc.strImageName = arrStr[i];
+        }
+    }
     
     [self presentViewController:vc animated:YES completion:nil];
 }
@@ -213,6 +232,7 @@ RNFrostedSidebarDelegate>
         
         Cell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
         Meal *meal = [DataManager shareIntance].foodList[indexPath.row];
+        
         cell.lblMeal.text = meal.name;
         [cell.layer setBorderWidth: 4.0];
         [cell.layer setCornerRadius:25.0f];
@@ -222,66 +242,72 @@ RNFrostedSidebarDelegate>
         [cell.imvMeal.layer setCornerRadius:25.0f];
         [cell.imvMeal.layer setMasksToBounds:YES];
         [cell.imvMeal.layer setBorderColor:[[UIColor yellowColor] CGColor]];
-        if ([meal.dataImg isKindOfClass:[NSData class]]){
+        
+        if ([meal.dataImg isKindOfClass:[NSData class]]) {
             cell.imvMeal.image = [UIImage imageWithData:meal.dataImg];
-            
         }
         
-        if (meal.rate == 5)
-        {
+//        NSArray *arrButton = @[
+//                               cell.btnStar1,
+//                               cell.btnStar2,
+//                               cell.btnStar3,
+//                               cell.btnStar4,
+//                               cell.btnStar5,
+//                               ];
+//        for (UIButton *btn in arrButton) {
+//            for (NSInteger i = 0 ; i < 5 ; i++) {
+//                if (meal.rate - 1 >= i) {
+//                    [btn setImage:[UIImage imageNamed:@"mark-as-favorite-star-2"] forState:UIControlStateNormal];
+//                }else{
+//                    [btn setImage:[UIImage imageNamed:@"mark-as-favorite-star"] forState:UIControlStateNormal];
+//
+//                }
+//            }
+//        }
+        
+        if (meal.rate == 5){
             [cell.btnStar1 setImage:[UIImage imageNamed:@"mark-as-favorite-star-2"] forState:UIControlStateNormal];
             [cell.btnStar2 setImage:[UIImage imageNamed:@"mark-as-favorite-star-2"] forState:UIControlStateNormal];
             [cell.btnStar3 setImage:[UIImage imageNamed:@"mark-as-favorite-star-2"] forState:UIControlStateNormal];
             [cell.btnStar4 setImage:[UIImage imageNamed:@"mark-as-favorite-star-2"] forState:UIControlStateNormal];
             [cell.btnStar5 setImage:[UIImage imageNamed:@"mark-as-favorite-star-2"] forState:UIControlStateNormal];
             
-        }
-        else if (meal.rate ==4 )
-        {
+        }else if (meal.rate ==4 ){
             [cell.btnStar1 setImage:[UIImage imageNamed:@"mark-as-favorite-star-2"] forState:UIControlStateNormal];
             [cell.btnStar2 setImage:[UIImage imageNamed:@"mark-as-favorite-star-2"] forState:UIControlStateNormal];
             [cell.btnStar3 setImage:[UIImage imageNamed:@"mark-as-favorite-star-2"] forState:UIControlStateNormal];
             [cell.btnStar4 setImage:[UIImage imageNamed:@"mark-as-favorite-star-2"] forState:UIControlStateNormal];
             [cell.btnStar5 setHidden:YES];
             
-        }
-        else if (meal.rate == 3)
-        {
+        }else if (meal.rate == 3){
             [cell.btnStar1 setImage:[UIImage imageNamed:@"mark-as-favorite-star-2"] forState:UIControlStateNormal];
             [cell.btnStar2 setImage:[UIImage imageNamed:@"mark-as-favorite-star-2"] forState:UIControlStateNormal];
             [cell.btnStar3 setImage:[UIImage imageNamed:@"mark-as-favorite-star-2"] forState:UIControlStateNormal];
             [cell.btnStar4 setHidden:YES];
             [cell.btnStar5 setHidden:YES];
-            
-        }
-        else if (meal.rate ==2 )
-        {
+        }else if (meal.rate ==2 ){
             [cell.btnStar1 setImage:[UIImage imageNamed:@"mark-as-favorite-star-2"] forState:UIControlStateNormal];
             [cell.btnStar2 setImage:[UIImage imageNamed:@"mark-as-favorite-star-2"] forState:UIControlStateNormal];
             [cell.btnStar3 setHidden:YES];
             [cell.btnStar4 setHidden:YES];
             [cell.btnStar5 setHidden:YES];
             
-        }
-        else if (meal.rate == 1)
-        {
+        }else if (meal.rate == 1){
+            
             [cell.btnStar1 setImage:[UIImage imageNamed:@"mark-as-favorite-star-2"] forState:UIControlStateNormal];
             [cell.btnStar2 setHidden:YES];
             [cell.btnStar3 setHidden:YES];
             [cell.btnStar4 setHidden:YES];
             [cell.btnStar5 setHidden:YES];
-            
         }
-        
-        
         return cell;
+        
     }else if(tableView == _searchDislayController.searchResultsTableView|| YES){
         UITableViewCell *cell = [UITableViewCell new];
         Meal *meal = _arrResults[indexPath.row];
         cell.textLabel.text = meal.name;
         if ([meal.dataImg isKindOfClass:[NSData class]]){
             cell.imageView.image = [UIImage imageWithData:meal.dataImg];
-            
         }
         [tableView setAlpha:0.9];
         [tableView setBackgroundColor:[UIColor blackColor]];

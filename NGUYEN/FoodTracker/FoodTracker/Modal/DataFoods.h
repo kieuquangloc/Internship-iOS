@@ -11,6 +11,7 @@
 @interface DataFoods : NSObject
 
 @property(nonatomic,strong) NSMutableArray *arrFood;
+@property(nonatomic,strong) NSMutableDictionary *arrFoodic;
 
 -(NSMutableArray*) getArrayData:(NSString* )url;
 

@@ -17,7 +17,6 @@
     self = [super initWithCoder:coder];
     
     _rating = 0;
-    
     _spasing = 5;
     _starCount = 5;
     _ratingbuttons = [[NSMutableArray alloc]init];

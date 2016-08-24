@@ -13,6 +13,6 @@
 
 @property (nonatomic,weak) IBOutlet UIImageView* imvFood;
 @property (nonatomic,weak) IBOutlet UILabel * lblName;
-@property (nonatomic,strong) RatingController *ratingController;
+@property (strong, nonatomic) IBOutlet RatingController *ratingController;
 
 @end

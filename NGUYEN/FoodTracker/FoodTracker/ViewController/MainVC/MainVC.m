@@ -11,11 +11,13 @@
 
 
 
+
 @interface MainVC ()<UITableViewDataSource,UITableViewDelegate,UISearchControllerDelegate,UISearchBarDelegate,UISearchResultsUpdating>{
 
     NSString * _url;
     NSMutableArray * _arrFood;
     NSMutableArray *_searchResults;
+    NSArray * foodIndexTitles;
     AppDelegate * _appDelegate;
     UISearchController *_searchController;
     BOOL hasSearching;
@@ -29,6 +31,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+        foodIndexTitles = @[@"A", @"B", @"C", @"D", @"E", @"F", @"G", @"H", @"I", @"J", @"K", @"L", @"M", @"N", @"O", @"P", @"Q", @"R", @"S", @"T", @"U", @"V", @"W", @"X", @"Y", @"Z"];
     //  [SVProgressHUD show];
     _url = @"http://food2fork.com/api/search?key=4d699174e2340160bb34e85865574bb3&q=shredded%20chicken";
     
@@ -36,7 +39,6 @@
     _arrFood = [dataFoods getArrayData:_url];
     _arrFoodUser = [[NSMutableArray alloc]init];
 
-    
     _appDelegate = [[UIApplication sharedApplication] delegate];
     
     _searchController = [[UISearchController alloc]initWithSearchResultsController:nil];
@@ -47,6 +49,8 @@
     _searchController.dimsBackgroundDuringPresentation = NO;
     self.navigationItem.titleView = _searchController.searchBar;
     self.definesPresentationContext = true;
+    
+    RatingController *raringController = [[RatingController alloc]init];
     
 
 }
@@ -62,17 +66,16 @@
     [self.tbv reloadData];
 }
 
-#pragma mask -TableViewDatasource
+#pragma mark -TableViewDatasource
 
--(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     
     return 2;
 }
 
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
     if (section == 1) {
-        
         if (hasSearching) {
             return _searchResults.count;
         }else{
@@ -87,7 +90,7 @@
     return 0;
 }
 
--(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
     
     if (section == 0) {
         return @"Foods User Add";
@@ -97,19 +100,15 @@
     }
 }
 
--(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+- (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     FoodTrackercell *cell = [tableView dequeueReusableCellWithIdentifier:@"FoodTrackercell"];
     
     if (indexPath.section == 1) {
         
         if (hasSearching) {
-            
-            
             cell.lblName.text = ((Meal*)_searchResults[indexPath.row]).title;
             cell.imvFood.image = [UIImage imageWithData:((Meal*)_searchResults[indexPath.row]).dataImage];
-         
-            
         }else{
         
         cell.lblName.text = _arrFood[indexPath.row][@"title"];
@@ -121,20 +120,35 @@
         return cell;
         
     }else{
-        
-        
+
         cell.lblName.text = ((Meal*)_arrFoodUser[indexPath.row]).title;
         cell.imvFood.image = [UIImage imageWithData:((Meal*)_arrFoodUser[indexPath.row]).dataImage];
+        cell.ratingController.rating= ((Meal*)_arrFoodUser[indexPath.row]).social_rank;
+        
         return cell;
     }
     
 }
 
+-(NSArray<NSString *> *)sectionIndexTitlesForTableView:(UITableView *)tableView{
+    
+    return foodIndexTitles;
+}
+//bat su kien sort
+-(NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index{
+    
+    NSLog(@"%d",index);
+    return 0;
+}
 
-#pragma mask -TableView delegate
 
 
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+
+
+#pragma mark -TableView delegate
+
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     MealVC *mealVC = [[UIStoryboard storyboardWithName:@"Main" bundle:nil]instantiateViewControllerWithIdentifier:@"MealVC"];
     
@@ -175,6 +189,10 @@
         }
     }
 }
+
+
+
+
 
 #pragma mask - btnActionBarItem
 
@@ -222,11 +240,15 @@
 
    // NSLog(@"%@",searchText);
     
-    [self filterContenForSearchText:searchText];
-    
-    if (![searchText isEqualToString:@""]) {
-       _searchController.dimsBackgroundDuringPresentation = NO;
+
+    if ([searchText isEqualToString:@""]) {
+        //_searchController.dimsBackgroundDuringPresentation = YES;
+        hasSearching = false;
+        [_tbv reloadData];
       
+    }else{
+        hasSearching = true;
+        [self filterContenForSearchText:searchText];
     }
     
 
@@ -241,14 +263,13 @@
 
 - (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
     hasSearching= true;
-  //  [_tbv reloadData];
 }
 
 - (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar {
     hasSearching = false;
     [_tbv reloadData];
 }
-//
+
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
     hasSearching = false;
     [_tbv reloadData];
