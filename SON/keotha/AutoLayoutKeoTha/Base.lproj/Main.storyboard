@@ -19,18 +19,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hG6-ip-2MT">
-                                <rect key="frame" x="234" y="294" width="94" height="80"/>
+                                <rect key="frame" x="234" y="251" width="94" height="166"/>
                                 <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="shw-zV-XNf">
-                                <rect key="frame" x="47" y="294" width="94" height="80"/>
+                                <rect key="frame" x="47" y="251" width="94" height="166"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="80" id="NC5-uz-93T"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -42,6 +39,7 @@
                             <constraint firstItem="hG6-ip-2MT" firstAttribute="width" secondItem="shw-zV-XNf" secondAttribute="width" id="91K-tf-IfR"/>
                             <constraint firstItem="shw-zV-XNf" firstAttribute="centerX" secondItem="koS-V0-gaz" secondAttribute="centerX" multiplier="0.5" id="RR4-6Z-f0U"/>
                             <constraint firstItem="hG6-ip-2MT" firstAttribute="centerX" secondItem="koS-V0-gaz" secondAttribute="centerX" multiplier="1.5" id="crj-d0-A7A"/>
+                            <constraint firstItem="shw-zV-XNf" firstAttribute="height" secondItem="koS-V0-gaz" secondAttribute="height" multiplier="0.25" id="dh2-55-R9k"/>
                             <constraint firstItem="shw-zV-XNf" firstAttribute="centerY" secondItem="koS-V0-gaz" secondAttribute="centerY" id="kFP-tz-Mhz"/>
                             <constraint firstItem="hG6-ip-2MT" firstAttribute="centerY" secondItem="koS-V0-gaz" secondAttribute="centerY" id="qmR-lp-A19"/>
                             <constraint firstItem="shw-zV-XNf" firstAttribute="width" secondItem="koS-V0-gaz" secondAttribute="width" multiplier="0.25" id="vWI-HH-dqb"/>
