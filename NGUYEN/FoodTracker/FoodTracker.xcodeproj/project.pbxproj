@@ -28,8 +28,8 @@
 		540E6D2C1D63201D00B3C154 /* DataFoods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataFoods.m; sourceTree = "<group>"; };
 		540E6D2F1D63201D00B3C154 /* Meal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Meal.h; sourceTree = "<group>"; };
 		540E6D301D63201D00B3C154 /* Meal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Meal.m; sourceTree = "<group>"; };
-		540E6D311D63201D00B3C154 /* RatingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RatingController.h; sourceTree = "<group>"; };
-		540E6D321D63201D00B3C154 /* RatingController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RatingController.m; sourceTree = "<group>"; };
+		540E6D311D63201D00B3C154 /* RatingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RatingController.h; path = Modal/RatingController.h; sourceTree = "<group>"; };
+		540E6D321D63201D00B3C154 /* RatingController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RatingController.m; path = Modal/RatingController.m; sourceTree = "<group>"; };
 		540E6D371D63204900B3C154 /* BaseVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseVC.h; sourceTree = "<group>"; };
 		540E6D381D63204900B3C154 /* BaseVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseVC.m; sourceTree = "<group>"; };
 		540F53431D61523E0070385C /* FoodTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -77,13 +77,12 @@
 		540E6D291D63201D00B3C154 /* Modal */ = {
 			isa = PBXGroup;
 			children = (
+				540F537A1D617C180070385C /* BaseCell */,
 				540E6D2A1D63201D00B3C154 /* BaseData */,
 				540E6D2B1D63201D00B3C154 /* DataFoods.h */,
 				540E6D2C1D63201D00B3C154 /* DataFoods.m */,
 				540E6D2F1D63201D00B3C154 /* Meal.h */,
 				540E6D301D63201D00B3C154 /* Meal.m */,
-				540E6D311D63201D00B3C154 /* RatingController.h */,
-				540E6D321D63201D00B3C154 /* RatingController.m */,
 			);
 			path = Modal;
 			sourceTree = "<group>";
@@ -147,9 +146,7 @@
 		540F53621D61529F0070385C /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				540F537A1D617C180070385C /* BaseCell */,
 				540F53791D617C080070385C /* OtherVC */,
-				540F53751D617BEC0070385C /* Cell */,
 				540F53631D61529F0070385C /* MainVC */,
 			);
 			path = ViewController;
@@ -167,6 +164,8 @@
 		540F53671D6152A70070385C /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				5432BB371D6C3DE1006408BB /* Rating */,
+				540F53751D617BEC0070385C /* Cell */,
 				540F53681D6152BF0070385C /* Storyboard */,
 				540F53571D61523E0070385C /* Info.plist */,
 				540F53521D61523E0070385C /* Assets.xcassets */,
@@ -189,7 +188,8 @@
 				540F53761D617BEC0070385C /* FoodTrackercell.h */,
 				540F53771D617BEC0070385C /* FoodTrackercell.m */,
 			);
-			path = Cell;
+			name = Cell;
+			path = ViewController/Cell;
 			sourceTree = "<group>";
 		};
 		540F53791D617C080070385C /* OtherVC */ = {
@@ -207,7 +207,17 @@
 				540F537B1D617C180070385C /* BaseCell.h */,
 				540F537C1D617C180070385C /* BaseCell.m */,
 			);
-			path = BaseCell;
+			name = BaseCell;
+			path = ../ViewController/BaseCell;
+			sourceTree = "<group>";
+		};
+		5432BB371D6C3DE1006408BB /* Rating */ = {
+			isa = PBXGroup;
+			children = (
+				540E6D311D63201D00B3C154 /* RatingController.h */,
+				540E6D321D63201D00B3C154 /* RatingController.m */,
+			);
+			name = Rating;
 			sourceTree = "<group>";
 		};
 		D7F7B4FCA57A6AA6EECA1591 /* Frameworks */ = {
