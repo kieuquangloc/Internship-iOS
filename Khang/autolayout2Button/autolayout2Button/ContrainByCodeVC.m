@@ -16,13 +16,13 @@
 
 - (void)viewDidLoad{
     [super viewDidLoad];
+    
+    CGFloat w = (self.view.frame.size.width)/5;
+
+    
     UIButton *btn1 = [[UIButton alloc]init];
     btn1.backgroundColor = [UIColor redColor];
     [self.view addSubview:btn1];
-    
-    
-    CGFloat w = (self.view.frame.size.width)/5;
-    
     btn1.autoresizesSubviews = NO;
     btn1.translatesAutoresizingMaskIntoConstraints = NO;
     
@@ -49,20 +49,20 @@
                                        constraintWithItem:btn1
                                        attribute:NSLayoutAttributeWidth
                                        relatedBy:NSLayoutRelationEqual
-                                       toItem:self.view
+                                       toItem:nil
                                        attribute:NSLayoutAttributeWidth
-                                       multiplier:0.2
-                                       constant:0];
+                                       multiplier:1
+                                       constant:w];
     
     
     NSLayoutConstraint *constraintH1 = [NSLayoutConstraint
                                        constraintWithItem:btn1
                                        attribute:NSLayoutAttributeHeight
                                        relatedBy:NSLayoutRelationEqual
-                                       toItem:self.view
+                                       toItem:nil
                                        attribute:NSLayoutAttributeHeight
-                                       multiplier:0.2
-                                       constant:0];
+                                       multiplier:1
+                                       constant:70];
     
     [self.view addConstraint:constraintX1];
     [self.view addConstraint:constraintY1];
@@ -77,6 +77,7 @@
     btn2.autoresizesSubviews = NO;
     btn2.translatesAutoresizingMaskIntoConstraints = NO;
     
+    
     NSLayoutConstraint *constraintX2 = [NSLayoutConstraint
                                         constraintWithItem:btn2
                                         attribute:NSLayoutAttributeCenterX
@@ -84,13 +85,13 @@
                                         toItem:btn1
                                         attribute:NSLayoutAttributeCenterX
                                         multiplier:1
-                                        constant:-(w*2)];
+                                        constant:-w*2];
     
     NSLayoutConstraint *constraintY2 = [NSLayoutConstraint
                                         constraintWithItem:btn2
                                         attribute:NSLayoutAttributeCenterY
                                         relatedBy:NSLayoutRelationEqual
-                                        toItem:self.view
+                                        toItem:btn1
                                         attribute:NSLayoutAttributeCenterY
                                         multiplier:1
                                         constant:0];
