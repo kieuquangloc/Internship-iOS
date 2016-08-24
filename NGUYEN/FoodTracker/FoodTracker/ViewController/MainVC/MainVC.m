@@ -11,6 +11,7 @@
 
 
 
+
 @interface MainVC ()<UITableViewDataSource,UITableViewDelegate,UISearchControllerDelegate,UISearchBarDelegate,UISearchResultsUpdating>{
 
     NSString * _url;
@@ -49,6 +50,7 @@
     self.navigationItem.titleView = _searchController.searchBar;
     self.definesPresentationContext = true;
     
+    RatingController *raringController = [[RatingController alloc]init];
     
 
 }
@@ -121,6 +123,8 @@
 
         cell.lblName.text = ((Meal*)_arrFoodUser[indexPath.row]).title;
         cell.imvFood.image = [UIImage imageWithData:((Meal*)_arrFoodUser[indexPath.row]).dataImage];
+        cell.ratingController.rating= ((Meal*)_arrFoodUser[indexPath.row]).social_rank;
+        
         return cell;
     }
     
