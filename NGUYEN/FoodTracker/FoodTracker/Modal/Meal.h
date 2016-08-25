@@ -17,4 +17,6 @@
 
 - (instancetype)initWithName: (NSString*)title dataImage:(NSData*)dataImage rating:(NSInteger)social_rank;
 
+
+
 @end
