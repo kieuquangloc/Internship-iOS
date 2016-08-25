@@ -18,14 +18,12 @@
 
 @end
 
-
 @interface DetailVC: UIViewController
 
 @property (weak, nonatomic) IBOutlet UITextField *tfMealName;
 @property (weak, nonatomic) IBOutlet UIImageView *ivPhoto;
 @property (weak, nonatomic) IBOutlet RatingControl *viRate;
 @property (strong, nonatomic) NSData *dataImg;
-
 
 @property (strong, nonatomic) id<DetailVCDelegate> delegate;
 

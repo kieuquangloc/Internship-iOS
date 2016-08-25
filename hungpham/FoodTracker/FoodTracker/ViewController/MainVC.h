@@ -10,10 +10,6 @@
 #import "Meal.h"
 #import "Cell.h"
 #import "DetailVC.h"
-//#import <SDWebImage/UIImageView+WebCache.h>
-#import "SDWebImage/SDWebImageDownloader.h"
-//#import "newMeal.h"
-
 
 @class MainVC;
 

@@ -18,11 +18,7 @@
 {
     NSMutableArray *arrMeals;
     NSMutableArray *dicData;
-    
     NSMutableArray *resultItems;
-
-
-    
 }
 
 
@@ -39,7 +35,6 @@
     [_search.searchBar sizeToFit];
     
     self.definesPresentationContext = YES;
-    
     self.tableView.tableHeaderView = _search.searchBar;
     
     [self loadSamples];
@@ -71,12 +66,12 @@
         _tbvContent.editing = YES;
         self.navigationItem.leftBarButtonItem.title = @"Done";
     }
-
 }
 
 #pragma mark - search delegate
 
 - (void) updateSearchResultsForSearchController:(UISearchController *)searchController {
+    
     NSString *searchString = searchController.searchBar.text;
     Meal *mealTem = [[Meal alloc]init];
     if (![searchString isEqualToString:@""]) {
@@ -113,11 +108,10 @@
     Meal *tem = [[Meal alloc]init];
     if (_search.searchBar.text.length > 0) {
         tem = resultItems[indexPath.row];
-        
     } else {
         tem = arrMeals[indexPath.row];
-        
     }
+    
     cell.lblName.text = tem.mealName;
     cell.ivMealPoto.image = [UIImage imageWithData:tem.imgData];
     cell.viRating.rating = tem.stars;
@@ -139,7 +133,6 @@
         [_tbvContent deleteRowsAtIndexPaths:[NSMutableArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
         [_tbvContent reloadData];
     }
-
 }
 
 #pragma mark - Meal delegate
@@ -156,7 +149,6 @@
 }
 
 - (void)detailVC:(DetailVC *)newMealVC newMeal:(Meal *)newMeal {
-    
     [arrMeals addObject:newMeal];
     [_tbvContent reloadData];
 }

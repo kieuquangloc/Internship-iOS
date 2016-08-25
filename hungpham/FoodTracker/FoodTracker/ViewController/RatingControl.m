@@ -32,7 +32,6 @@
             button.showsTouchWhenHighlighted = YES;
             
             [button setAdjustsImageWhenDisabled:false];
-            
             [button addTarget:self action:@selector(ratingButtonTapped:) forControlEvents:UIControlEventTouchDown];
             
             [_ratingButtons addObject:button];
@@ -73,7 +72,6 @@
     _rating = (int)([_ratingButtons indexOfObject:btn] + 1);
     [self updateButtonSelectonStates];
 }
-
 
 - (void)updateButtonSelectonStates {
     for (int i = 0; i < [_ratingButtons count]; i++) {

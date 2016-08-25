@@ -47,7 +47,6 @@
     imagePicker.delegate = self;
     
     [self presentViewController:imagePicker animated:true completion:nil];
-
 }
 
 #pragma mark - My Action
@@ -62,7 +61,6 @@
     if (_delegate && [_delegate respondsToSelector:@selector(detailVC:newMeal:)]) {
         
         [_delegate detailVC:self newMeal:newmeal];
-        //[self.navigationController dismissViewControllerAnimated:YES completion:nil];
         [self.navigationController popViewControllerAnimated:YES];
         
     } else {
