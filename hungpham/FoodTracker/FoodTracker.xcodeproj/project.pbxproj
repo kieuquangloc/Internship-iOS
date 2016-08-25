@@ -9,9 +9,7 @@
 /* Begin PBXBuildFile section */
 		14CF4646850712263AFF58C8 /* libPods-FoodTracker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DEAFB69BEB2A7861E2F56AB /* libPods-FoodTracker.a */; };
 		682DB37C1D64DF240076A207 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 682DB37B1D64DF240076A207 /* main.m */; };
-		682DB3851D64DF240076A207 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 682DB3831D64DF240076A207 /* Main.storyboard */; };
 		682DB3871D64DF240076A207 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 682DB3861D64DF240076A207 /* Assets.xcassets */; };
-		682DB38A1D64DF240076A207 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 682DB3881D64DF240076A207 /* LaunchScreen.storyboard */; };
 		682DB3951D64DF240076A207 /* FoodTrackerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 682DB3941D64DF240076A207 /* FoodTrackerTests.m */; };
 		682DB3A01D64DF240076A207 /* FoodTrackerUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 682DB39F1D64DF240076A207 /* FoodTrackerUITests.m */; };
 		682DB3C11D64E0E70076A207 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 682DB3BD1D64E0E70076A207 /* AppDelegate.m */; };
@@ -19,8 +17,9 @@
 		682DB3C51D64E2720076A207 /* RatingControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 682DB3C41D64E2720076A207 /* RatingControl.m */; };
 		682DB3C81D64E5630076A207 /* Cell.m in Sources */ = {isa = PBXBuildFile; fileRef = 682DB3C71D64E5630076A207 /* Cell.m */; };
 		682DB3D41D64E8EF0076A207 /* MainVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 682DB3D31D64E8EF0076A207 /* MainVC.m */; };
-		682DB3D81D64EB8F0076A207 /* Meal.m in Sources */ = {isa = PBXBuildFile; fileRef = 682DB3D71D64EB8F0076A207 /* Meal.m */; };
-		6870CAF81D684DDA006B7295 /* newMeal.m in Sources */ = {isa = PBXBuildFile; fileRef = 6870CAF71D684DDA006B7295 /* newMeal.m */; };
+		68A14E801D6EA59A00E46E80 /* Meal.m in Sources */ = {isa = PBXBuildFile; fileRef = 68A14E7F1D6EA59A00E46E80 /* Meal.m */; };
+		68A14E841D6EA60000E46E80 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68A14E821D6EA60000E46E80 /* LaunchScreen.storyboard */; };
+		68A14E851D6EA60000E46E80 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68A14E831D6EA60000E46E80 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,9 +44,7 @@
 		311E572C8D6353073FD91392 /* Pods-FoodTracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodTracker.release.xcconfig"; path = "Pods/Target Support Files/Pods-FoodTracker/Pods-FoodTracker.release.xcconfig"; sourceTree = "<group>"; };
 		682DB3771D64DF240076A207 /* FoodTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		682DB37B1D64DF240076A207 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		682DB3841D64DF240076A207 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		682DB3861D64DF240076A207 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		682DB3891D64DF240076A207 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		682DB38B1D64DF240076A207 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		682DB3901D64DF240076A207 /* FoodTrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FoodTrackerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		682DB3941D64DF240076A207 /* FoodTrackerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FoodTrackerTests.m; sourceTree = "<group>"; };
@@ -65,10 +62,10 @@
 		682DB3C71D64E5630076A207 /* Cell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Cell.m; sourceTree = "<group>"; };
 		682DB3D21D64E8EF0076A207 /* MainVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainVC.h; sourceTree = "<group>"; };
 		682DB3D31D64E8EF0076A207 /* MainVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainVC.m; sourceTree = "<group>"; };
-		682DB3D71D64EB8F0076A207 /* Meal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Meal.m; sourceTree = "<group>"; };
-		682DB3D91D64EB9E0076A207 /* Meal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Meal.h; sourceTree = "<group>"; };
-		6870CAF61D684DDA006B7295 /* newMeal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = newMeal.h; sourceTree = "<group>"; };
-		6870CAF71D684DDA006B7295 /* newMeal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = newMeal.m; sourceTree = "<group>"; };
+		68A14E7E1D6EA59A00E46E80 /* Meal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Meal.h; sourceTree = "<group>"; };
+		68A14E7F1D6EA59A00E46E80 /* Meal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Meal.m; sourceTree = "<group>"; };
+		68A14E821D6EA60000E46E80 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		68A14E831D6EA60000E46E80 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		8DEAFB69BEB2A7861E2F56AB /* libPods-FoodTracker.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FoodTracker.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -131,15 +128,11 @@
 		682DB3791D64DF240076A207 /* FoodTracker */ = {
 			isa = PBXGroup;
 			children = (
-				682DB3D91D64EB9E0076A207 /* Meal.h */,
-				682DB3D71D64EB8F0076A207 /* Meal.m */,
-				6870CAF61D684DDA006B7295 /* newMeal.h */,
-				6870CAF71D684DDA006B7295 /* newMeal.m */,
+				68A14E811D6EA60000E46E80 /* Storyboard */,
+				68A14E7D1D6EA59A00E46E80 /* Data */,
 				682DB3BB1D64E0E70076A207 /* AppDelegate */,
 				682DB3BE1D64E0E70076A207 /* ViewController */,
-				682DB3831D64DF240076A207 /* Main.storyboard */,
 				682DB3861D64DF240076A207 /* Assets.xcassets */,
-				682DB3881D64DF240076A207 /* LaunchScreen.storyboard */,
 				682DB38B1D64DF240076A207 /* Info.plist */,
 				682DB37A1D64DF240076A207 /* Supporting Files */,
 			);
@@ -194,6 +187,24 @@
 				682DB3C71D64E5630076A207 /* Cell.m */,
 			);
 			path = ViewController;
+			sourceTree = "<group>";
+		};
+		68A14E7D1D6EA59A00E46E80 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				68A14E7E1D6EA59A00E46E80 /* Meal.h */,
+				68A14E7F1D6EA59A00E46E80 /* Meal.m */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		68A14E811D6EA60000E46E80 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				68A14E821D6EA60000E46E80 /* LaunchScreen.storyboard */,
+				68A14E831D6EA60000E46E80 /* Main.storyboard */,
+			);
+			path = Storyboard;
 			sourceTree = "<group>";
 		};
 		E2CD68AB288F999602FFD545 /* Pods */ = {
@@ -311,9 +322,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				682DB38A1D64DF240076A207 /* LaunchScreen.storyboard in Resources */,
+				68A14E851D6EA60000E46E80 /* Main.storyboard in Resources */,
 				682DB3871D64DF240076A207 /* Assets.xcassets in Resources */,
-				682DB3851D64DF240076A207 /* Main.storyboard in Resources */,
+				68A14E841D6EA60000E46E80 /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -390,8 +401,7 @@
 				682DB3C51D64E2720076A207 /* RatingControl.m in Sources */,
 				682DB3C21D64E0E70076A207 /* DetailVC.m in Sources */,
 				682DB3D41D64E8EF0076A207 /* MainVC.m in Sources */,
-				682DB3D81D64EB8F0076A207 /* Meal.m in Sources */,
-				6870CAF81D684DDA006B7295 /* newMeal.m in Sources */,
+				68A14E801D6EA59A00E46E80 /* Meal.m in Sources */,
 				682DB3C11D64E0E70076A207 /* AppDelegate.m in Sources */,
 				682DB37C1D64DF240076A207 /* main.m in Sources */,
 			);
@@ -427,25 +437,6 @@
 			targetProxy = 682DB39C1D64DF240076A207 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		682DB3831D64DF240076A207 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				682DB3841D64DF240076A207 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		682DB3881D64DF240076A207 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				682DB3891D64DF240076A207 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		682DB3A21D64DF240076A207 /* Debug */ = {

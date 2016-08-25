@@ -9,7 +9,7 @@
 #import "MainVC.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
-@interface MainVC () <DetailVCDelegate>
+@interface MainVC () <DetailVCDelegate, UISearchResultsUpdating>
 
 @end
 
@@ -19,23 +19,28 @@
     NSMutableArray *arrMeals;
     NSMutableArray *dicData;
     
-    Meal *aMeal;
+    NSMutableArray *resultItems;
+
+
     
 }
 
-//-(void)viewWillAppear:(BOOL)animated {
-//    [super viewWillAppear:animated];
-//    
-//    arrMeals = [[NSMutableArray alloc]init];
-//    aMeal = [[Meal alloc]init];
-//    //[arrMeals addObject:@"B"];
-//    [self loadSamples];
-//}
 
 - (void)viewDidLoad {
     self.navigationItem.leftBarButtonItem = self.editButtonItem;
     self.navigationItem.leftBarButtonItem.action = @selector(btnEditTapped);
     arrMeals = [[NSMutableArray alloc]init];
+    resultItems = [[NSMutableArray alloc]init];
+    
+    _search = [[UISearchController alloc] initWithSearchResultsController:nil];
+    _search.searchResultsUpdater = self;
+    _search.dimsBackgroundDuringPresentation = NO;
+    _search.searchBar.delegate = self;
+    [_search.searchBar sizeToFit];
+    
+    self.definesPresentationContext = YES;
+    
+    self.tableView.tableHeaderView = _search.searchBar;
     
     [self loadSamples];
 }
@@ -69,26 +74,54 @@
 
 }
 
+#pragma mark - search delegate
+
+- (void) updateSearchResultsForSearchController:(UISearchController *)searchController {
+    NSString *searchString = searchController.searchBar.text;
+    Meal *mealTem = [[Meal alloc]init];
+    if (![searchString isEqualToString:@""]) {
+        
+        [resultItems removeAllObjects];
+        for (NSInteger i = 0; i < arrMeals.count; i++) {
+            mealTem = arrMeals[i];
+            if ([mealTem.mealName.lowercaseString hasPrefix:searchString.lowercaseString]) {
+                [resultItems addObject:mealTem];
+            }
+        }
+    }
+    [_tbvContent reloadData];
+}
+
+#pragma mark - tableview delegate
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    if (_search.searchBar.text.length > 0) {
+        return [resultItems count];
+    }
     return [arrMeals count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     Cell *cell = [tableView dequeueReusableCellWithIdentifier:@"mealcell" forIndexPath:indexPath];
-    
+    if (cell == nil) {
+        cell = [[Cell alloc]init];
+    }
     Meal *tem = [[Meal alloc]init];
-    tem = arrMeals[indexPath.row];
+    if (_search.searchBar.text.length > 0) {
+        tem = resultItems[indexPath.row];
+        
+    } else {
+        tem = arrMeals[indexPath.row];
+        
+    }
     cell.lblName.text = tem.mealName;
     cell.ivMealPoto.image = [UIImage imageWithData:tem.imgData];
     cell.viRating.rating = tem.stars;
-    
     return cell;
-    
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -97,9 +130,8 @@
     }
     return 0.0;
 }
+
 #pragma mark - Actions
-
-
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
@@ -119,7 +151,6 @@
     newMealVC.delegate = self;
     
     if (newMealVC) {
-        //[self.navigationController showViewController:newMealVC sender:self];
         [self.navigationController pushViewController:newMealVC animated:YES];
     }
 }
@@ -132,44 +163,3 @@
 
 @end
 
-
-
-
-
-
-
-
-//- (void)getDataFromServer {
-//    // 1
-//    NSString *dataUrl = @"http://food2fork.com/api/search?key=4d699174e2340160bb34e85865574bb3&q=shredded%20chicken";
-//    NSURL *url = [NSURL URLWithString:dataUrl];
-//    NSString *strUrl = [[NSString stringWithString:@""] mutableCopy];
-//   // NSArray *arrUrl = [NSArray array];
-//
-//    //SDWebImageManager *manager = [SDWebImageManager sharedManager];
-//
-//    // 2
-//    NSURLSessionDataTask *downloadTask = [[NSURLSession sharedSession]
-//                                          dataTaskWithURL:url completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-//                                              if (data) {
-//                                                  NSDictionary *jsData = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-//
-//                                                  dicData = [jsData[@"recipes"] mutableCopy];
-//
-//                                                  for (NSInteger i = 0; i < dicData.count; i++) {
-//                                                      //strUrl = [dicData[i][@"image_url"] mutableCopy];
-//
-//                                                      [aMeal.imgData sd_setImageWithURL:[NSURL URLWithString:@"https://graph.facebook.com/olivier.poitrey/picture"]
-//                                                                   placeholderImage:[UIImage imageNamed:@"avatar-placeholder.png"]
-//                                                                            options:SDWebImageRefreshCached];
-//                                                                                                             //sd_setImageWithURL:[NSURL URLWithString:[dicData[i][@"image_url"] mutableCopy]] placeholderImage:[aMeal.ima imageNamed:@"apple"];
-//                                                      //                                                      [aMeal.imgData sd_setImageWithURL:[NSURL URLWithString:[dicData[0][@"image_url"] mutableCopy]] placeholderImage:[UIImage imageNamed:@"apple"];
-//                                                  }
-//                                                  //NSString *a = arrData[0][@"social_rank"];
-//                                              }
-//
-//                                          }];
-//    [downloadTask resume];
-//    // 3
-//
-//}

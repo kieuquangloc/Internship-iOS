@@ -70,11 +70,7 @@
                     </tableView>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="VDx-zr-SCK">
-                        <barButtonItem key="leftBarButtonItem" systemItem="edit" id="m2k-HJ-S8p">
-                            <connections>
-                                <action selector="btnEdit:" destination="ahz-P2-ZvF" id="x9y-A7-rIm"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="leftBarButtonItem" systemItem="edit" id="m2k-HJ-S8p"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="nq4-lF-fEU">
                             <connections>
                                 <action selector="btnAdd:" destination="ahz-P2-ZvF" id="995-gh-gfy"/>
