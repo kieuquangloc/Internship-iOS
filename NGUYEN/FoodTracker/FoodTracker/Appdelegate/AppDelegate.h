@@ -14,6 +14,7 @@
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) NSMutableArray *arrFood;
 @property (strong, nonatomic) Meal *meal;
+@property (assign, nonatomic) BOOL hasEdit;
 
 
 @end
