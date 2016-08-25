@@ -30,11 +30,39 @@
     
      CGFloat sizeView = (self.view.frame.size.width)/5;
     
-     //-------------constraintView1
-    NSLayoutConstraint *constraintCenterXV1 = [NSLayoutConstraint constraintWithItem:view1 attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeCenterX multiplier:0.6 constant:0];
-    NSLayoutConstraint *constrainCenterYV1 = [NSLayoutConstraint constraintWithItem:view1 attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeCenterY multiplier:1 constant:0];
-    NSLayoutConstraint *hightV1 = [NSLayoutConstraint constraintWithItem:view1 attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:150];
-    NSLayoutConstraint *widthV1 = [NSLayoutConstraint constraintWithItem:view1 attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeWidth multiplier:1 constant:sizeView];
+    
+    NSLayoutConstraint *constraintCenterXV1 = [NSLayoutConstraint
+                                               constraintWithItem:view1
+                                               attribute:NSLayoutAttributeCenterX
+                                               relatedBy:NSLayoutRelationEqual
+                                               toItem:self.view
+                                               attribute:NSLayoutAttributeCenterX
+                                               multiplier:0.6
+                                               constant:0];
+    NSLayoutConstraint *constrainCenterYV1 = [NSLayoutConstraint
+                                              constraintWithItem:view1
+                                              attribute:NSLayoutAttributeCenterY
+                                              relatedBy:NSLayoutRelationEqual
+                                              toItem:self.view
+                                              attribute:NSLayoutAttributeCenterY
+                                              multiplier:1
+                                              constant:0];
+    NSLayoutConstraint *hightV1 = [NSLayoutConstraint
+                                   constraintWithItem:view1
+                                   attribute:NSLayoutAttributeHeight
+                                   relatedBy:NSLayoutRelationEqual
+                                   toItem:nil
+                                   attribute:NSLayoutAttributeNotAnAttribute
+                                   multiplier:1
+                                   constant:70];
+    NSLayoutConstraint *widthV1 = [NSLayoutConstraint
+                                   constraintWithItem:view1
+                                   attribute:NSLayoutAttributeWidth
+                                   relatedBy:NSLayoutRelationEqual
+                                   toItem:nil
+                                   attribute:NSLayoutAttributeWidth
+                                   multiplier:1
+                                   constant:sizeView];
   
     [self.view addConstraints:@[constraintCenterXV1,constrainCenterYV1,widthV1,hightV1]];
 
@@ -42,7 +70,7 @@
     view1.translatesAutoresizingMaskIntoConstraints = false;
    
     
-    //-------------constraintView2
+    
     
     NSLayoutConstraint *constraintCenterXV2 = [NSLayoutConstraint constraintWithItem:view2 attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeCenterX multiplier:1.4 constant:0];
     NSLayoutConstraint *constrainCenterYV2 = [NSLayoutConstraint constraintWithItem:view2 attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:view1 attribute:NSLayoutAttributeCenterY multiplier:1 constant:0];
