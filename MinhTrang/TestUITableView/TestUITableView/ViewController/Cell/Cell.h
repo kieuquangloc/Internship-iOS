@@ -7,9 +7,21 @@
 //
 
 #import <UIKit/UIKit.h>
+@class Cell;
+
+@protocol CellDelegate <NSObject>
+@required
+- (void)cell:(Cell*)cell didBeginEditting:(UITextField*)tf;
+- (void)cell:(Cell*)cell didEndEditting:(UITextField*)tf;
+- (void)cell:(Cell*)cell didChangeString:(NSString*)tf inTextfield:(UITextField*)tf;
+
+- (void)cell:(Cell*)cell didPressReturn:(UITextField*)tf;
+
+@end
+
+
 
 @interface Cell : UITableViewCell
-
 
 @property (weak, nonatomic) IBOutlet UIImageView *imgLogo;
 
@@ -24,7 +36,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *btnRegist;
 @property (weak, nonatomic) IBOutlet UILabel *lblWarning;
 
-
-
+@property (weak, nonatomic) id<CellDelegate> delegate;
 
 @end

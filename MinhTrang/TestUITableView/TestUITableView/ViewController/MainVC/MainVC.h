@@ -11,5 +11,7 @@
 @interface MainVC : UIViewController <UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate>
 
 @property (nonatomic, strong) NSArray *arrContent;
+@property (nonatomic, weak) IBOutlet UITableView *tbv;
+
 @end
 
