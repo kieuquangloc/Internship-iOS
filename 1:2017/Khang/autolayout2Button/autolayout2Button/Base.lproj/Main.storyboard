@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="lUK-sz-rOq">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TYO-wk-61P">
+                                <rect key="frame" x="187" y="245" width="83" height="77"/>
+                                <color key="backgroundColor" red="0.23282987075033512" green="1" blue="0.10469828208695453" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" red="0.25760664817060519" green="1" blue="0.16062496337094201" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Button"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IGL-Xk-E3e">
+                                <rect key="frame" x="55" y="245" width="79" height="78"/>
+                                <color key="backgroundColor" red="1" green="0.19542014922898931" blue="0.24892950949025872" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="78" id="4E2-LL-3M8"/>
+                                </constraints>
+                                <color key="tintColor" red="1" green="0.069462441207558068" blue="0.065852566214255503" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Button"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="TYO-wk-61P" firstAttribute="height" secondItem="IGL-Xk-E3e" secondAttribute="height" constant="-1" id="7gf-AB-0or"/>
+                            <constraint firstItem="IGL-Xk-E3e" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="GHF-rT-Os6"/>
+                            <constraint firstItem="TYO-wk-61P" firstAttribute="centerY" secondItem="IGL-Xk-E3e" secondAttribute="centerY" id="IDb-sx-SBh"/>
+                            <constraint firstItem="TYO-wk-61P" firstAttribute="width" secondItem="IGL-Xk-E3e" secondAttribute="width" constant="4" id="VUv-mS-Pcm"/>
+                            <constraint firstItem="IGL-Xk-E3e" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="55" id="cQi-iS-h8Q"/>
+                            <constraint firstAttribute="trailing" secondItem="TYO-wk-61P" secondAttribute="trailing" constant="50" id="fkE-KD-m5d"/>
+                            <constraint firstItem="TYO-wk-61P" firstAttribute="leading" secondItem="IGL-Xk-E3e" secondAttribute="trailing" constant="53" id="mg1-tM-G7x"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="281" y="232"/>
+        </scene>
+        <!--Contrain By CodeVC-->
+        <scene sceneID="11A-vX-M3r">
+            <objects>
+                <viewController id="lUK-sz-rOq" customClass="ContrainByCodeVC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="CD1-eo-fOC"/>
+                        <viewControllerLayoutGuide type="bottom" id="sXZ-QN-wOb"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="lnt-VS-Fan">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mLv-pH-2Yf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="638" y="232"/>
+        </scene>
+    </scenes>
+</document>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tWn-6H-RXe">
+                                <rect key="frame" x="200" y="250" width="200" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="78V-Ie-kwh"/>
+                                    <constraint firstAttribute="height" constant="100" id="dUs-2Q-I49"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="onBtnShow:" destination="BYZ-38-t0r" eventType="touchUpInside" id="moe-BI-t6T"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="tWn-6H-RXe" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Eh2-FV-1ow"/>
+                            <constraint firstItem="tWn-6H-RXe" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Xvn-uA-IMW"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="vDeDanh" destination="niG-Ky-BfD" id="qDE-oC-LDf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="niG-Ky-BfD" customClass="ViewRate">
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                    <color key="backgroundColor" red="0.50196081400000003" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="128" id="9Kl-RR-Pyl"/>
+                        <constraint firstAttribute="width" constant="240" id="mFD-lN-Z56"/>
+                    </constraints>
+                </view>
+            </objects>
+            <point key="canvasLocation" x="229" y="78"/>
+        </scene>
+        <!--VC2-->
+        <scene sceneID="CZU-eH-QvL">
+            <objects>
+                <viewController storyboardIdentifier="VC2" modalTransitionStyle="crossDissolve" modalPresentationStyle="overFullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ViO-Yp-Duk" customClass="VC2" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Rog-q8-JVl"/>
+                        <viewControllerLayoutGuide type="bottom" id="flD-wk-DuO"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="SYJ-K2-Mt9">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xqz-5W-S7T" customClass="ViewRate">
+                                <rect key="frame" x="180" y="236" width="240" height="128"/>
+                                <color key="backgroundColor" red="0.015686274510000001" green="0.87058823529999996" blue="0.4431372549" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="gpN-RX-OKw"/>
+                                    <constraint firstAttribute="height" constant="128" id="zCX-lW-t9a"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.20000000000000001" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="xqz-5W-S7T" firstAttribute="centerX" secondItem="SYJ-K2-Mt9" secondAttribute="centerX" id="Prk-Ev-YFa"/>
+                            <constraint firstItem="xqz-5W-S7T" firstAttribute="centerY" secondItem="SYJ-K2-Mt9" secondAttribute="centerY" id="uvC-mb-qce"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wj9-Wb-IdO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="858" y="78"/>
+        </scene>
+    </scenes>
+</document>
