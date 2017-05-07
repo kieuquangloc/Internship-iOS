@@ -1,0 +1,15 @@
+PODS:
+  - RNFrostedSidebar (0.2.0)
+  - SVProgressHUD (2.0.3)
+
+DEPENDENCIES:
+  - RNFrostedSidebar
+  - SVProgressHUD
+
+SPEC CHECKSUMS:
+  RNFrostedSidebar: 9491d8627e5e99b92334d36def432c0faf7ebae4
+  SVProgressHUD: b0830714205bea1317ea1a2ebc71e5633af334d4
+
+PODFILE CHECKSUM: 552cdd1ec1b3ed83cda0ea9bb805c634dd778923
+
+COCOAPODS: 1.0.1

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="3Bf-Ah-JuL">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="fsF-YO-scC">
+            <objects>
+                <viewController id="3Bf-Ah-JuL" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="w2M-DJ-gTc"/>
+                        <viewControllerLayoutGuide type="bottom" id="k04-FV-cAi"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="koS-V0-gaz">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hG6-ip-2MT">
+                                <rect key="frame" x="234" y="251" width="94" height="166"/>
+                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="shw-zV-XNf">
+                                <rect key="frame" x="47" y="251" width="94" height="166"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="hG6-ip-2MT" firstAttribute="height" secondItem="shw-zV-XNf" secondAttribute="height" id="02b-Dx-cc2"/>
+                            <constraint firstItem="hG6-ip-2MT" firstAttribute="width" secondItem="shw-zV-XNf" secondAttribute="width" id="91K-tf-IfR"/>
+                            <constraint firstItem="shw-zV-XNf" firstAttribute="centerX" secondItem="koS-V0-gaz" secondAttribute="centerX" multiplier="0.5" id="RR4-6Z-f0U"/>
+                            <constraint firstItem="hG6-ip-2MT" firstAttribute="centerX" secondItem="koS-V0-gaz" secondAttribute="centerX" multiplier="1.5" id="crj-d0-A7A"/>
+                            <constraint firstItem="shw-zV-XNf" firstAttribute="height" secondItem="koS-V0-gaz" secondAttribute="height" multiplier="0.25" id="dh2-55-R9k"/>
+                            <constraint firstItem="shw-zV-XNf" firstAttribute="centerY" secondItem="koS-V0-gaz" secondAttribute="centerY" id="kFP-tz-Mhz"/>
+                            <constraint firstItem="hG6-ip-2MT" firstAttribute="centerY" secondItem="koS-V0-gaz" secondAttribute="centerY" id="qmR-lp-A19"/>
+                            <constraint firstItem="shw-zV-XNf" firstAttribute="width" secondItem="koS-V0-gaz" secondAttribute="width" multiplier="0.25" id="vWI-HH-dqb"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="v4C-TN-u6D" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="862.5" y="413.5"/>
+        </scene>
+    </scenes>
+</document>
