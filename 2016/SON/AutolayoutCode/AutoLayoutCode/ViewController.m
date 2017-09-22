@@ -59,7 +59,7 @@
                                                                     relatedBy:NSLayoutRelationEqual
                                                                        toItem:_vRed
                                                                     attribute:NSLayoutAttributeHeight
-                                         ß                          multiplier:1
+                                            ß:                          multiplier:1
                                                                      constant:0];
     NSLayoutConstraint * widthView = [NSLayoutConstraint constraintWithItem:_vBlue
                                                                         attribute:NSLayoutAttributeWidth
