@@ -103,7 +103,7 @@
             </objects>
             <point key="canvasLocation" x="1201" y="123"/>
         </scene>
-        <!--View Controller-->
+        <!--Meal List-->
         <scene sceneID="56i-cu-Q3u">
             <objects>
                 <viewController id="Vl5-X3-3cO" customClass="ViewController" customModule="FoodyTracker" customModuleProvider="target" sceneMemberID="viewController">
@@ -174,7 +174,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="QWr-3c-ndp">
+                    <navigationItem key="navigationItem" title="Meal List" id="QWr-3c-ndp">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="6LW-a9-ee7">
                             <connections>
                                 <action selector="addMealButton:" destination="Vl5-X3-3cO" id="Ksg-yz-07c"/>

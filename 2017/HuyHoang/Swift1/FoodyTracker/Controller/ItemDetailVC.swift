@@ -18,6 +18,8 @@ class ItemDetailVC: UIViewController, UIImagePickerControllerDelegate, UINavigat
         
         foodNameTF.text = "Delicious Meal"
         
+        navigationItem.title = foodNameTF.text
+        updateSaveButtonState()
     }
     
     @IBOutlet weak var imageFood: UIImageView!
@@ -79,11 +81,17 @@ class ItemDetailVC: UIViewController, UIImagePickerControllerDelegate, UINavigat
     }
     
     func takePhoto() {
+        
+        foodNameTF.resignFirstResponder()
+        
+        imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+     
         if(UIImagePickerController .isSourceTypeAvailable(UIImagePickerControllerSourceType.camera)){
-            imagePicker!.allowsEditing = true
-            imagePicker!.sourceType = UIImagePickerControllerSourceType.camera
-            imagePicker!.cameraCaptureMode = .photo
-            present(imagePicker!, animated: true, completion: nil)
+            imagePicker.allowsEditing = true
+            imagePicker.sourceType = UIImagePickerControllerSourceType.camera
+            imagePicker.cameraCaptureMode = .photo
+            present(imagePicker, animated: true, completion: nil)
         }else{
             let alert = UIAlertController(title: "Camera Not Found", message: "This device has no Camera", preferredStyle: .alert)
             let ok = UIAlertAction(title: "OK", style:.default, handler: nil)
